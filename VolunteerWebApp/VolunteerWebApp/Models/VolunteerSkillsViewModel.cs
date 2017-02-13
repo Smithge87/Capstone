@@ -6,11 +6,11 @@ using System.Web;
 
 namespace VolunteerWebApp.Models
 {
-    public class SkillsViewModel
+    public class VolunteerSkillsViewModel
     {
         private ApplicationDbContext _context;
 
-        public SkillsViewModel()
+        public VolunteerSkillsViewModel()
         {
             _context = new ApplicationDbContext();
         }
@@ -32,5 +32,8 @@ namespace VolunteerWebApp.Models
 
         [Required]
         public string HumanServices { get; set; }
+
+        [Required]
+        public string AboutSkills { get; set; }
     }
 }

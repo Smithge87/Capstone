@@ -14,7 +14,7 @@ namespace VolunteerWebApp.Models
         {
             _context = new ApplicationDbContext();
         }
-        public Address Address { get; set; }
+        public Information Address { get; set; }
         public IEnumerable<State> StateList { get; set; }
         public IEnumerable<ApplicationUser> UserList { get; set; }
 
@@ -52,5 +52,8 @@ namespace VolunteerWebApp.Models
         [Required]
         [Display(Name = "Zipcode")]
         public string Zipcode { get; set; }
+
+        [Required]
+        public string AboutInfo { get; set; }
     }
 }

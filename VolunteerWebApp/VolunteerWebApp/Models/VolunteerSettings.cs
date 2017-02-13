@@ -6,15 +6,13 @@ using System.Web;
 
 namespace VolunteerWebApp.Models
 {
-    public class Address
+    public class VolunteerSettings
     {
         [Key]
         public int ID { get; set; }
         public string UserId { get; set; }
-        public string StreetAddress { get; set; }
-        public string City { get; set; }
-        public State State { get; set; }
-        public int StateId { get; set; }
-        public string Zipcode { get; set; }
+        public string CanContact { get; set; }
+        public string CanSee { get; set; }
+        public string CanRefer { get; set; }
     }
 }

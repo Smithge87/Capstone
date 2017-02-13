@@ -26,17 +26,37 @@ namespace VolunteerWebApp.Controllers
             var currentUserName = User.Identity.Name;
             var states = _context.State.ToList();
             var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
-            var viewModel = new VolunteerInfoViewModel()
+            var currentInfo = _context.Address.FirstOrDefault(m => m.UserId == currentUserName);
+            if (currentInfo != null)
             {
-                StateList = states,
-                FirstName = currentUser.FirstName,
-                LastName = currentUser.LastName,
-                PhoneNumber = currentUser.PhoneNumber,
-                UserTitle = currentUser.UserTitle,
-                
-            };
+                var viewModel = new VolunteerInfoViewModel()
+                {
+                    StateList = states,
+                    FirstName = currentUser.FirstName,
+                    LastName = currentUser.LastName,
+                    PhoneNumber = currentUser.PhoneNumber,
+                    UserTitle = currentUser.UserTitle,
+                    AboutInfo = currentInfo.AboutInfo,
+                    StreetAddress = currentInfo.StreetAddress,
+                    City = currentInfo.City,
+                    Zipcode = currentInfo.Zipcode,
+                    StateId = currentInfo.StateId
+                };
+                return View(viewModel);
+            }
+            else
+            {
+                var viewModel = new VolunteerInfoViewModel()
+                {
+                    StateList = states,
+                    FirstName = currentUser.FirstName,
+                    LastName = currentUser.LastName,
+                    PhoneNumber = currentUser.PhoneNumber,
+                    UserTitle = currentUser.UserTitle
+                };
 
             return View(viewModel);
+            }
         }
         [HttpPost]
         public ActionResult Info(VolunteerInfoViewModel model)
@@ -64,16 +84,18 @@ namespace VolunteerWebApp.Controllers
                     userAddress.StateId = model.Address.StateId;
                     userAddress.Zipcode = model.Zipcode;
                     userAddress.UserId = currentUser.Email;
+                    userAddress.AboutInfo = model.AboutInfo;
                 }
                 else
                 {
-                    var newAddress = new Address()
+                    var newAddress = new Information()
                     {
                         StreetAddress = model.StreetAddress,
                         City = model.City,
                         StateId = model.Address.StateId,
                         Zipcode = model.Zipcode,
-                        UserId = currentUser.Email
+                        UserId = currentUser.Email,
+                        AboutInfo = model.AboutInfo
                     };
                     _context.Address.Add(newAddress);
                 }
@@ -85,13 +107,21 @@ namespace VolunteerWebApp.Controllers
         }
         public ActionResult Skills()
         {
-
-
-
+            var currentUserName = User.Identity.Name;
+            var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
+            var currentSkills = _context.Skill.FirstOrDefault(m => m.UserId == currentUser.Email);
+            if (currentSkills != null)
+            {
+                var viewModel = new VolunteerSkillsViewModel()
+                {
+                    AboutSkills = currentSkills.AboutSkills
+                };
+                return View(viewModel);
+            }
             return View();
         }
         [HttpPost]
-        public ActionResult Skills(SkillsViewModel model)
+        public ActionResult Skills(VolunteerSkillsViewModel model)
         {
             var currentUserName = User.Identity.Name;
             var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
@@ -105,6 +135,7 @@ namespace VolunteerWebApp.Controllers
                 currentSkills.EnviornmentSkill = model.Enviornment;
                 currentSkills.HealthSkill = model.Health;
                 currentSkills.HumanServicesSkill = model.HumanServices;
+                currentSkills.AboutSkills = model.AboutSkills;
             }
             else
             {
@@ -116,7 +147,8 @@ namespace VolunteerWebApp.Controllers
                     EducationSkill = model.Education,
                     EnviornmentSkill = model.Enviornment,
                     HealthSkill = model.Health,
-                    HumanServicesSkill = model.HumanServices
+                    HumanServicesSkill = model.HumanServices,
+                    AboutSkills = model.AboutSkills
                 };
                 _context.Skill.Add(newSkill);
             }
@@ -125,6 +157,34 @@ namespace VolunteerWebApp.Controllers
         }
         public ActionResult Settings()
         {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Settings(VolunteerSettingsViewModel model)
+        {
+            var currentUserName = User.Identity.Name;
+            var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
+            var currentSettings = _context.VolunteerSettings.FirstOrDefault(m => m.UserId == currentUser.Email);
+
+            if (currentSettings !=  null)
+            {
+                currentSettings.CanContact = model.CanContact;
+                currentSettings.CanSee = model.CanSee;
+                currentSettings.CanRefer = model.CanRefer;
+            }
+            else
+            {
+                var newSettings = new VolunteerSettings()
+                {
+                    UserId = currentUser.Email,
+                    CanContact = model.CanContact,
+                    CanSee = model.CanSee,
+                    CanRefer = model.CanRefer
+                };
+                _context.VolunteerSettings.Add(newSettings);
+            }
+            _context.SaveChanges();
+
             return View();
         }
     }

@@ -1,4 +1,4 @@
-﻿@model VolunteerWebApp.Models.SkillsViewModel
+﻿@model VolunteerWebApp.Models.VolunteerSkillsViewModel
 @{
     ViewBag.Title = "Skills";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -171,6 +171,11 @@
     <div>
         @Html.LabelFor(m => m.HumanServices, "Expert Skill")
         @Html.RadioButtonFor(m => m.HumanServices, "5")
+    </div>
+
+    <p>Tell us a little bit about your skill levels</p>
+    <div>
+        @Html.TextAreaFor(m=> m.AboutSkills)
     </div>
     <button type="submit">Submit Skills</button>
 </form>

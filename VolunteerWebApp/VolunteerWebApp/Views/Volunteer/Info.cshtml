@@ -59,6 +59,11 @@
             @Html.TextBoxFor(m => m.Zipcode, new { @class = "form-control" })
         </div>
     </div>
+    <br />
+    <p>Tell us a little bit about yourself</p>
+    <div>
+        @Html.TextAreaFor(m=> m.AboutInfo )
+    </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Register" />

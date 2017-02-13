@@ -17,6 +17,7 @@ namespace VolunteerWebApp.Models
         public string EnviornmentSkill { get; set; }
         public string HealthSkill { get; set; }
         public string HumanServicesSkill { get; set; }
+        public string AboutSkills { get; set; }
 
     }
 }

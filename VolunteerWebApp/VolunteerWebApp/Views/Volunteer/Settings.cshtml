@@ -1,9 +1,52 @@
-﻿
+﻿@model VolunteerWebApp.Models.VolunteerSettingsViewModel
 @{
     ViewBag.Title = "Settings";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Contact Settings</h2>
+<br />
 
-<li>@Html.ActionLink("Back to my Profile", "Index", "Volunteer")</li>
+@using (Html.BeginForm("Settings", "Volunteer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <form action="">
+        <p>Can Contact </p>
+        <div>
+            @Html.LabelFor(m => m.CanContact, "Do not contact")
+            @Html.RadioButtonFor(m => m.CanContact, "0")
+        </div>
+        <div>
+            @Html.LabelFor(m => m.CanContact, "Feel free to contact ")
+            @Html.RadioButtonFor(m => m.CanContact, "1")
+        </div>
+        <br />
+        <p>Can See</p>
+
+        <div>
+            @Html.LabelFor(m => m.CanSee, "Do not show user name")
+            @Html.RadioButtonFor(m => m.CanSee, "0")
+        </div>
+        <div>
+            @Html.LabelFor(m => m.CanSee, "Feel free to show username")
+            @Html.RadioButtonFor(m => m.CanSee, "1")
+        </div>
+        <br />
+        <p>Can Refer</p>
+
+        <div>
+            @Html.LabelFor(m => m.CanRefer, "Do not send references")
+            @Html.RadioButtonFor(m => m.CanRefer, "0")
+        </div>
+        <div>
+            @Html.LabelFor(m => m.CanRefer, "Feel free to refer")
+            @Html.RadioButtonFor(m => m.CanRefer, "1")
+        </div>
+        <button type="submit">Submit Settings</button>
+
+        </form>
+}
+
+
+
+
+        <li>@Html.ActionLink("Back to my Profile", "Index", "Volunteer")</li>
