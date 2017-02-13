@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>VolunteerIndex</h2>
+<h2>Welcome, @Model.ApplicationUser.UserTitle</h2>
 
 <li>@Html.ActionLink("Update my Info", "Info", "Volunteer")</li>
 <li>@Html.ActionLink("Update my Skills", "Skills", "Volunteer")</li>

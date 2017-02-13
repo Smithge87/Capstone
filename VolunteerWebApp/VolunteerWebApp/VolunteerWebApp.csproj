@@ -247,6 +247,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Information.cs" />
     <Compile Include="Models\OrganizationInfoViewModel.cs" />
+    <Compile Include="Models\OrganizationProfileViewModel.cs" />
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\VolunteerProfileViewModel.cs" />
     <Compile Include="Models\VolunteerSettings.cs" />
@@ -324,6 +325,7 @@
     <Content Include="Views\Volunteer\Settings.cshtml" />
     <Content Include="Views\Volunteer\Skills.cshtml" />
     <Content Include="Views\Organization\Info.cshtml" />
+    <Content Include="Views\Volunteer\AddPhoto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

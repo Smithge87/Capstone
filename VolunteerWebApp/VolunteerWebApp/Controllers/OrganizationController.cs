@@ -20,7 +20,18 @@ namespace VolunteerWebApp.Controllers
         // GET: Organization
         public ActionResult Index()
         {
-            return View();
+            var currentUserName = User.Identity.Name;
+            var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
+            var currentInfo = _context.Address.FirstOrDefault(m => m.UserId == currentUser.Email);
+            var viewModel = new OrganizationProfileViewModel()
+            {
+                ApplicationUser = currentUser
+            };
+            if (currentInfo != null)
+            {
+                viewModel.Information = currentInfo;
+            }
+            return View(viewModel);
         }
         public ActionResult Info()
         {
@@ -101,11 +112,6 @@ namespace VolunteerWebApp.Controllers
 
             }
             return View(model);
-
-
-
-
-            return RedirectToAction("Index", "Organization");
         }
     }
 

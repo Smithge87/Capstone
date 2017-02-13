@@ -204,5 +204,9 @@ namespace VolunteerWebApp.Controllers
 
             return View();
         }
+        public ActionResult AddPhoto()
+        {
+            return View();
+        }
     }
 }

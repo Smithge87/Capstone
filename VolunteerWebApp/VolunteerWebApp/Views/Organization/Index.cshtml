@@ -1,10 +1,45 @@
-﻿
+﻿@model VolunteerWebApp.Models.OrganizationProfileViewModel
 @{
     ViewBag.Title = "OrganizationIndex";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
-<h2>OrganizationIndex</h2>
+<h2>Welcome @Model.ApplicationUser.OrganizationName</h2>
+
 
 <li>@Html.ActionLink("Update my Info", "Info", "Organization")</li>
+
+
+
+<table>
+    <thead>
+        <tr><th> Basic Info </th></tr>
+    </thead>
+    <tbody>
+        <tr><td></td></tr>
+        <tr><td>Organization Name: @Model.ApplicationUser.OrganizationName </td></tr>
+        <tr><td>Name: @Model.ApplicationUser.FirstName  @Model.ApplicationUser.LastName </td></tr>
+        <tr><td>E-mail: @Model.ApplicationUser.Email </td></tr>
+        <tr><td>Phone: @Model.ApplicationUser.PhoneNumber </td></tr>
+        <tr>
+            <td>
+                Address: @Model.Information.StreetAddress <br /> @Model.Information.City <br />
+                @*@Model.Information.State.States*@ <br /> @Model.Information.Zipcode
+            </td>
+        </tr>
+
+
+
+    </tbody>
+</table>
+
+
+<table>
+    <thead>
+        <tr><th> About me </th></tr>
+    </thead>
+    <tbody>
+        <tr><td>@Model.Information.AboutInfo </td></tr>
+    </tbody>
+</table>
