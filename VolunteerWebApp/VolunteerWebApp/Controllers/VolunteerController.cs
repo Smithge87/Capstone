@@ -93,10 +93,35 @@ namespace VolunteerWebApp.Controllers
         [HttpPost]
         public ActionResult Skills(SkillsViewModel model)
         {
+            var currentUserName = User.Identity.Name;
+            var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
+            var currentSkills = _context.Skill.FirstOrDefault(m => m.UserId == currentUser.Email);
 
-            var banana = "banana";
-
-            return View();
+            if (currentSkills != null)
+            {
+                currentSkills.AnimalSkill = model.Animal;
+                currentSkills.DisasterSkill = model.Disaster;
+                currentSkills.EducationSkill = model.Education;
+                currentSkills.EnviornmentSkill = model.Enviornment;
+                currentSkills.HealthSkill = model.Health;
+                currentSkills.HumanServicesSkill = model.HumanServices;
+            }
+            else
+            {
+                var newSkill = new Skill()
+                {
+                    UserId = currentUser.Email,
+                    AnimalSkill = model.Animal,
+                    DisasterSkill = model.Disaster,
+                    EducationSkill = model.Education,
+                    EnviornmentSkill = model.Enviornment,
+                    HealthSkill = model.Health,
+                    HumanServicesSkill = model.HumanServices
+                };
+                _context.Skill.Add(newSkill);
+            }
+            _context.SaveChanges();
+            return RedirectToAction("Index","Volunteer");
         }
         public ActionResult Settings()
         {

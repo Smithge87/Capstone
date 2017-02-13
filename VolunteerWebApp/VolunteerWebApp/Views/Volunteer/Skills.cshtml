@@ -7,8 +7,8 @@
 <h2>My Skills</h2>
 @using (Html.BeginForm("Skills", "Volunteer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
-    <p>Animal Services </p>
 <form action="">
+    <p>Animal Services </p>
     <div>
         @Html.LabelFor(m => m.Animal, "No skill")
         @Html.RadioButtonFor(m => m.Animal, "0")
@@ -32,6 +32,145 @@
     <div>
         @Html.LabelFor(m => m.Animal, "Expert Skill")
         @Html.RadioButtonFor(m => m.Animal, "5")
+    </div>
+
+    <br /><br />
+    <p>Disaster Services </p>
+    <div>
+        @Html.LabelFor(m => m.Disaster, "No skill")
+        @Html.RadioButtonFor(m => m.Disaster, "0")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Disaster, "Very Little Skill")
+        @Html.RadioButtonFor(m => m.Disaster, "1")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Disaster, "Some Skill")
+        @Html.RadioButtonFor(m => m.Disaster, "2")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Disaster, "Average Skill")
+        @Html.RadioButtonFor(m => m.Disaster, "3")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Disaster, "Above Average Skill")
+        @Html.RadioButtonFor(m => m.Disaster, "4")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Disaster, "Expert Skill")
+        @Html.RadioButtonFor(m => m.Disaster, "5")
+    </div>
+
+    <br /><br />
+    <p>Education Services </p>
+    <div>
+        @Html.LabelFor(m => m.Education, "No skill")
+        @Html.RadioButtonFor(m => m.Education, "0")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Education, "Very Little Skill")
+        @Html.RadioButtonFor(m => m.Education, "1")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Education, "Some Skill")
+        @Html.RadioButtonFor(m => m.Education, "2")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Education, "Average Skill")
+        @Html.RadioButtonFor(m => m.Education, "3")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Education, "Above Average Skill")
+        @Html.RadioButtonFor(m => m.Education, "4")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Education, "Expert Skill")
+        @Html.RadioButtonFor(m => m.Education, "5")
+    </div>
+
+
+    <br /><br />
+    <p>Enviornment Services </p>
+    <div>
+        @Html.LabelFor(m => m.Enviornment, "No skill")
+        @Html.RadioButtonFor(m => m.Enviornment, "0")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Enviornment, "Very Little Skill")
+        @Html.RadioButtonFor(m => m.Enviornment, "1")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Enviornment, "Some Skill")
+        @Html.RadioButtonFor(m => m.Enviornment, "2")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Enviornment, "Average Skill")
+        @Html.RadioButtonFor(m => m.Enviornment, "3")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Enviornment, "Above Average Skill")
+        @Html.RadioButtonFor(m => m.Enviornment, "4")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Enviornment, "Expert Skill")
+        @Html.RadioButtonFor(m => m.Enviornment, "5")
+    </div>
+
+
+
+    <br /><br />
+    <p>Health Services </p>
+    <div>
+        @Html.LabelFor(m => m.Health, "No skill")
+        @Html.RadioButtonFor(m => m.Health, "0")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Health, "Very Little Skill")
+        @Html.RadioButtonFor(m => m.Health, "1")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Health, "Some Skill")
+        @Html.RadioButtonFor(m => m.Health, "2")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Health, "Average Skill")
+        @Html.RadioButtonFor(m => m.Health, "3")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Health, "Above Average Skill")
+        @Html.RadioButtonFor(m => m.Health, "4")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Health, "Expert Skill")
+        @Html.RadioButtonFor(m => m.Health, "5")
+    </div>
+
+
+    <br /><br />
+    <p>Human Services </p>
+    <div>
+        @Html.LabelFor(m => m.HumanServices, "No skill")
+        @Html.RadioButtonFor(m => m.HumanServices, "0")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.HumanServices, "Very Little Skill")
+        @Html.RadioButtonFor(m => m.HumanServices, "1")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.HumanServices, "Some Skill")
+        @Html.RadioButtonFor(m => m.HumanServices, "2")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.HumanServices, "Average Skill")
+        @Html.RadioButtonFor(m => m.HumanServices, "3")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.HumanServices, "Above Average Skill")
+        @Html.RadioButtonFor(m => m.HumanServices, "4")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.HumanServices, "Expert Skill")
+        @Html.RadioButtonFor(m => m.HumanServices, "5")
     </div>
     <button type="submit">Submit Skills</button>
 </form>

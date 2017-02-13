@@ -28,12 +28,7 @@ namespace VolunteerWebApp.Models
     {
         public DbSet<State> State { get; set; }
         public DbSet<Address> Address { get; set; }
-        public DbSet<AnimalSkill> AnimalSkill { get; set; }
-        public DbSet<DisasterSkill> DisasterSkill { get; set; }
-        public DbSet<EducationSkill> EducationSkill { get; set; }
-        public DbSet<EnviornmentSkill> EnviornmentSkill { get; set; }
-        public DbSet<HealthSkill> HealthSkill { get; set; }
-        public DbSet<HumanServicesSkill> HumanServicesSkill { get; set; }
+        public DbSet<Skill> Skill { get; set; }
 
 
         public ApplicationDbContext()
