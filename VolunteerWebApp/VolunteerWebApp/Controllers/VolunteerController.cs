@@ -19,7 +19,29 @@ namespace VolunteerWebApp.Controllers
         // GET: Volunteer
         public ActionResult Index()
         {
-            return View();
+            var currentUserName = User.Identity.Name;
+            var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
+            var currentInfo = _context.Address.FirstOrDefault(m => m.UserId == currentUser.Email);
+            var currentSettings = _context.VolunteerSettings.FirstOrDefault(m => m.UserId == currentUser.Email);
+            var currentSkills = _context.Skill.FirstOrDefault(m => m.UserId == currentUser.Email);
+            var viewModel = new VolunteerProfileViewModel()
+            {
+                ApplicationUser = currentUser
+            };
+            if (currentInfo != null)
+            {
+                viewModel.Information = currentInfo;
+            }
+            if (currentSettings != null)
+            {
+                viewModel.VolunteerSettings = currentSettings;
+            }
+            if (currentSkills != null)
+            {
+                viewModel.Skill = currentSkills;
+            }
+
+            return View(viewModel);
         }
         public ActionResult Info()
         {
@@ -61,11 +83,7 @@ namespace VolunteerWebApp.Controllers
         [HttpPost]
         public ActionResult Info(VolunteerInfoViewModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return HttpNotFound();
-            }
-            else
+            if (ModelState.IsValid)
             {
                 var currentUserName = User.Identity.Name;
                 var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
@@ -99,11 +117,11 @@ namespace VolunteerWebApp.Controllers
                     };
                     _context.Address.Add(newAddress);
                 }
+                _context.SaveChanges();
+                return RedirectToAction("Index", "Volunteer");
+
             }
-
-            _context.SaveChanges();
-
-            return RedirectToAction("Index", "Volunteer");
+            return View(model);
         }
         public ActionResult Skills()
         {
