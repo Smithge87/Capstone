@@ -26,6 +26,17 @@ namespace VolunteerWebApp.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.State.AddOrUpdate(m => m.ID,
+                    new Models.State { ID = 1, States = "Wisconsin" },
+                    new Models.State { ID = 2, States = "Illinois" },
+                    new Models.State { ID = 3, States = "Indiania" },
+                    new Models.State { ID = 4, States = "Minnesota" },
+                    new Models.State { ID = 5, States = "Iowa" },
+                    new Models.State { ID = 6, States = "Ohio" },
+                    new Models.State { ID = 7, States = "Kansas" },
+                    new Models.State { ID = 8, States = "Missouri" },
+                    new Models.State { ID = 9, States = "North Dakota" }
+                    );
         }
     }
 }

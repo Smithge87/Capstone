@@ -211,10 +211,21 @@
     <Compile Include="Migrations\201702131407412_addedVolunteerAndOrganizationModels.Designer.cs">
       <DependentUpon>201702131407412_addedVolunteerAndOrganizationModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702131510549_AddedStateModel.cs" />
+    <Compile Include="Migrations\201702131510549_AddedStateModel.Designer.cs">
+      <DependentUpon>201702131510549_AddedStateModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702131515106_seedingStates.cs" />
+    <Compile Include="Migrations\201702131515106_seedingStates.Designer.cs">
+      <DependentUpon>201702131515106_seedingStates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\State.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\VolunteerInfo.cs" />
+    <Compile Include="Models\VolunteerInfoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -277,8 +288,12 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\RegisterVolunteer.cshtml" />
-    <Content Include="Views\Volunteer\VolunteerIndex.cshtml" />
-    <Content Include="Views\Organization\OrganizationIndex.cshtml" />
+    <Content Include="Views\Volunteer\Index.cshtml" />
+    <Content Include="Views\Organization\Index.cshtml" />
+    <Content Include="Views\Volunteer\Info.cshtml" />
+    <Content Include="Views\Volunteer\Settings.cshtml" />
+    <Content Include="Views\Volunteer\Skills.cshtml" />
+    <Content Include="Views\Organization\Info.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -297,6 +312,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702131407412_addedVolunteerAndOrganizationModels.resx">
       <DependentUpon>201702131407412_addedVolunteerAndOrganizationModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702131510549_AddedStateModel.resx">
+      <DependentUpon>201702131510549_AddedStateModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702131515106_seedingStates.resx">
+      <DependentUpon>201702131515106_seedingStates.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
