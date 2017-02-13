@@ -8,6 +8,13 @@ namespace VolunteerWebApp.Models
 {
     public class VolunteerInfoViewModel
     {
+        private ApplicationDbContext _context;
+
+        public VolunteerInfoViewModel()
+        {
+            _context = new ApplicationDbContext();
+        }
+        public Address Address { get; set; }
         public IEnumerable<State> StateList { get; set; }
         public IEnumerable<ApplicationUser> UserList { get; set; }
 
@@ -40,7 +47,7 @@ namespace VolunteerWebApp.Models
 
         [Required]
         [Display(Name = "State")]
-        public string State { get; set; }
+        public string StateId { get; set; }
 
         [Required]
         [Display(Name = "Zipcode")]
