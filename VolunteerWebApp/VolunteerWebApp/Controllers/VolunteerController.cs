@@ -40,7 +40,6 @@ namespace VolunteerWebApp.Controllers
             {
                 viewModel.Skill = currentSkills;
             }
-
             return View(viewModel);
         }
         public ActionResult Info()
