@@ -14,7 +14,7 @@ namespace VolunteerWebApp.Models
         public string StreetAddress { get; set; }
         public string City { get; set; }
         public State State { get; set; }
-        public string StateId { get; set; }
+        public int StateId { get; set; }
         public string Zipcode { get; set; }
     }
 }

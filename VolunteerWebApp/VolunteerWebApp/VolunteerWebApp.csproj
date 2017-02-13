@@ -219,6 +219,14 @@
     <Compile Include="Migrations\201702131515106_seedingStates.Designer.cs">
       <DependentUpon>201702131515106_seedingStates.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702131607463_addedAddressModel.cs" />
+    <Compile Include="Migrations\201702131607463_addedAddressModel.Designer.cs">
+      <DependentUpon>201702131607463_addedAddressModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702131609427_changedStateId.cs" />
+    <Compile Include="Migrations\201702131609427_changedStateId.Designer.cs">
+      <DependentUpon>201702131609427_changedStateId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -318,6 +326,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702131515106_seedingStates.resx">
       <DependentUpon>201702131515106_seedingStates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702131607463_addedAddressModel.resx">
+      <DependentUpon>201702131607463_addedAddressModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702131609427_changedStateId.resx">
+      <DependentUpon>201702131609427_changedStateId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
