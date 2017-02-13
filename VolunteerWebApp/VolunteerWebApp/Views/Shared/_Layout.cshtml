@@ -9,6 +9,7 @@
 
 </head>
 <body>
+    
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -19,16 +20,44 @@
                 </button>
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
+@if (Request.IsAuthenticated && User.IsInRole("volunteer"))
+{
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Profile", "Index", "Volunteer")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
+}
+else if (Request.IsAuthenticated && User.IsInRole("organization"))
+{
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>@Html.ActionLink("About", "About", "Home")</li>
+            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            <li>@Html.ActionLink("Profile", "Index", "Organization")</li>
+        </ul>
+        @Html.Partial("_LoginPartial")
+    </div>
+}
+else
+{
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>@Html.ActionLink("About", "About", "Home")</li>
+            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+        </ul>
+        @Html.Partial("_LoginPartial")
+    </div>
+}
         </div>
     </div>
+    
     <div class="container body-content">
         @RenderBody()
         <hr />

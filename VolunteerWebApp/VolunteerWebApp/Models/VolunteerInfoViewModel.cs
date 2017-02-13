@@ -47,7 +47,7 @@ namespace VolunteerWebApp.Models
 
         [Required]
         [Display(Name = "State")]
-        public string StateId { get; set; }
+        public int StateId { get; set; }
 
         [Required]
         [Display(Name = "Zipcode")]

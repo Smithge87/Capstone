@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using VolunteerWebApp.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace VolunteerWebApp.Controllers
 {
@@ -156,6 +157,9 @@ namespace VolunteerWebApp.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    await roleManager.CreateAsync(new IdentityRole("volunteer"));
                     await this.UserManager.AddToRoleAsync(user.Id, "volunteer");
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
