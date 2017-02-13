@@ -1,0 +1,49 @@
+
+
+	From what I have learned about coding to this point, I can see only a fraction of the immense ability of technology to not only make operations more productive, but to connect, unite, and serve a greater purpose beyond the goal of monetary productivity. This is something I would like to focus on with my final project. The propose of my capstone is to fill two major needs that I see in the volunteer community.
+	First of all I see an issue with volunteer organizations being able to find the proper, reliable help that they need. I think this stems from two major factors -  first that it's difficult for them to accurately express the array of skill levels that they need to complete a task, and second that it's hard for them to accurately assess the commitment level of the volunteers that say they're willing to show up. These are the biggest issues I would like to address on the organization's side of the user story, along with a couple more minor accommodations. 
+	On the volunteer side, I can identify two main issues as well. First, I see a general level of anxiety coming from both first time volunteers and seasoned volunteers that are joining an organization for the first time when they are exploring the idea of going outside their comfort zone. I believe that if a communication barrier can be broken down through comfortable interaction with the user interface, that both the volunteer and the organization can benefit. I also see hesitance from possible volunteers that have a high skill level (as well as those with none at all) when exploring opportunities because they would like to find something that would be a good fit for their skill level. Again, I believe both the volunteer and the organization could both greatly benefit from a pre-decleration both of skills/expectations of the volunteer, as well as the skills/needs of the organization.  
+	These issues are the inspiration for my capstone. What I would like to create is a web application that both volunteers and organizations can actively engage with to solve multiple large and small issues in the volunteer process. Some of the larger parts of my user stories are as follows:
+
+As a user: 
+I would like to be able to sign up and log in to the application
+I would like the ability to build a profile with information about myself and my history as it may (or may not) pertain to volunteer opportunties.
+I would like to be able to set my skill level in a variety of different genres of volunteer categories
+I would like to be able to view volunteer opportunities around me by category on a map
+I would like to be able to view volunteer opportunities around me by distance on a map
+I would like to be able to view volunteer opportunities around me by date on a map
+I would like to be able to see the skill levels, and number of the kinds of volunteers preferred by an opportunity 
+I would like to be able to see a summary of the opportunity
+I would like to be able to see a profile of the organization I am interested in joining
+I would like the option to set a personal interest level of an opportunity
+I would like to be able to decide weather or not an organization can contact me based on my interest level in their opportunity
+I would like to be able to choose to be contacted if an opportunity arises that requires my skill level and type in  the future
+I would like to be able to edit my skill levels at any time
+I would like to be able to edit my interest level at any time
+I would like the ability to fully commit to an opportunity and receive reminders about it
+I would like to be able to see the other people that have volunteered for an opportunity (if they allow themselves to be seen)
+I would like the ability to contact other members of an opportunity (if they allow it)
+I would like the ability to post a review of an organization that I volunteered for
+I would like to be able to see the reviews of other people that have volunteered with an organization
+I would like the ability to make a monetary donation to an organization
+
+As an organization:
+I would like to be able to sign up and log in to the application
+I would like to be able to build a profile for my organization
+I would like the ability to create a volunteer opportunity integrating details like date, location, category, and a description of the opportunity
+ I would like to be able to set how many volunteers I am looking for
+I would like to be able to set what categories my opportunity encompasses
+I would like to be able to set a skill level and number of  volunteers I need of that that skill level
+I would like to be able to see which volunteers have stated interest in my opportunity and what that interest level is (if the volunteer allows it)
+I would like to be able to see the skill level of the volunteer stating interest in my opportunity
+I would like to be able to message a single volunteer stating interest in my opportunity (if the volunteer allows it)
+-I would like to be able to message the whole group of volunteers that are interested in my opportunity
+I would like to be able to receive monetary donations from volunteers
+
+As a developer
+I would like to integrate a map API to place location pins on a map
+I would like my application to be user friendly to all users (volunteer and organization)
+I would like to be able to log in as an administrator to be able to see a combination of volunteer and organization views
+I would like to integrate some kind of messaging ability to allow communication between my users
+I would like to develop my application to keep community and unity in the forefront of the design
+I would like to integrate a way to exchange funds between users
