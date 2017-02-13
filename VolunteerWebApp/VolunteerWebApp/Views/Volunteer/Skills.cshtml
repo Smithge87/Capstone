@@ -1,9 +1,42 @@
-﻿
+﻿@model VolunteerWebApp.Models.SkillsViewModel
 @{
     ViewBag.Title = "Skills";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>My Skills</h2>
+@using (Html.BeginForm("Skills", "Volunteer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <p>Animal Services </p>
+<form action="">
+    <div>
+        @Html.LabelFor(m => m.Animal, "No skill")
+        @Html.RadioButtonFor(m => m.Animal, "0")
+    </div>
+    <div>
+        @Html.LabelFor(m=> m.Animal, "Very Little Skill")
+        @Html.RadioButtonFor(m => m.Animal, "1")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Animal, "Some Skill")
+        @Html.RadioButtonFor(m => m.Animal, "2")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Animal, "Average Skill")
+        @Html.RadioButtonFor(m => m.Animal, "3")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Animal, "Above Average Skill")
+        @Html.RadioButtonFor(m => m.Animal, "4")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Animal, "Expert Skill")
+        @Html.RadioButtonFor(m => m.Animal, "5")
+    </div>
+    <button type="submit">Submit Skills</button>
+</form>
+}
+
+
 
 <li>@Html.ActionLink("Back to my Profile", "Index", "Volunteer")</li>

@@ -85,6 +85,17 @@ namespace VolunteerWebApp.Controllers
         }
         public ActionResult Skills()
         {
+
+
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Skills(SkillsViewModel model)
+        {
+
+            var banana = "banana";
+
             return View();
         }
         public ActionResult Settings()

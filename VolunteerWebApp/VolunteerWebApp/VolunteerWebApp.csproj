@@ -230,6 +230,13 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\AnimalSkill.cs" />
+    <Compile Include="Models\EducationSkill.cs" />
+    <Compile Include="Models\DisasterSkill.cs" />
+    <Compile Include="Models\EnviornmentSkill.cs" />
+    <Compile Include="Models\HealthSkill.cs" />
+    <Compile Include="Models\HumanServicesSkill.cs" />
+    <Compile Include="Models\SkillsViewModel.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
