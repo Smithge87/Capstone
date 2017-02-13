@@ -239,9 +239,14 @@
     <Compile Include="Migrations\201702132014082_addedBiosToModels.Designer.cs">
       <DependentUpon>201702132014082_addedBiosToModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702132142220_addedViewModels.cs" />
+    <Compile Include="Migrations\201702132142220_addedViewModels.Designer.cs">
+      <DependentUpon>201702132142220_addedViewModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Information.cs" />
+    <Compile Include="Models\OrganizationInfoViewModel.cs" />
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\VolunteerProfileViewModel.cs" />
     <Compile Include="Models\VolunteerSettings.cs" />
@@ -358,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702132014082_addedBiosToModels.resx">
       <DependentUpon>201702132014082_addedBiosToModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702132142220_addedViewModels.resx">
+      <DependentUpon>201702132142220_addedViewModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
