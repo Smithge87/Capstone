@@ -60,20 +60,27 @@ catch
     </tbody>
 </table>
 
+<p>My opportunities</p>
+
 <table>
     <thead>
-        <tr><th> My Opportunities </th></tr>
+        <tr><th>Title</th>
+        <th>Organization</th>
+        <th>Category</th>
+        <th>Start Date</th>
+        <th>Description</th></tr>
     </thead>
     <tbody>
-        @try
+        @foreach (var opp in Model.OpportunityList)
         {
-        <tr><td>@Model.Information.AboutInfo </td></tr>
-        }
-        catch
-        {
-
+            <tr><td>@opp.Title </td>
+            <td> @opp.OrganizationHostName</td>
+            <td> @opp.Category</td>
+            <td> @opp.StartMonth/ @opp.StartDay/ @opp.StartYear</td>
+            <td> @opp.AboutOpportunity</td>
+            <td>@Html.ActionLink("View More","index","opportunity", new { id = opp.ID }) </td></tr>
         }
     </tbody>
 </table>
 
-<li> @Html.ActionLink("Add a new opportunity", "Create", "Opportunity")</li>
+<li> @Html.ActionLink("Add a new opportunity", "Index", "Opportunity")</li>

@@ -22,12 +22,21 @@ namespace VolunteerWebApp.Controllers
         // GET: Organization
         public ActionResult Index()
         {
+            var opportunityList = new List<Opportunity>();
             var currentUserName = User.Identity.Name;
             var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
+            foreach (var opportunity in _context.Opportunity)
+            {
+                if (opportunity.OrganizationHostId == currentUser.Email)
+                {
+                    opportunityList.Add(opportunity);
+                }
+            }
             var currentInfo = _context.Address.FirstOrDefault(m => m.UserId == currentUser.Email);
             var viewModel = new OrganizationProfileViewModel()
             {
-                ApplicationUser = currentUser
+                ApplicationUser = currentUser,
+                OpportunityList = opportunityList
             };
             if (currentInfo != null)
             {

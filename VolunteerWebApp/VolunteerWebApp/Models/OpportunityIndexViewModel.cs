@@ -5,19 +5,17 @@ using System.Web;
 
 namespace VolunteerWebApp.Models
 {
-    public class OrganizationProfileViewModel
+    public class OpportunityIndexViewModel
     {
         private ApplicationDbContext _context;
 
-        public OrganizationProfileViewModel()
+        public OpportunityIndexViewModel()
         {
             _context = new ApplicationDbContext();
         }
 
-        public ApplicationUser ApplicationUser { get; set; }
-        public Information Information { get; set; }
-        public State State { get; set; }
+        public Opportunity Opportunity { get; set; }
         public IEnumerable<SkillsNeeded> SkillsNeededList { get; set; }
-        public IEnumerable<Opportunity> OpportunityList { get; set; }
+
     }
 }

@@ -280,6 +280,7 @@
     <Compile Include="Models\MonthNumber.cs" />
     <Compile Include="Models\Numbers.cs" />
     <Compile Include="Models\Opportunity.cs" />
+    <Compile Include="Models\OpportunityIndexViewModel.cs" />
     <Compile Include="Models\OpportunityViewModel.cs" />
     <Compile Include="Models\OrganizationInfoViewModel.cs" />
     <Compile Include="Models\OrganizationProfileViewModel.cs" />
@@ -369,6 +370,7 @@
     <Content Include="Views\Organization\AddPhoto.cshtml" />
     <Content Include="Views\Opportunity\Create.cshtml" />
     <Content Include="Views\Opportunity\SkillNeeds.cshtml" />
+    <Content Include="Views\Opportunity\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

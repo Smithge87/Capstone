@@ -122,7 +122,6 @@ namespace VolunteerWebApp.Controllers
             _context.TempSkills.RemoveRange(_context.TempSkills);
             _context.SaveChanges();
             return RedirectToAction("Index", "Organization");
-
         }
         public ActionResult AddTempSkill(SkillsNeededViewModel model)
         {
@@ -148,6 +147,24 @@ namespace VolunteerWebApp.Controllers
             _context.TempSkills.Add(newSkillNeed);
             _context.SaveChanges();
             return RedirectToAction("SkillNeeds", "Opportunity");
+        }
+        public ActionResult index(int id)
+        {
+            var skillList = new List<SkillsNeeded>();
+            foreach(var skill in _context.SkillsNeeded)
+            {
+                if (skill.OpportunityId == id)
+                {
+                    skillList.Add(skill);
+                }
+            }
+            var currentOpportunity = _context.Opportunity.FirstOrDefault(m => m.ID == id);
+            var viewModel = new OpportunityIndexViewModel()
+            {
+                Opportunity = currentOpportunity,
+                SkillsNeededList = skillList
+            };
+            return View(viewModel);
         }
     }
 }
