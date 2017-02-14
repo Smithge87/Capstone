@@ -15,6 +15,8 @@ namespace VolunteerWebApp.Models
         public string OrganizationHostName { get; set; }
         public string StartDate { get; set; }
         public string Duration { get; set; }
+        public string Title { get; set; }
+        public string Venue { get; set; }
         public string Address { get; set; }
         public string GeoLocation { get; set; }
         public string AboutOpportunity { get; set; }

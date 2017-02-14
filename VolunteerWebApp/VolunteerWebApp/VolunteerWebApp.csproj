@@ -198,6 +198,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OpportunityController.cs" />
     <Compile Include="Controllers\OrganizationController.cs" />
     <Compile Include="Controllers\VolunteerController.cs" />
     <Compile Include="Global.asax.cs">
@@ -266,6 +267,7 @@
     <Compile Include="Models\Information.cs" />
     <Compile Include="Models\MonthNumber.cs" />
     <Compile Include="Models\Opportunity.cs" />
+    <Compile Include="Models\OpportunityViewModel.cs" />
     <Compile Include="Models\OrganizationInfoViewModel.cs" />
     <Compile Include="Models\OrganizationProfileViewModel.cs" />
     <Compile Include="Models\PhotoViewModel.cs" />
@@ -349,6 +351,7 @@
     <Content Include="Views\Organization\Info.cshtml" />
     <Content Include="Views\Volunteer\AddPhoto.cshtml" />
     <Content Include="Views\Organization\AddPhoto.cshtml" />
+    <Content Include="Views\Opportunity\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
