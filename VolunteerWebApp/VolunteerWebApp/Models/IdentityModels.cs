@@ -36,6 +36,9 @@ namespace VolunteerWebApp.Models
         public DbSet<YearNumber> YearNumber { get; set; }
         public DbSet<Categories> Categories { get; set; }
         public DbSet<Opportunity> Opportunity { get; set; }
+        public DbSet<TempSkills> TempSkills { get; set; }
+        public DbSet<SkillsNeeded> SkillsNeeded { get; set; }
+        public DbSet<Numbers> Numbers { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

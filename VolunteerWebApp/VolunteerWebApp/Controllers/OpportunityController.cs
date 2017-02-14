@@ -80,7 +80,16 @@ namespace VolunteerWebApp.Controllers
             };
             _context.Opportunity.Add(newOpportunity);
             _context.SaveChanges();
-            return RedirectToAction("SkillSet", "Organization");
+            return RedirectToAction("SkillNeeds", "Organization");
+        }
+        public ActionResult SkillNeeds()
+        {
+            var currentUserName = User.Identity.Name;
+            var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
+            var opportunity = _context.Opportunity.Max(item => item.ID);
+
+
+            return View();
         }
     }
 }

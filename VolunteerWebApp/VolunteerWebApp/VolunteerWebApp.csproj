@@ -264,18 +264,26 @@
     <Compile Include="Migrations\201702141555392_chagedOpportunityModel.Designer.cs">
       <DependentUpon>201702141555392_chagedOpportunityModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702141648385_seedsandchanges.cs" />
+    <Compile Include="Migrations\201702141648385_seedsandchanges.Designer.cs">
+      <DependentUpon>201702141648385_seedsandchanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\DayNumber.cs" />
     <Compile Include="Models\Information.cs" />
     <Compile Include="Models\MonthNumber.cs" />
+    <Compile Include="Models\Numbers.cs" />
     <Compile Include="Models\Opportunity.cs" />
     <Compile Include="Models\OpportunityViewModel.cs" />
     <Compile Include="Models\OrganizationInfoViewModel.cs" />
     <Compile Include="Models\OrganizationProfileViewModel.cs" />
     <Compile Include="Models\PhotoViewModel.cs" />
     <Compile Include="Models\Skill.cs" />
+    <Compile Include="Models\SkillsNeeded.cs" />
+    <Compile Include="Models\SkillsNeededViewModel.cs" />
+    <Compile Include="Models\TempSkills.cs" />
     <Compile Include="Models\VolunteerProfileViewModel.cs" />
     <Compile Include="Models\VolunteerSettings.cs" />
     <Compile Include="Models\VolunteerSettingsViewModel.cs" />
@@ -356,6 +364,7 @@
     <Content Include="Views\Volunteer\AddPhoto.cshtml" />
     <Content Include="Views\Organization\AddPhoto.cshtml" />
     <Content Include="Views\Opportunity\Create.cshtml" />
+    <Content Include="Views\Opportunity\SkillNeeds.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -413,6 +422,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702141555392_chagedOpportunityModel.resx">
       <DependentUpon>201702141555392_chagedOpportunityModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702141648385_seedsandchanges.resx">
+      <DependentUpon>201702141648385_seedsandchanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
