@@ -34,7 +34,7 @@ namespace VolunteerWebApp.Models
         public DbSet<DayNumber> DayNumber { get; set; }
         public DbSet<MonthNumber> MonthNumber { get; set; }
         public DbSet<YearNumber> YearNumber { get; set; }
-
+        public DbSet<Categories> Categories { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

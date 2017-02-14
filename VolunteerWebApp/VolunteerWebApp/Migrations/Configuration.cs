@@ -90,6 +90,15 @@ new Models.MonthNumber { ID = 12, Month = "12" }
            new Models.YearNumber { ID = 3, Year = "2019" },
            new Models.YearNumber { ID = 4, Year = "2020" }
            );
+            context.Categories.AddOrUpdate(m => m.ID,
+            new Models.Categories { ID = 1, Category = "Animal Services" },
+            new Models.Categories { ID = 2, Category = "Disaster Preperation" },
+            new Models.Categories { ID = 3, Category = "Education" },
+            new Models.Categories { ID = 4, Category = "Enviornmental" },
+            new Models.Categories { ID = 5, Category = "Health" },
+            new Models.Categories { ID = 6, Category = "Human Services" }
+            );
+
 
         }
     }
