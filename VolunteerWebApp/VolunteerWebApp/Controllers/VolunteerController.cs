@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using VolunteerWebApp.Models;
 
@@ -206,7 +208,35 @@ namespace VolunteerWebApp.Controllers
         }
         public ActionResult AddPhoto()
         {
-            return View();
+            var currentUserName = User.Identity.Name;
+            var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
+            var viewModel = new PhotoViewModel()
+            {
+                ApplicationUser = currentUser
+            };
+            return View(viewModel);
+        }
+        [HttpPost]
+
+        public ActionResult AddPhoto (PhotoViewModel model, FormCollection form)
+        {
+            var currentUserName = User.Identity.Name;
+            var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
+            WebImage photo = null;
+                var newFileName = "";
+                var imagePath = "";
+                    photo = WebImage.GetImageFromRequest();
+                    if (photo != null)
+                    {
+                        newFileName = Guid.NewGuid().ToString() + "_" +
+                        Path.GetFileName(photo.FileName);
+                        imagePath = @"images\" + newFileName;
+
+                        photo.Save(@"~\" + imagePath);
+                        currentUser.ProfilePhoto = ("../" + imagePath);
+                         _context.SaveChanges();
+                    }
+                return RedirectToAction("Index", "Volunteer");
         }
     }
 }

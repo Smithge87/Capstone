@@ -9,7 +9,20 @@
 <li>@Html.ActionLink("Update my Info", "Info", "Volunteer")</li>
 <li>@Html.ActionLink("Update my Skills", "Skills", "Volunteer")</li>
 <li>@Html.ActionLink("Account Settings", "Settings", "Volunteer")</li>
+<li> @Html.ActionLink("Add/Change a profile photo", "AddPhoto", "Volunteer")</li>
 
+
+    @try
+    {
+        <div style="height:200px;width:200px; background-color:grey">
+            <img src="@Model.ApplicationUser.ProfilePhoto" style="max-height:200px;max-width:200px"/>
+        </div>
+    }
+    catch
+    {
+        <div style="height:200px;width:200px; background-color:grey">
+            </div>
+    }
 
 <table>
     <thead>
@@ -21,11 +34,12 @@
         <tr><td>Name: @Model.ApplicationUser.FirstName  @Model.ApplicationUser.LastName </td></tr>
         <tr><td>E-mail: @Model.ApplicationUser.Email </td></tr>
         <tr><td>Phone: @Model.ApplicationUser.PhoneNumber </td></tr>
+        @if (Model.Information != null)
+        {
         <tr><td>Address: @Model.Information.StreetAddress <br /> @Model.Information.City <br />
             @*@Model.Information.State.States*@ <br /> @Model.Information.Zipcode
              </td></tr>
-
-
+        }
 
     </tbody>
 </table>
@@ -36,7 +50,14 @@
         <tr><th> About me </th></tr>
     </thead>
     <tbody>
-    <tr><td>@Model.Information.AboutInfo </td></tr> 
+        @try
+        {
+    <tr><td>@Model.Information.AboutInfo </td></tr>
+        }
+        catch
+        {
+            <tr><td>No info yet! Click on 'update my info' to add some info about yourself </td></tr>
+        }
      </tbody>
 </table>
 
@@ -44,5 +65,14 @@
     <thead>
         <tr><th> About my skills</th> </tr>
     </thead>
-    <tbody><tr><td>@Model.Skill.AboutSkills</td></tr>  </tbody>
+    <tbody>
+        @try
+        {
+           <tr><td>@Model.Skill.AboutSkills</td></tr>
+        }
+        catch
+        {
+            <tr><td>Skills haven't been set yet! Click on 'update my skills' to add some information about your skills </td></tr>
+        }
+     </tbody>
 </table>

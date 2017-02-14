@@ -14,6 +14,7 @@ namespace VolunteerWebApp.Models
         public string LastName { get; set; }
         public string OrganizationName { get; set; }
         public string UserTitle { get; set; }
+        public string ProfilePhoto { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
