@@ -9,9 +9,20 @@
 
 
 <li>@Html.ActionLink("Update my Info", "Info", "Organization")</li>
+<li> @Html.ActionLink("Add/Change logo image", "AddPhoto", "Organization")</li>
 
 
-
+@try
+{
+    <div style="height:200px;width:200px; background-color:grey">
+        <img src="@Model.ApplicationUser.ProfilePhoto" style="max-height:200px;max-width:200px" />
+    </div>
+}
+catch
+{
+    <div style="height:200px;width:200px; background-color:grey">
+    </div>
+}
 <table>
     <thead>
         <tr><th> Basic Info </th></tr>
