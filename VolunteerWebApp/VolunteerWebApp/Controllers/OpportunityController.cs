@@ -37,9 +37,6 @@ namespace VolunteerWebApp.Controllers
         [HttpPost]
         public ActionResult Create(OpportunityViewModel model)
         {
-
-
-
             var currentUserName = User.Identity.Name;
             var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
             var tempcat = Int32.Parse(model.Category);
@@ -80,16 +77,77 @@ namespace VolunteerWebApp.Controllers
             };
             _context.Opportunity.Add(newOpportunity);
             _context.SaveChanges();
-            return RedirectToAction("SkillNeeds", "Organization");
+            return RedirectToAction("SkillNeeds", "Opportunity");
         }
         public ActionResult SkillNeeds()
+        {
+            var tempSkillList = _context.TempSkills.ToList();
+            var categoryList = _context.Categories.ToList();
+            var numberList = _context.Numbers.ToList();
+
+            var viewModel = new SkillsNeededViewModel()
+            {
+                TempSkillsList = tempSkillList,
+                CategoryList = categoryList,
+                NumberList = numberList
+            };
+
+            return View(viewModel);
+        }
+        [HttpPost]
+        public ActionResult SkillNeeds(FormCollection collection)
+        {
+            List<int> Ids = new List<int>();
+            foreach (var item in _context.TempSkills)
+            {
+                Ids.Add(item.ID);
+            }
+            for (int i = 0; i < 100; i++)
+            {
+                var tempBox = "checkBox" + i.ToString();
+                if (!string.IsNullOrEmpty(collection[tempBox]))
+                {
+                    var tempRest = _context.TempSkills.Find(Ids[i]);
+                    var temper = new SkillsNeeded()
+                    {
+                        OpportunityId = tempRest.OpportunityId,
+                        OrganizationId = tempRest.OrganizationId,
+                        Category = tempRest.Category,
+                        SkillLevel = tempRest.SkillLevel,
+                        Amount = tempRest.Amount
+                    };
+                    _context.SkillsNeeded.Add(temper);
+                }
+            }
+            _context.TempSkills.RemoveRange(_context.TempSkills);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Organization");
+
+        }
+        public ActionResult AddTempSkill(SkillsNeededViewModel model)
         {
             var currentUserName = User.Identity.Name;
             var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
             var opportunity = _context.Opportunity.Max(item => item.ID);
 
+            var tempcat = Int32.Parse(model.Category);
+            var category = _context.Categories.SingleOrDefault(m => m.ID == tempcat);
+            var justCat = category.Category;
+            var tempAmount = Int32.Parse(model.Amount);
+            var amount = _context.Numbers.SingleOrDefault(m => m.ID == tempAmount);
+            var justAmount = amount.Number;
 
-            return View();
+            var newSkillNeed = new TempSkills()
+            {
+                OpportunityId = opportunity,
+                OrganizationId = currentUser.Email,
+                Category = justCat,
+                SkillLevel = model.SkillSet,
+                Amount = justAmount
+            };
+            _context.TempSkills.Add(newSkillNeed);
+            _context.SaveChanges();
+            return RedirectToAction("SkillNeeds", "Opportunity");
         }
     }
 }

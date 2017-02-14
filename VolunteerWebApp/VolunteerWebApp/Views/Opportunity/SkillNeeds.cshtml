@@ -6,24 +6,85 @@
 
 <h2>SkillNeeds</h2>
 
-@*@using (Html.BeginForm("HotelSearchResult", "Hotel", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("AddTempSkill", "Opportunity", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     <p>Add a new needed skill:</p>
 
     @Html.AntiForgeryToken()
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.LabelFor(m => m.City, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.Category, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.Category , new SelectList(Model.CategoryList, "ID", "Category"), new { @class = "form-control" })
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.CheckIn, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.CheckIn, new { @class = "form-control" })
-        </div>
+    <div>
+        @Html.LabelFor(m => m.SkillSet, "No skill")
+        @Html.RadioButtonFor(m => m.SkillSet, "0")
     </div>
-}*@
+    <div>
+        @Html.LabelFor(m => m.SkillSet, "Very Little Skill")
+        @Html.RadioButtonFor(m => m.SkillSet, "1")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.SkillSet, "Some Skill")
+        @Html.RadioButtonFor(m => m.SkillSet, "2")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.SkillSet, "Average Skill")
+        @Html.RadioButtonFor(m => m.SkillSet, "3")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.SkillSet, "Above Average Skill")
+        @Html.RadioButtonFor(m => m.SkillSet, "4")
+    </div>
+    <div>
+        @Html.LabelFor(m => m.SkillSet, "Expert Skill")
+        @Html.RadioButtonFor(m => m.SkillSet, "5")
+    </div>
 
-<p>My current needs:</p>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Amount, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.Amount, new SelectList(Model.NumberList, "ID", "Number"), new { @class = "form-control" })
+        </div>
+    </div>
+    <input type="submit" class="btn btn-default" value="Add to list!" />
+
+}
+
+<p>Summary of my current needs:</p>
+<p>Please check boxes you would like to keep</p>
+
+
+@using (Html.BeginForm("SkillNeeds", "Opportunity", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="container" style"width:100%">
+        <form id="skillsTable">
+            <table class="table">
+                <thead>
+                    <tr style="margin-bottom:20px">
+                        <th class="tableTitle">Add</th>
+                        <th></th>
+                        <th class="tableTitle">Category</th>
+                        <th class="tableTitle">Skill Level</th>
+                        <th class="tableTitle">Amount</th>
+                    </tr>
+                </thead>
+                @for (var i = 0; i < Model.TempSkillsList.Count(); i++)
+                {
+                    <tbody>
+                        <tr>
+                            <td><input name="@("checkBox"+(i.ToString()))" value="true" type="checkbox" /></td>
+                            <td></td>
+                            <td>@Model.TempSkillsList.ElementAt(i).Category</td>
+                            <td>@Model.TempSkillsList.ElementAt(i).SkillLevel</td>
+                            <td>@Model.TempSkillsList.ElementAt(i).Amount</td>
+                        </tr>
+                    </tbody>
+                }
+            </table>
+            <button type="submit" class="btn yellowBox blackBorderSmall">Add Needs to Opportunity</button>
+        </form>
+    </div>
+}

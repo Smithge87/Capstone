@@ -268,6 +268,10 @@
     <Compile Include="Migrations\201702141648385_seedsandchanges.Designer.cs">
       <DependentUpon>201702141648385_seedsandchanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702141733549_smallChangesToTempSkills.cs" />
+    <Compile Include="Migrations\201702141733549_smallChangesToTempSkills.Designer.cs">
+      <DependentUpon>201702141733549_smallChangesToTempSkills.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categories.cs" />
@@ -425,6 +429,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702141648385_seedsandchanges.resx">
       <DependentUpon>201702141648385_seedsandchanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702141733549_smallChangesToTempSkills.resx">
+      <DependentUpon>201702141733549_smallChangesToTempSkills.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

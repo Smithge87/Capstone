@@ -17,10 +17,15 @@ namespace VolunteerWebApp.Models
 
         public IEnumerable<TempSkills> TempSkillsList { get; set; }
         public IEnumerable<Categories> CategoryList { get; set; }
+        public IEnumerable<Numbers> NumberList { get; set; }
+
 
         [Required]
         [Display(Name = "Category")]
         public string Category { get; set; }
+
+        [Required]
+        public string SkillSet { get; set; }
 
         [Required]
         [Display(Name = "Amount")]
