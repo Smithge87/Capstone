@@ -13,11 +13,18 @@ namespace VolunteerWebApp.Models
         public string Category { get; set; }
         public string OrganizationHostId { get; set; }
         public string OrganizationHostName { get; set; }
-        public string StartDate { get; set; }
+        public string StartTime { get; set; }
+        public string EndTime { get; set;}
+        public string StartDay { get; set; }
+        public string StartMonth { get; set; }
+        public string StartYear { get; set; }
         public string Duration { get; set; }
         public string Title { get; set; }
         public string Venue { get; set; }
-        public string Address { get; set; }
+        public string StreetAddress { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zipcode { get; set; }
         public string GeoLocation { get; set; }
         public string AboutOpportunity { get; set; }
     }

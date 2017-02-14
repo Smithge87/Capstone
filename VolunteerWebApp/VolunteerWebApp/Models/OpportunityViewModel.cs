@@ -20,6 +20,15 @@ namespace VolunteerWebApp.Models
         public IEnumerable<Categories> CategoryList { get; set; }
         public IEnumerable<State> StateList { get; set; }
 
+
+        [Required]
+        [Display(Name = "Start Time")]
+        public string StartTime { get; set; }
+
+        [Required]
+        [Display(Name = "End Time")]
+        public string EndTime { get; set; }
+
         [Required]
         [Display(Name = "Duration")]
         public string Duration { get; set; }
@@ -63,5 +72,9 @@ namespace VolunteerWebApp.Models
         [Required]
         [Display(Name = "Description")]
         public string AboutOpportunity { get; set; }
+
+        [Required]
+        [Display(Name = "Category")]
+        public string Category { get; set; }
     }
 }

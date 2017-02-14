@@ -51,6 +51,29 @@ catch
         <tr><th> About me </th></tr>
     </thead>
     <tbody>
+        @try
+        {
         <tr><td>@Model.Information.AboutInfo </td></tr>
+        }
+        catch
+        { }
     </tbody>
 </table>
+
+<table>
+    <thead>
+        <tr><th> My Opportunities </th></tr>
+    </thead>
+    <tbody>
+        @try
+        {
+        <tr><td>@Model.Information.AboutInfo </td></tr>
+        }
+        catch
+        {
+
+        }
+    </tbody>
+</table>
+
+<li> @Html.ActionLink("Add a new opportunity", "Create", "Opportunity")</li>

@@ -260,6 +260,10 @@
     <Compile Include="Migrations\201702141406492_addedCategories.Designer.cs">
       <DependentUpon>201702141406492_addedCategories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702141555392_chagedOpportunityModel.cs" />
+    <Compile Include="Migrations\201702141555392_chagedOpportunityModel.Designer.cs">
+      <DependentUpon>201702141555392_chagedOpportunityModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categories.cs" />
@@ -351,7 +355,7 @@
     <Content Include="Views\Organization\Info.cshtml" />
     <Content Include="Views\Volunteer\AddPhoto.cshtml" />
     <Content Include="Views\Organization\AddPhoto.cshtml" />
-    <Content Include="Views\Opportunity\Index.cshtml" />
+    <Content Include="Views\Opportunity\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -406,6 +410,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702141406492_addedCategories.resx">
       <DependentUpon>201702141406492_addedCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702141555392_chagedOpportunityModel.resx">
+      <DependentUpon>201702141555392_chagedOpportunityModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
