@@ -74,6 +74,7 @@ namespace VolunteerWebApp.Controllers
                 State = justState,
                 Zipcode = model.Zipcode,
                 AboutOpportunity = model.AboutOpportunity
+                
             };
             _context.Opportunity.Add(newOpportunity);
             _context.SaveChanges();

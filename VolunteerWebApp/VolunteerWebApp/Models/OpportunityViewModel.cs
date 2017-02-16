@@ -20,6 +20,9 @@ namespace VolunteerWebApp.Models
         public IEnumerable<Categories> CategoryList { get; set; }
         public IEnumerable<State> StateList { get; set; }
 
+        [Required]
+        [Display(Name = "Short description or opportunity")]
+        public string ShortDescription { get; set; }
 
         [Required]
         [Display(Name = "Start Time")]

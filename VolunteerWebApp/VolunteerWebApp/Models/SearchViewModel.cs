@@ -14,6 +14,7 @@ namespace VolunteerWebApp.Models
             _context = new ApplicationDbContext();
         }
 
-        public  List<List<float>> geoCodes { get; set; }
+        public  List<Opportunity> cleanOpps { get; set; }
+
     }
 }

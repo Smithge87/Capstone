@@ -25,7 +25,8 @@ namespace VolunteerWebApp.Models
         public string City { get; set; }
         public string State { get; set; }
         public string Zipcode { get; set; }
-        public string GeoLocation { get; set; }
+        public List<float> GeoLocation { get; set; }
         public string AboutOpportunity { get; set; }
+        public string AboutShort { get; set; }
     }
 }

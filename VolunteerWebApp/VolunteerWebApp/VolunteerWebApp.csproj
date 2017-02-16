@@ -273,6 +273,14 @@
     <Compile Include="Migrations\201702141733549_smallChangesToTempSkills.Designer.cs">
       <DependentUpon>201702141733549_smallChangesToTempSkills.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702162304230_changedSearchViewModel.cs" />
+    <Compile Include="Migrations\201702162304230_changedSearchViewModel.Designer.cs">
+      <DependentUpon>201702162304230_changedSearchViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702162308411_addedShortDescription.cs" />
+    <Compile Include="Migrations\201702162308411_addedShortDescription.Designer.cs">
+      <DependentUpon>201702162308411_addedShortDescription.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categories.cs" />
@@ -438,6 +446,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702141733549_smallChangesToTempSkills.resx">
       <DependentUpon>201702141733549_smallChangesToTempSkills.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702162304230_changedSearchViewModel.resx">
+      <DependentUpon>201702162304230_changedSearchViewModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702162308411_addedShortDescription.resx">
+      <DependentUpon>201702162308411_addedShortDescription.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

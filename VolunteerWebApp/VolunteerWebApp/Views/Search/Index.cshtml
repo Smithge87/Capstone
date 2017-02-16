@@ -31,12 +31,14 @@
 
       
 
-        @foreach (var item in Model.geoCodes)
+        @foreach (var item in Model.cleanOpps)
       {
 
-          @:addPin(@item[0], @item[1])
+          @:addPin(@item.GeoLocation[0], @item.GeoLocation[1])
                         }
     }
+
+
 
     function addPin(latitude, longitude) {
         var marker = new google.maps.Marker({

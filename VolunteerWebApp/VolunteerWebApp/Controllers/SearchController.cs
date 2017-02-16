@@ -19,22 +19,27 @@ namespace VolunteerWebApp.Controllers
         // GET: Search
         public ActionResult Index()
         {
+            List<Opportunity> opps = new List<Opportunity>();
             List<List<float>> geoCoded = new List<List<float>>();
             foreach (var opp in _context.Opportunity)
             {
+
                 string address = opp.StreetAddress + " " + opp.City + " " + opp.State + " " + opp.Zipcode;
                 List<float> geoBit = getGeocode(address);
                 if (geoBit.Count > 1)
                 {
-                    geoCoded.Add(geoBit);
+                    opp.GeoLocation = geoBit;
+                    opps.Add(opp);
                 }
             }
             var viewModel = new SearchViewModel()
             {
-                geoCodes = geoCoded
+                cleanOpps = opps
             };
             return View(viewModel);
         }
+
+
         public List<float> getGeocode(string address)
         {
             var requestUri = string.Format("http://maps.googleapis.com/maps/api/geocode/xml?address={0}&sensor=false", Uri.EscapeDataString(address));

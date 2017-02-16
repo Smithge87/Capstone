@@ -92,7 +92,14 @@
             @Html.TextBoxFor(m => m.Zipcode, new { @class = "form-control" })
         </div>
     </div>
-    <p>A description of your Opportunity:</p>
+    <p>A short description of your Opportunity:</p>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ShortDescription, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.ShortDescription, new { @class = "form-control" })
+        </div>
+    </div>
+    <p>A full description of your Opportunity</p>
     <div class="form-group">
         @Html.LabelFor(m => m.AboutOpportunity, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
