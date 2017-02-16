@@ -178,6 +178,20 @@ namespace VolunteerWebApp.Controllers
         {
             var removeOpp = _context.Opportunity.FirstOrDefault(m => m.ID == id);
             _context.Opportunity.Remove(removeOpp);
+
+            List<SkillsNeeded> deleteSkills = new List<SkillsNeeded>();
+            foreach(var item in _context.SkillsNeeded)
+            {
+                if (item.OpportunityId == id)
+                {
+                    deleteSkills.Add(item);
+                }
+            }
+            foreach (var item in deleteSkills)
+            {
+                var deleteSkill = _context.SkillsNeeded.FirstOrDefault(m => m.ID == item.ID);
+                _context.SkillsNeeded.Remove(deleteSkill);
+            }
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Organization");
