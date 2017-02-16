@@ -176,8 +176,9 @@ namespace VolunteerWebApp.Controllers
         }
         public ActionResult Delete(int id)
         {
-
-
+            var removeOpp = _context.Opportunity.FirstOrDefault(m => m.ID == id);
+            _context.Opportunity.Remove(removeOpp);
+            _context.SaveChanges();
 
             return RedirectToAction("Index", "Organization");
         }

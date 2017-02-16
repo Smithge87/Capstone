@@ -73,8 +73,8 @@ namespace VolunteerWebApp.Controllers
                 City = model.City,
                 State = justState,
                 Zipcode = model.Zipcode,
-                AboutOpportunity = model.AboutOpportunity
-                
+                AboutOpportunity = model.AboutOpportunity,
+                AboutShort = model.ShortDescription
             };
             _context.Opportunity.Add(newOpportunity);
             _context.SaveChanges();
