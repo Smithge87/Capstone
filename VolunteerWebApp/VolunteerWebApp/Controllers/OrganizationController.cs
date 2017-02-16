@@ -156,6 +156,30 @@ namespace VolunteerWebApp.Controllers
             }
             return RedirectToAction("Index", "Organization");
         }
-    }
+        public ActionResult FullView(int id)
+        {
+            var skillList = new List<SkillsNeeded>();
+            foreach (var skill in _context.SkillsNeeded)
+            {
+                if (skill.OpportunityId == id)
+                {
+                    skillList.Add(skill);
+                }
+            }
+            var currentOpportunity = _context.Opportunity.FirstOrDefault(m => m.ID == id);
+            var viewModel = new OpportunityIndexViewModel()
+            {
+                Opportunity = currentOpportunity,
+                SkillsNeededList = skillList
+            };
+            return View(viewModel);
+        }
+        public ActionResult Delete(int id)
+        {
 
+
+
+            return RedirectToAction("Index", "Organization");
+        }
+    }
 }

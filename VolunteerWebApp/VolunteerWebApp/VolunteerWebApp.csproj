@@ -200,6 +200,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OpportunityController.cs" />
     <Compile Include="Controllers\OrganizationController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\VolunteerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -285,6 +286,7 @@
     <Compile Include="Models\OrganizationInfoViewModel.cs" />
     <Compile Include="Models\OrganizationProfileViewModel.cs" />
     <Compile Include="Models\PhotoViewModel.cs" />
+    <Compile Include="Models\SearchViewModel.cs" />
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\SkillsNeeded.cs" />
     <Compile Include="Models\SkillsNeededViewModel.cs" />
@@ -371,6 +373,8 @@
     <Content Include="Views\Opportunity\Create.cshtml" />
     <Content Include="Views\Opportunity\SkillNeeds.cshtml" />
     <Content Include="Views\Opportunity\Index.cshtml" />
+    <Content Include="Views\Organization\FullView.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

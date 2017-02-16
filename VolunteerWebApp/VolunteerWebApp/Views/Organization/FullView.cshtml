@@ -1,0 +1,19 @@
+﻿@model VolunteerWebApp.Models.OpportunityIndexViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Full Opportunity Summary</h2>
+
+
+<p>Event name: @Model.Opportunity.Title</p>
+
+
+
+@Html.ActionLink("Delete", "Delete",
+    new { id = Model.Opportunity.ID },
+    new { onclick = "return confirm('Are you sure you want to delete this opportunity?');" })   
+
+
+

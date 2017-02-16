@@ -78,9 +78,9 @@ catch
             <td> @opp.Category</td>
             <td> @opp.StartMonth/ @opp.StartDay/ @opp.StartYear</td>
             <td> @opp.AboutOpportunity</td>
-            <td>@Html.ActionLink("View More","index","opportunity", new { id = opp.ID }) </td></tr>
+            <td>@Html.ActionLink("View More","FullView", new { id = opp.ID }) </td></tr>
         }
     </tbody>
 </table>
 
-<li> @Html.ActionLink("Add a new opportunity", "Index", "Opportunity")</li>
+<li> @Html.ActionLink("Add a new opportunity", "Create", "Opportunity")</li>
