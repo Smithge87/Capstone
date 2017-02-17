@@ -231,7 +231,7 @@ namespace VolunteerWebApp.Controllers
             }
             _context.SaveChanges();
 
-            return View();
+            return RedirectToAction("Index", "Volunteer");
         }
         public ActionResult AddPhoto()
         {

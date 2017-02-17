@@ -159,7 +159,7 @@ namespace VolunteerWebApp.Controllers
             {
                 OpportunityId = currentOpp.ID,
                 VolunteerUserName = currentUser.UserTitle,
-                VolunteerId = Int32.Parse(currentUser.Email),
+                VolunteerId = currentUser.Email,
                 InterestLevel = model.InterestSet,
                 CanContact = currentSettings.CanContact,
                 CanShow = currentSettings.CanSee

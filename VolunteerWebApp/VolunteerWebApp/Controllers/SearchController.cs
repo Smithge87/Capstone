@@ -19,6 +19,10 @@ namespace VolunteerWebApp.Controllers
         // GET: Search
         public ActionResult Index()
         {
+            var currentUserName = User.Identity.Name;
+            var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
+            var userInfo = _context.Address.FirstOrDefault(m => m.UserId == currentUser.Email);
+            List<float> userGeo = getGeocode(userInfo.StreetAddress + " " + userInfo.City + " " + userInfo.State + " " + userInfo.Zipcode);
             List<Opportunity> opps = new List<Opportunity>();
             List<List<float>> geoCoded = new List<List<float>>();
             foreach (var opp in _context.Opportunity)
@@ -34,11 +38,17 @@ namespace VolunteerWebApp.Controllers
             }
             var viewModel = new SearchViewModel()
             {
-                cleanOpps = opps
+                cleanOpps = opps,
+                userLocation = userGeo
             };
             return View(viewModel);
         }
-
+        [ActionName ("FilterSearch")]
+        public ActionResult Index (SearchViewModel model)
+        {
+            var banana = "banana";
+            return View();
+        }
 
         public List<float> getGeocode(string address)
         {
@@ -75,6 +85,7 @@ namespace VolunteerWebApp.Controllers
             }
             return cleanData;
         }
+
     }
 }
 

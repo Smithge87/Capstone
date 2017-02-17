@@ -26,13 +26,13 @@
 
 @if (Request.IsAuthenticated && User.IsInRole("volunteer"))
 {
-    var oppId = Model.Opportunity.ID;
-
     <p>Set an iterest level for this opportunity</p>
-
-    using (Html.BeginForm("CreateInterest", "Opportunity", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    using (Html.BeginForm("CreateInterest", "Opportunity", FormMethod.Post, new { @class = "form-horizontal", role = "form", model = Model}))
     {
+
         <form>
+            @Model.oppId = Model.Opportunity.ID;
+
             <div>
                 @Html.LabelFor(m => m.InterestSet, "1")
                 @Html.RadioButtonFor(m => m.InterestSet, "1")
@@ -54,6 +54,7 @@
                 @Html.RadioButtonFor(m => m.InterestSet, "5")
             </div>
             <button type="submit">Submit Interest</button>
+            @Html.HiddenFor(m => m.oppId );
         </form>
     }
 }

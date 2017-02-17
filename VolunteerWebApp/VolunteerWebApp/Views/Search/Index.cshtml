@@ -26,7 +26,7 @@
 
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-            center: { lat: -34.397, lng: 150.644 },
+            center: { lat: @Model.userLocation[0] , lng: @Model.userLocation[1] },
             zoom: 8
         });
 

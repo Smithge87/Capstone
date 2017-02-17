@@ -179,7 +179,8 @@ namespace VolunteerWebApp.Controllers
             {
                 Opportunity = currentOpportunity,
                 SkillsNeededList = skillList,
-                InterestedUsers = interestedUsers
+                InterestedUsers = interestedUsers,
+                oppId = currentOpportunity.ID
             };
             return View(viewModel);
         }
