@@ -301,6 +301,10 @@
     <Compile Include="Migrations\201702171913212_addedDataAndUpdatedSearchViewModel.Designer.cs">
       <DependentUpon>201702171913212_addedDataAndUpdatedSearchViewModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702171949594_moreChnagesToSearchViewModel.cs" />
+    <Compile Include="Migrations\201702171949594_moreChnagesToSearchViewModel.Designer.cs">
+      <DependentUpon>201702171949594_moreChnagesToSearchViewModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categories.cs" />
@@ -490,6 +494,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702171913212_addedDataAndUpdatedSearchViewModel.resx">
       <DependentUpon>201702171913212_addedDataAndUpdatedSearchViewModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702171949594_moreChnagesToSearchViewModel.resx">
+      <DependentUpon>201702171949594_moreChnagesToSearchViewModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -16,8 +17,13 @@ namespace VolunteerWebApp.Models
 
         public  List<Opportunity> cleanOpps { get; set; }
         public List<Categories> CategoryList { get; set; }
+        public List<string> OrgNames { get; set; }
         public List<float>userLocation { get; set; }
+        [Display(Name = "Filter by Category")]
         public string CategoryFilter { get; set; }
-
+        [Display(Name = "Filter by Organization")]
+        public string OrganizationFilter { get; set; }
+        [Display(Name = "Filter by Keyword")]
+        public string KeywordFilter { get; set; }
     }
 }

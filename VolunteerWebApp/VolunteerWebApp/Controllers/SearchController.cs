@@ -20,6 +20,14 @@ namespace VolunteerWebApp.Controllers
         public ActionResult Index()
         {
             var categoryList = _context.Categories.ToList();
+            List<string> orgNames = new List<string>();
+            foreach (var user in _context.Users)
+            {
+                if (user.OrganizationName != null)
+                {
+                    orgNames.Add(user.OrganizationName);
+                }
+            }
             var currentUserName = User.Identity.Name;
             var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
             var userInfo = _context.Address.FirstOrDefault(m => m.UserId == currentUser.Email);
@@ -41,19 +49,20 @@ namespace VolunteerWebApp.Controllers
             {
                 cleanOpps = opps,
                 userLocation = userGeo,
-                CategoryList = categoryList
+                CategoryList = categoryList,
+                OrgNames = orgNames
             };
             return View(viewModel);
         }
         [ActionName ("FilterSearch")]
         public ActionResult Index (SearchViewModel model)
         {
-            var tempcat = Int32.Parse(model.CategoryFilter);
-            var category = _context.Categories.SingleOrDefault(m => m.ID == tempcat);
-            var justCat = category.Category;
             List<Opportunity> filteredOpps = new List<Opportunity>();
             if (model.CategoryFilter != null)
             {
+                var tempcat = Int32.Parse(model.CategoryFilter);
+                var category = _context.Categories.SingleOrDefault(m => m.ID == tempcat);
+                var justCat = category.Category;
                 foreach (var opportunity in _context.Opportunity)
                 {
                     if (opportunity.Category == justCat)
@@ -62,7 +71,16 @@ namespace VolunteerWebApp.Controllers
                     }
                 }
             }
-
+            if (model.OrganizationFilter != null)
+            {
+                foreach (var opportunity in _context.Opportunity)
+                {
+                    if (opportunity.OrganizationHostName == model.OrganizationFilter)
+                    {
+                        filteredOpps.Add(opportunity);
+                    }
+                }
+            }
             var categoryList = _context.Categories.ToList();
             var currentUserName = User.Identity.Name;
             var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
