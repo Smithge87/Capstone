@@ -81,6 +81,16 @@ namespace VolunteerWebApp.Controllers
                     }
                 }
             }
+            if (model.KeywordFilter != null)
+            {
+                foreach( var opportunity in _context.Opportunity)
+                {
+                    if (opportunity.AboutOpportunity.Contains(model.KeywordFilter) == true )
+                    {
+                        filteredOpps.Add(opportunity);
+                    }
+                }
+            }
             var categoryList = _context.Categories.ToList();
             var currentUserName = User.Identity.Name;
             var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
@@ -99,11 +109,20 @@ namespace VolunteerWebApp.Controllers
                     opps.Add(opp);
                 }
             }
+            List<string> orgNames = new List<string>();
+            foreach (var user in _context.Users)
+            {
+                if (user.OrganizationName != null)
+                {
+                    orgNames.Add(user.OrganizationName);
+                }
+            }
             var viewModel = new SearchViewModel()
             {
                 cleanOpps = opps,
                 userLocation = userGeo,
-                CategoryList = categoryList
+                CategoryList = categoryList,
+                OrgNames = orgNames
             };
             return View("Index", viewModel);
         }

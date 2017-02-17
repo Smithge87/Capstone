@@ -77,4 +77,20 @@
      </tbody>
 </table>
 
+<table>
+    <thead>
+        <tr><th> My Opportunities</th> </tr>
+    </thead>
+    <tbody>
+        @try
+        {
+            <tr><td>@Model.MyOpportunities[0].OrganizationHostName</td></tr>
+        }
+        catch
+        {
+            <tr><td>No opportunities have been picked yet! Head over to 'Search Opportunities' to find some! </td></tr>
+        }
+    </tbody>
+</table>
+
 @Html.ActionLink("Search for opportunities", "Index", "Search");

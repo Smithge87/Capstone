@@ -19,6 +19,7 @@ namespace VolunteerWebApp.Models
         public Information Information { get; set; }
         public VolunteerSettings VolunteerSettings { get ;set;}
         public State State { get; set; }
+        public List<Opportunity> MyOpportunities { get; set; }
 
     }
 }

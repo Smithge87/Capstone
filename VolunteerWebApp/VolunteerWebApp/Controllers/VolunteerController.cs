@@ -26,6 +26,22 @@ namespace VolunteerWebApp.Controllers
             var currentInfo = _context.Address.FirstOrDefault(m => m.UserId == currentUser.Email);
             var currentSettings = _context.VolunteerSettings.FirstOrDefault(m => m.UserId == currentUser.Email);
             var currentSkills = _context.Skill.FirstOrDefault(m => m.UserId == currentUser.Email);
+            List<Opportunity> myOpportunities = new List<Opportunity>();
+            var myInterest = new Interest();
+            foreach (var interest in _context.Interest)
+            {
+                if(interest.VolunteerId == currentUser.Email)
+                {
+                    myInterest = interest;
+                }
+            }
+            foreach (var opportunity in _context.Opportunity)
+            {
+                if (opportunity.ID == myInterest.OpportunityId)
+                {
+                    myOpportunities.Add(opportunity);
+                }
+            }
             var viewModel = new VolunteerProfileViewModel()
             {
                 ApplicationUser = currentUser
@@ -42,6 +58,11 @@ namespace VolunteerWebApp.Controllers
             {
                 viewModel.Skill = currentSkills;
             }
+            if (myOpportunities.Count>0)
+            {
+                viewModel.MyOpportunities = myOpportunities;
+            }
+
             return View(viewModel);
         }
         public ActionResult Info()
