@@ -1,8 +1,116 @@
-﻿
+﻿@model VolunteerWebApp.Models.OpportunityEditViewModel
 @{
     ViewBag.Title = "EditOpp";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>EditOpp</h2>
+<h2>Edit an opportunity</h2>
+
+
+@using (Html.BeginForm("EditOpp", "Organization", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <hr />
+    <br /><p>Some basic Info about your opportunity:</p><br />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.Title, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Venue, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Venue, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Category, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.Category, new SelectList(Model.CategoryList, "ID", "Category"), new { @class = "form-control" })
+        </div>
+    </div>
+    <p>Start Date:</p>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StartDay, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.StartDay, new SelectList(Model.DayList, "ID", "Day"), new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StartMonth, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.StartMonth, new SelectList(Model.MonthList, "ID", "Month"), new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StartYear, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.StartYear, new SelectList(Model.YearList, "ID", "Year"), new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Duration, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Duration, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StartTime, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.StartTime, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.EndTime, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.EndTime, new { @class = "form-control" })
+        </div>
+    </div>
+    <p>Opportinity Location:</p>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StreetAddress, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.StreetAddress, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.City, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.State, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.State, new SelectList(Model.StateList, "ID", "States"), new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Zipcode, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Zipcode, new { @class = "form-control" })
+        </div>
+    </div>
+    <p>A short description of your Opportunity:</p>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ShortDescription, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.ShortDescription, new { @class = "form-control" })
+        </div>
+    </div>
+    <p>A full description of your Opportunity</p>
+    <div class="form-group">
+        @Html.LabelFor(m => m.AboutOpportunity, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.AboutOpportunity, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Submit Edit" />
+        </div>
+    </div>
+}
 

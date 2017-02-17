@@ -232,7 +232,7 @@ namespace VolunteerWebApp.Controllers
             return View(viewModel);
         }
         [HttpPost]
-        public ActionResult EditOpp(OpportunityEditViewModel model)
+        public ActionResult EditOpp(OpportunityEditViewModel model, int id)
         {
             var tempcat = Int32.Parse(model.Category);
             var category = _context.Categories.SingleOrDefault(m => m.ID == tempcat);
@@ -250,7 +250,7 @@ namespace VolunteerWebApp.Controllers
             var state = _context.State.SingleOrDefault(m => m.ID == tempState);
             var justState = state.States;
 
-            var currentOpp = _context.Opportunity.FirstOrDefault(m => m.ID == model.currentEdit.ID);
+            var currentOpp = _context.Opportunity.FirstOrDefault(m => m.ID == id);
 
             currentOpp.Category = justCat;
             currentOpp.StartTime = model.StartTime;
