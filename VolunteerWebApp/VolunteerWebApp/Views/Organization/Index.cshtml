@@ -34,10 +34,13 @@ catch
         <tr><td>E-mail: @Model.ApplicationUser.Email </td></tr>
         <tr><td>Phone: @Model.ApplicationUser.PhoneNumber </td></tr>
         <tr>
+            @try{
             <td>
                 Address: @Model.Information.StreetAddress <br /> @Model.Information.City <br />
                 @*@Model.Information.State.States*@ <br /> @Model.Information.Zipcode
             </td>
+            }
+            catch { }
         </tr>
 
 

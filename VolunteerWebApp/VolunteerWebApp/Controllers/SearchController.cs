@@ -19,6 +19,7 @@ namespace VolunteerWebApp.Controllers
         // GET: Search
         public ActionResult Index()
         {
+            var categoryList = _context.Categories.ToList();
             var currentUserName = User.Identity.Name;
             var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
             var userInfo = _context.Address.FirstOrDefault(m => m.UserId == currentUser.Email);
@@ -39,15 +40,54 @@ namespace VolunteerWebApp.Controllers
             var viewModel = new SearchViewModel()
             {
                 cleanOpps = opps,
-                userLocation = userGeo
+                userLocation = userGeo,
+                CategoryList = categoryList
             };
             return View(viewModel);
         }
         [ActionName ("FilterSearch")]
         public ActionResult Index (SearchViewModel model)
         {
-            var banana = "banana";
-            return View();
+            var tempcat = Int32.Parse(model.CategoryFilter);
+            var category = _context.Categories.SingleOrDefault(m => m.ID == tempcat);
+            var justCat = category.Category;
+            List<Opportunity> filteredOpps = new List<Opportunity>();
+            if (model.CategoryFilter != null)
+            {
+                foreach (var opportunity in _context.Opportunity)
+                {
+                    if (opportunity.Category == justCat)
+                    {
+                        filteredOpps.Add(opportunity);
+                    }
+                }
+            }
+
+            var categoryList = _context.Categories.ToList();
+            var currentUserName = User.Identity.Name;
+            var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
+            var userInfo = _context.Address.FirstOrDefault(m => m.UserId == currentUser.Email);
+            List<float> userGeo = getGeocode(userInfo.StreetAddress + " " + userInfo.City + " " + userInfo.State + " " + userInfo.Zipcode);
+            List<Opportunity> opps = new List<Opportunity>();
+            List<List<float>> geoCoded = new List<List<float>>();
+            foreach (var opp in filteredOpps )
+            {
+
+                string address = opp.StreetAddress + " " + opp.City + " " + opp.State + " " + opp.Zipcode;
+                List<float> geoBit = getGeocode(address);
+                if (geoBit.Count > 1)
+                {
+                    opp.GeoLocation = geoBit;
+                    opps.Add(opp);
+                }
+            }
+            var viewModel = new SearchViewModel()
+            {
+                cleanOpps = opps,
+                userLocation = userGeo,
+                CategoryList = categoryList
+            };
+            return View("Index", viewModel);
         }
 
         public List<float> getGeocode(string address)

@@ -297,6 +297,10 @@
     <Compile Include="Migrations\201702171722308_changedVolIdOnInterest.Designer.cs">
       <DependentUpon>201702171722308_changedVolIdOnInterest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702171913212_addedDataAndUpdatedSearchViewModel.cs" />
+    <Compile Include="Migrations\201702171913212_addedDataAndUpdatedSearchViewModel.Designer.cs">
+      <DependentUpon>201702171913212_addedDataAndUpdatedSearchViewModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categories.cs" />
@@ -483,6 +487,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702171722308_changedVolIdOnInterest.resx">
       <DependentUpon>201702171722308_changedVolIdOnInterest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702171913212_addedDataAndUpdatedSearchViewModel.resx">
+      <DependentUpon>201702171913212_addedDataAndUpdatedSearchViewModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

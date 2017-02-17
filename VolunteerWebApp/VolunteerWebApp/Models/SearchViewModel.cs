@@ -15,9 +15,9 @@ namespace VolunteerWebApp.Models
         }
 
         public  List<Opportunity> cleanOpps { get; set; }
+        public List<Categories> CategoryList { get; set; }
         public List<float>userLocation { get; set; }
         public string CategoryFilter { get; set; }
-
 
     }
 }
