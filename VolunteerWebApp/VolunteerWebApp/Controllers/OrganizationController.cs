@@ -196,5 +196,81 @@ namespace VolunteerWebApp.Controllers
 
             return RedirectToAction("Index", "Organization");
         }
+        public ActionResult EditOpp(int id)
+        {
+            var currentOpp = _context.Opportunity.FirstOrDefault(m => m.ID == id);
+            var statesList = _context.State.ToList();
+            var dayList = _context.DayNumber.ToList();
+            var monthList = _context.MonthNumber.ToList();
+            var yearList = _context.YearNumber.ToList();
+            var categoryList = _context.Categories.ToList();
+
+            var viewModel = new OpportunityEditViewModel()
+            {
+                DayList = dayList,
+                MonthList = monthList,
+                YearList = yearList,
+                CategoryList = categoryList,
+                StateList = statesList,
+                ShortDescription = currentOpp.AboutShort,
+                StartTime = currentOpp.StartTime,
+                EndTime = currentOpp.EndTime,
+                Duration = currentOpp.Duration,
+                StartDay = currentOpp.StartDay,
+                StartMonth = currentOpp.StartMonth,
+                StartYear = currentOpp.StartYear,
+                StreetAddress = currentOpp.StreetAddress,
+                City = currentOpp.City,
+                State = currentOpp.State,
+                Zipcode = currentOpp.Zipcode,
+                Venue = currentOpp.Venue,
+                Title = currentOpp.Title,
+                AboutOpportunity = currentOpp.AboutOpportunity,
+                Category = currentOpp.Category,
+                currentEdit = currentOpp
+            };
+            return View(viewModel);
+        }
+        [HttpPost]
+        public ActionResult EditOpp(OpportunityEditViewModel model)
+        {
+            var tempcat = Int32.Parse(model.Category);
+            var category = _context.Categories.SingleOrDefault(m => m.ID == tempcat);
+            var justCat = category.Category;
+            var tempDay = Int32.Parse(model.StartDay);
+            var day = _context.DayNumber.SingleOrDefault(m => m.ID == tempDay);
+            var justDay = day.Day;
+            var tempMonth = Int32.Parse(model.StartMonth);
+            var month = _context.MonthNumber.SingleOrDefault(m => m.ID == tempMonth);
+            var justMonth = month.Month;
+            var tempYear = Int32.Parse(model.StartYear);
+            var year = _context.YearNumber.SingleOrDefault(m => m.ID == tempYear);
+            var justYear = year.Year;
+            var tempState = Int32.Parse(model.State);
+            var state = _context.State.SingleOrDefault(m => m.ID == tempState);
+            var justState = state.States;
+
+            var currentOpp = _context.Opportunity.FirstOrDefault(m => m.ID == model.currentEdit.ID);
+
+            currentOpp.Category = justCat;
+            currentOpp.StartTime = model.StartTime;
+            currentOpp.EndTime = model.EndTime;
+            currentOpp.StartDay = justDay;
+            currentOpp.StartMonth = justMonth;
+            currentOpp.StartYear = justYear;
+            currentOpp.Duration = model.Duration;
+            currentOpp.Title = model.Title;
+            currentOpp.Venue = model.Venue;
+            currentOpp.StreetAddress = model.StreetAddress;
+            currentOpp.City = model.City;
+            currentOpp.State = justState;
+            currentOpp.Zipcode = model.Zipcode;
+            currentOpp.AboutOpportunity = model.AboutOpportunity;
+            currentOpp.AboutShort = model.ShortDescription;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Organization");
+        }
     }
 }

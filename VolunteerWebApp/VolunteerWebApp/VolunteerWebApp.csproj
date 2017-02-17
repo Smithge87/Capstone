@@ -284,6 +284,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categories.cs" />
+    <Compile Include="Models\OpportunityEditViewModel.cs" />
     <Compile Include="Models\DayNumber.cs" />
     <Compile Include="Models\Information.cs" />
     <Compile Include="Models\MonthNumber.cs" />
@@ -383,6 +384,7 @@
     <Content Include="Views\Opportunity\Index.cshtml" />
     <Content Include="Views\Organization\FullView.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Organization\EditOpp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

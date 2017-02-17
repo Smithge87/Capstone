@@ -15,5 +15,5 @@
     new { id = Model.Opportunity.ID },
     new { onclick = "return confirm('Are you sure you want to delete this opportunity?');" })   
 
-
+@Html.ActionLink("Edit", "Edit", new { id = Model.Opportunity.ID } )
 
