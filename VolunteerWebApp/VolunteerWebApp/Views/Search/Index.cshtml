@@ -21,6 +21,7 @@
     var map;
     var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     var labelIndex = 0;
+    var infoWindow = null;
 
 
     function initMap() {
@@ -32,21 +33,33 @@
       
 
         @foreach (var item in Model.cleanOpps)
-      {
-
-          @:addPin(@item.GeoLocation[0], @item.GeoLocation[1])
-                        }
+        {
+           @:var contentString = "<h2 id='firstHeading' class='firstHeading'><b>" + '@item.Title' + "</b></h2><br>"+'@item.AboutShort'+"<br>"+'@Html.ActionLink("MoreInfo","FullView","Organization", new {id=item.ID},  null)';
+            @:addPin(@item.GeoLocation[0], @item.GeoLocation[1], '@item.Title', contentString )
+                                }
+        infowindow = new google.maps.InfoWindow({
+            content: "loading..."
+        });
     }
 
 
-
-    function addPin(latitude, longitude) {
+    function addPin(latitude, longitude, Title, Info) {
         var marker = new google.maps.Marker({
             position: { lat: latitude, lng: longitude },
             label: labels[labelIndex++ % labels.length],
-            map: map
+            map: map,
+            title : Title,
+            html : Info
+        });
+
+        var content = "loading content";
+
+        google.maps.event.addListener(marker, "click", function () {
+            infowindow.setContent(this.html);
+            infowindow.open(map, this);
         });
     }
+
 
 </script>
 <script async defer
