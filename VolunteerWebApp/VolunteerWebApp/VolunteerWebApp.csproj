@@ -285,6 +285,14 @@
     <Compile Include="Migrations\201702170124117_addedInterests.Designer.cs">
       <DependentUpon>201702170124117_addedInterests.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702170208552_addingcontactprefstointerest.cs" />
+    <Compile Include="Migrations\201702170208552_addingcontactprefstointerest.Designer.cs">
+      <DependentUpon>201702170208552_addingcontactprefstointerest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702170232168_changedSettingsToBools.cs" />
+    <Compile Include="Migrations\201702170232168_changedSettingsToBools.Designer.cs">
+      <DependentUpon>201702170232168_changedSettingsToBools.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categories.cs" />
@@ -462,6 +470,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702170124117_addedInterests.resx">
       <DependentUpon>201702170124117_addedInterests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702170208552_addingcontactprefstointerest.resx">
+      <DependentUpon>201702170208552_addingcontactprefstointerest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702170232168_changedSettingsToBools.resx">
+      <DependentUpon>201702170232168_changedSettingsToBools.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

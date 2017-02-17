@@ -167,10 +167,19 @@ namespace VolunteerWebApp.Controllers
                 }
             }
             var currentOpportunity = _context.Opportunity.FirstOrDefault(m => m.ID == id);
+            var interestedUsers = new List<Interest>();
+            foreach (var interests in _context.Interest)
+            {
+                if (interests.OpportunityId == currentOpportunity.ID && interests.CanShow == true )
+                {
+                    interestedUsers.Add(interests);
+                }
+            }
             var viewModel = new OpportunityIndexViewModel()
             {
                 Opportunity = currentOpportunity,
-                SkillsNeededList = skillList
+                SkillsNeededList = skillList,
+                InterestedUsers = interestedUsers
             };
             return View(viewModel);
         }

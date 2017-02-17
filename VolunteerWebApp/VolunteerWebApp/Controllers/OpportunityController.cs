@@ -154,11 +154,15 @@ namespace VolunteerWebApp.Controllers
             var currentOpp = _context.Opportunity.FirstOrDefault(m => m.ID == model.oppId);
             var currentUserName = User.Identity.Name;
             var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
+            var currentSettings = _context.VolunteerSettings.FirstOrDefault(m => m.UserId == currentUser.Email);
             var newInterest = new Interest()
             {
                 OpportunityId = currentOpp.ID,
+                VolunteerUserName = currentUser.UserTitle,
                 VolunteerId = Int32.Parse(currentUser.Email),
-                InterestLevel = model.InterestSet
+                InterestLevel = model.InterestSet,
+                CanContact = currentSettings.CanContact,
+                CanShow = currentSettings.CanSee
             };
             _context.Interest.Add(newInterest);
             _context.SaveChanges();

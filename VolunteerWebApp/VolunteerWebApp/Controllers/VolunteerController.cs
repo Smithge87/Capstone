@@ -181,24 +181,51 @@ namespace VolunteerWebApp.Controllers
         [HttpPost]
         public ActionResult Settings(VolunteerSettingsViewModel model)
         {
+            bool tempContact;
+            bool tempRefer;
+            bool tempSee;
             var currentUserName = User.Identity.Name;
             var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
             var currentSettings = _context.VolunteerSettings.FirstOrDefault(m => m.UserId == currentUser.Email);
+            if (model.CanContact == "0")
+            {
+                tempContact = false;
+            }
+            else
+            {
+                tempContact = true;
+            }
+            if (model.CanSee == "0")
+            {
+                tempSee = false;
+            }
+            else
+            {
+                tempSee = true;
+            }
+            if (model.CanRefer == "0")
+            {
+                tempRefer = false;
+            }
+            else
+            {
+                tempRefer = true;
+            }
 
             if (currentSettings !=  null)
             {
-                currentSettings.CanContact = model.CanContact;
-                currentSettings.CanSee = model.CanSee;
-                currentSettings.CanRefer = model.CanRefer;
+                currentSettings.CanContact = tempContact ;
+                currentSettings.CanSee = tempSee;
+                currentSettings.CanRefer = tempRefer;
             }
             else
             {
                 var newSettings = new VolunteerSettings()
                 {
                     UserId = currentUser.Email,
-                    CanContact = model.CanContact,
-                    CanSee = model.CanSee,
-                    CanRefer = model.CanRefer
+                    CanContact = tempContact,
+                    CanSee = tempSee,
+                    CanRefer = tempRefer
                 };
                 _context.VolunteerSettings.Add(newSettings);
             }

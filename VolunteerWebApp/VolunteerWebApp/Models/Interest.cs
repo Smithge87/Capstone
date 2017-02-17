@@ -12,6 +12,9 @@ namespace VolunteerWebApp.Models
         public int ID { get; set; }
         public int OpportunityId { get; set; }
         public int VolunteerId { get; set; }
+        public string VolunteerUserName { get; set; }
         public string InterestLevel { get; set; }
+        public bool CanShow { get; set; }
+        public bool CanContact { get; set; }
     }
 }

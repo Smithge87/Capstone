@@ -17,6 +17,7 @@ namespace VolunteerWebApp.Models
 
         public Opportunity Opportunity { get; set; }
         public IEnumerable<SkillsNeeded> SkillsNeededList { get; set; }
+        public IEnumerable<Interest> InterestedUsers { get; set; }
         public string InterestSet { get; set; }
         public int oppId { get; set; }
 
