@@ -23,7 +23,7 @@ namespace VolunteerWebApp.Models
 
 
         [Required]
-        [Display(Name = "Short description or opportunity")]
+        [Display(Name = "Short description of opportunity")]
         public string ShortDescription { get; set; }
 
         [Required]

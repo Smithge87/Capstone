@@ -281,9 +281,14 @@
     <Compile Include="Migrations\201702162308411_addedShortDescription.Designer.cs">
       <DependentUpon>201702162308411_addedShortDescription.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702170124117_addedInterests.cs" />
+    <Compile Include="Migrations\201702170124117_addedInterests.Designer.cs">
+      <DependentUpon>201702170124117_addedInterests.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categories.cs" />
+    <Compile Include="Models\Interest.cs" />
     <Compile Include="Models\OpportunityEditViewModel.cs" />
     <Compile Include="Models\DayNumber.cs" />
     <Compile Include="Models\Information.cs" />
@@ -454,6 +459,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702162308411_addedShortDescription.resx">
       <DependentUpon>201702162308411_addedShortDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702170124117_addedInterests.resx">
+      <DependentUpon>201702170124117_addedInterests.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

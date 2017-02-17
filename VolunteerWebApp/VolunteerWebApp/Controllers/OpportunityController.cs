@@ -149,6 +149,22 @@ namespace VolunteerWebApp.Controllers
             _context.SaveChanges();
             return RedirectToAction("SkillNeeds", "Opportunity");
         }
+        public ActionResult CreateInterest(OpportunityIndexViewModel model)
+        {
+            var currentOpp = _context.Opportunity.FirstOrDefault(m => m.ID == model.oppId);
+            var currentUserName = User.Identity.Name;
+            var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
+            var newInterest = new Interest()
+            {
+                OpportunityId = currentOpp.ID,
+                VolunteerId = Int32.Parse(currentUser.Email),
+                InterestLevel = model.InterestSet
+            };
+            _context.Interest.Add(newInterest);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Volunteer");
+
+        }
         //public ActionResult Index(int id)
         //{
         //    var skillList = new List<SkillsNeeded>();
