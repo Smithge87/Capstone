@@ -166,4 +166,7 @@ label > input + img{ /* IMAGE STYLES */
 label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
   
 }
+.starFit{
+    height:25px;
+}
 

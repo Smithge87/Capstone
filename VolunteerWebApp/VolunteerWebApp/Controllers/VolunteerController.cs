@@ -57,6 +57,12 @@ namespace VolunteerWebApp.Controllers
             if (currentSkills != null)
             {
                 viewModel.Skill = currentSkills;
+                viewModel.AnimalImageSrc = imagePull(currentSkills.AnimalSkill);
+                viewModel.DisasterImageSrc = imagePull(currentSkills.DisasterSkill);
+                viewModel.EducationImageSrc = imagePull(currentSkills.EducationSkill);
+                viewModel.EnviornmentImageSrc = imagePull(currentSkills.EnviornmentSkill);
+                viewModel.HealthImageSrc = imagePull(currentSkills.HealthSkill);
+                viewModel.HumanServicesImageSrc = imagePull(currentSkills.HumanServicesSkill);
             }
             if (myOpportunities.Count>0)
             {
@@ -335,6 +341,29 @@ namespace VolunteerWebApp.Controllers
                          _context.SaveChanges();
                     }
                 return RedirectToAction("Index", "Volunteer");
+        }
+        public string imagePull(string value)
+        {
+            if (value == "1")
+            {
+                return ("../images/oneStar.png");
+            }
+            else if (value == "2")
+            {
+                return ("../images/twoStar.png");
+            }
+            else if (value == "3")
+            {
+                return ("../images/threeStar.png");
+            }
+            else if (value == "4")
+            {
+                return ("../images/fourStar.png");
+            }
+            else
+            {
+                return ("../images/fiveStar.png");
+            }
         }
     }
 }
