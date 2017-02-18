@@ -1,14 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="Tester.css">
 </head>
 <body>
 
-<div>
-  <radiobutton>
-  </div>
+  <form action="">
+    <label>
+    <input onclick="starOne('IdOne')" type="radio" name="gender" value="One"><img src="greyStar.png" style="height:30px; width:30px" id="IdOne">
+</label>
+<label>
+    <input onclick="starTwo()" type="radio" name="gender" value="Two"><img src="greyStar.png" style="height:30px; width:30px" id="IdTwo">
+</label>
+<label>
+    <input onclick="starThree()" type="radio" name="gender" value="Three"><img src="greyStar.png" style="height:30px; width:30px" id="IdThree">
+</label>
+<label>
+    <input onclick="starFour()" type="radio" name="gender" value="Four"><img src="greyStar.png" style="height:30px; width:30px" id="IdFour">
+</label>
+<label>
+    <input onclick="starFive()" type="radio" name="gender" value="Five"><img src="greyStar.png" style="height:30px; width:30px" id="IdFive">
+</label>
+  </form>
+
+
+<script>
+function starOne(Id) {
+  document.getElementById( Id ).src='yellowStar.png'
+  document.getElementById('IdTwo').src='greyStar.png'
+  document.getElementById('IdThree').src='greyStar.png'
+  document.getElementById('IdFour').src='greyStar.png'
+  document.getElementById('IdFive').src='greyStar.png'
+}
+function starTwo() {
+  document.getElementById('IdOne').src='yellowStar.png'
+  document.getElementById('IdTwo').src='yellowStar.png'
+  document.getElementById('IdThree').src='greyStar.png'
+  document.getElementById('IdFour').src='greyStar.png'
+  document.getElementById('IdFive').src='greyStar.png'
+}
+function starThree() {
+  document.getElementById('IdOne').src='yellowStar.png'
+  document.getElementById('IdTwo').src='yellowStar.png'
+  document.getElementById('IdThree').src='yellowStar.png'
+  document.getElementById('IdFour').src='greyStar.png'
+  document.getElementById('IdFive').src='greyStar.png'
+}
+function starFour() {
+  document.getElementById('IdOne').src='yellowStar.png'
+  document.getElementById('IdTwo').src='yellowStar.png'
+  document.getElementById('IdThree').src='yellowStar.png'
+  document.getElementById('IdFour').src='yellowStar.png'
+  document.getElementById('IdFive').src='greyStar.png'
+}
+function starFive() {
+  document.getElementById('IdOne').src='yellowStar.png'
+  document.getElementById('IdTwo').src='yellowStar.png'
+  document.getElementById('IdThree').src='yellowStar.png'
+  document.getElementById('IdFour').src='yellowStar.png'
+  document.getElementById('IdFive').src='yellowStar.png'
+}
+</script>
 
 
 </body>
