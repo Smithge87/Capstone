@@ -154,7 +154,9 @@ namespace VolunteerWebApp.Controllers
             {
                 var viewModel = new VolunteerSkillsViewModel()
                 {
-                    AboutSkills = currentSkills.AboutSkills
+                    AboutSkills = currentSkills.AboutSkills,
+                    Animal = currentSkills.AnimalSkill
+                    
                 };
                 return View(viewModel);
             }
@@ -176,6 +178,30 @@ namespace VolunteerWebApp.Controllers
                 currentSkills.HealthSkill = model.Health;
                 currentSkills.HumanServicesSkill = model.HumanServices;
                 currentSkills.AboutSkills = model.AboutSkills;
+                if (model.AboutAnimal != null)
+                {
+                    currentSkills.AboutAnimal = model.AboutAnimal;
+                }
+                if (model.AboutDisaster != null)
+                {
+                    currentSkills.AboutDisaster = model.Disaster;
+                }
+                if (model.AboutEducation != null)
+                {
+                    currentSkills.AboutEducation = model.AboutEducation;
+                }
+                if (model.AboutEnviornment != null)
+                {
+                    currentSkills.AboutEnviornment = model.AboutEnviornment;
+                }
+                if (model.AboutHealth != null)
+                {
+                    currentSkills.AboutHealth = model.AboutHealth;
+                }
+                if (model.AboutHumanServices != null)
+                {
+                    currentSkills.AboutHumanServices = model.AboutHumanServices;
+                }
             }
             else
             {
@@ -190,6 +216,30 @@ namespace VolunteerWebApp.Controllers
                     HumanServicesSkill = model.HumanServices,
                     AboutSkills = model.AboutSkills
                 };
+                if (model.AboutAnimal != null)
+                {
+                    newSkill.AboutAnimal = model.AboutAnimal;
+                }
+                if (model.AboutDisaster != null)
+                {
+                    newSkill.AboutDisaster = model.Disaster;
+                }
+                if (model.AboutEducation != null)
+                {
+                    newSkill.AboutEducation = model.AboutEducation;
+                }
+                if (model.AboutEnviornment != null)
+                {
+                    newSkill.AboutEnviornment = model.AboutEnviornment;
+                }
+                if (model.AboutHealth != null)
+                {
+                    newSkill.AboutHealth = model.AboutHealth;
+                }
+                if (model.AboutHumanServices != null)
+                {
+                    newSkill.AboutHumanServices = model.AboutHumanServices;
+                }
                 _context.Skill.Add(newSkill);
             }
             _context.SaveChanges();

@@ -24,8 +24,11 @@
         <label>
             <input style="visibility: hidden; position: absolute;" onclick="starFive('IdOne', 'IdTwo', 'IdThree', 'IdFour', 'IdFive')" type="radio" name="Animal" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdFive">
         </label>
-        <button onclick="showBox('AnimalBox')" type="button">Add Description od skills</button>
-        @Html.TextAreaFor(m => m.AboutSkills, new { style = "visibility:hidden", id = "AnimalBox" })
+        <br /><br />
+
+        <button onclick="showBox('AnimalBox')" type="button">Add Description of skills</button>
+        <br />
+        @Html.TextAreaFor(m => m.AboutAnimal, new { style = "visibility:hidden", id = "AnimalBox" })
 
 
 
@@ -47,6 +50,11 @@
         <label>
             <input style="visibility: hidden; position: absolute;" onclick="starFive('DisasterOne', 'DisasterTwo', 'DisasterThree', 'DisasterFour', 'DisasterFive')" type="radio" name="Disaster" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="DisasterFive">
         </label>
+        <br /><br />
+
+        <button onclick="showBox('DisasterBox')" type="button">Add Description of skills</button>
+        <br />
+        @Html.TextAreaFor(m => m.AboutDisaster, new { style = "visibility:hidden", id = "DisasterBox" })
 
         <br /><br />
         <p>Education Services </p>
@@ -65,7 +73,11 @@
         <label>
             <input style="visibility: hidden; position: absolute;" onclick="starFive('EducationOne', 'EducationTwo', 'EducationThree', 'EducationFour', 'EducationFive')" type="radio" name="Education" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EducationFive">
         </label>
+        <br /><br />
 
+        <button onclick="showBox('EducationBox')" type="button">Add Description of skills</button>
+        <br />
+        @Html.TextAreaFor(m => m.AboutEducation, new { style = "visibility:hidden", id = "EducationBox" })
 
         <br /><br />
         <p>Enviornment Services </p>
@@ -84,7 +96,11 @@
         <label>
             <input style="visibility: hidden; position: absolute;" onclick="starFive('EnviornmentOne', 'EnviornmentTwo', 'EnviornmentThree', 'EnviornmentFour', 'EnviornmentFive')" type="radio" name="Enviornment" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EnviornmentFive">
         </label>
-        
+        <br /><br />
+
+        <button onclick="showBox('EnviornmentBox')" type="button">Add Description of skills</button>
+        <br />
+        @Html.TextAreaFor(m => m.AboutEnviornment, new { style = "visibility:hidden", id = "EnviornmentBox" })
 
 
 
@@ -108,6 +124,11 @@
         <label>
             <input style="visibility: hidden; position: absolute;" onclick="starFive('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthFive">
         </label>
+        <br /><br />
+
+        <button onclick="showBox('HealthBox')" type="button">Add Description of skills</button>
+        <br />
+        @Html.TextAreaFor(m => m.AboutHealth, new { style = "visibility:hidden", id = "HealthBox" })
 
 
         <br /><br />
@@ -127,10 +148,17 @@
         <label>
             <input style="visibility: hidden; position: absolute;" onclick="starFive('HumanServicesOne', 'HumanServicesTwo', 'HumanServicesThree', 'HumanServicesFour', 'HumanServicesFive')" type="radio" name="HumanServices" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HumanServicesFive">
         </label>
+        <br /><br />
 
-        <p>Tell us a little bit about your skill levels</p>
-        <div>
-        </div>
+        <button onclick="showBox('HumanServicesBox')" type="button">Add Description of skills</button>
+        <br />
+        @Html.TextAreaFor(m => m.AboutHumanServices, new { style = "visibility:hidden", id = "HumanServicesBox" })
+        <br />
+        <br /><br />
+
+        <button onclick="showBox('SkillsBox')" type="button">Add A summary of your volunteer history</button>
+        <br />
+        @Html.TextAreaFor(m => m.AboutSkills, new { style = "visibility:hidden", id = "SkillsBox" })
         <button type="submit">Submit Skills</button>
     </form>
 }

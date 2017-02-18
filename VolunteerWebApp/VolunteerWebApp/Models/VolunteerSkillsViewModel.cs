@@ -35,5 +35,11 @@ namespace VolunteerWebApp.Models
 
         [Required]
         public string AboutSkills { get; set; }
+        public string AboutAnimal { get; set; }
+        public string AboutDisaster { get; set; }
+        public string AboutEducation { get; set; }
+        public string AboutEnviornment { get; set; }
+        public string AboutHealth { get; set; }
+        public string AboutHumanServices { get; set; }
     }
 }
