@@ -7,179 +7,174 @@
 <h2>My Skills</h2>
 @using (Html.BeginForm("Skills", "Volunteer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
-<form action="">
     <p>Animal Services </p>
-    <div>
-        @Html.LabelFor(m => m.Animal, "No skill")
-        @Html.RadioButtonFor(m => m.Animal, "0")
-    </div>
-    <div>
-        @Html.LabelFor(m=> m.Animal, "Very Little Skill")
-        @Html.RadioButtonFor(m => m.Animal, "1")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Animal, "Some Skill")
-        @Html.RadioButtonFor(m => m.Animal, "2")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Animal, "Average Skill")
-        @Html.RadioButtonFor(m => m.Animal, "3")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Animal, "Above Average Skill")
-        @Html.RadioButtonFor(m => m.Animal, "4")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Animal, "Expert Skill")
-        @Html.RadioButtonFor(m => m.Animal, "5")
-    </div>
-
-    <br /><br />
-    <p>Disaster Services </p>
-    <div>
-        @Html.LabelFor(m => m.Disaster, "No skill")
-        @Html.RadioButtonFor(m => m.Disaster, "0")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Disaster, "Very Little Skill")
-        @Html.RadioButtonFor(m => m.Disaster, "1")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Disaster, "Some Skill")
-        @Html.RadioButtonFor(m => m.Disaster, "2")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Disaster, "Average Skill")
-        @Html.RadioButtonFor(m => m.Disaster, "3")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Disaster, "Above Average Skill")
-        @Html.RadioButtonFor(m => m.Disaster, "4")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Disaster, "Expert Skill")
-        @Html.RadioButtonFor(m => m.Disaster, "5")
-    </div>
-
-    <br /><br />
-    <p>Education Services </p>
-    <div>
-        @Html.LabelFor(m => m.Education, "No skill")
-        @Html.RadioButtonFor(m => m.Education, "0")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Education, "Very Little Skill")
-        @Html.RadioButtonFor(m => m.Education, "1")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Education, "Some Skill")
-        @Html.RadioButtonFor(m => m.Education, "2")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Education, "Average Skill")
-        @Html.RadioButtonFor(m => m.Education, "3")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Education, "Above Average Skill")
-        @Html.RadioButtonFor(m => m.Education, "4")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Education, "Expert Skill")
-        @Html.RadioButtonFor(m => m.Education, "5")
-    </div>
-
-
-    <br /><br />
-    <p>Enviornment Services </p>
-    <div>
-        @Html.LabelFor(m => m.Enviornment, "No skill")
-        @Html.RadioButtonFor(m => m.Enviornment, "0")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Enviornment, "Very Little Skill")
-        @Html.RadioButtonFor(m => m.Enviornment, "1")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Enviornment, "Some Skill")
-        @Html.RadioButtonFor(m => m.Enviornment, "2")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Enviornment, "Average Skill")
-        @Html.RadioButtonFor(m => m.Enviornment, "3")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Enviornment, "Above Average Skill")
-        @Html.RadioButtonFor(m => m.Enviornment, "4")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Enviornment, "Expert Skill")
-        @Html.RadioButtonFor(m => m.Enviornment, "5")
-    </div>
+    <form>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starOne('IdOne','IdTwo','IdThree','IdFour','IdFive')" type="radio" name="Animal" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdOne">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starTwo('IdOne', 'IdTwo', 'IdThree', 'IdFour', 'IdFive')" type="radio" name="Animal" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdTwo">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starThree('IdOne', 'IdTwo', 'IdThree', 'IdFour', 'IdFive')" type="radio" name="Animal" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent"  id="IdThree">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starFour('IdOne', 'IdTwo', 'IdThree', 'IdFour', 'IdFive')" type="radio" name="Animal" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent"  id="IdFour">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starFive('IdOne', 'IdTwo', 'IdThree', 'IdFour', 'IdFive')" type="radio" name="Animal" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdFive">
+        </label>
+        <button onclick="showBox('AnimalBox')" type="button">Add Description od skills</button>
+        @Html.TextAreaFor(m => m.AboutSkills, new { style = "visibility:hidden", id = "AnimalBox" })
 
 
 
-    <br /><br />
-    <p>Health Services </p>
-    <div>
-        @Html.LabelFor(m => m.Health, "No skill")
-        @Html.RadioButtonFor(m => m.Health, "0")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Health, "Very Little Skill")
-        @Html.RadioButtonFor(m => m.Health, "1")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Health, "Some Skill")
-        @Html.RadioButtonFor(m => m.Health, "2")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Health, "Average Skill")
-        @Html.RadioButtonFor(m => m.Health, "3")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Health, "Above Average Skill")
-        @Html.RadioButtonFor(m => m.Health, "4")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Health, "Expert Skill")
-        @Html.RadioButtonFor(m => m.Health, "5")
-    </div>
+
+        <br /><br />
+        <p>Disaster Services </p>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starOne('DisasterOne', 'DisasterTwo', 'DisasterThree', 'DisasterFour', 'DisasterFive')" type="radio" name="Disaster" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="DisasterOne">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starTwo('DisasterOne', 'DisasterTwo', 'DisasterThree', 'DisasterFour', 'DisasterFive')" type="radio" name="Disaster" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="DisasterTwo">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starThree('DisasterOne', 'DisasterTwo', 'DisasterThree', 'DisasterFour', 'DisasterFive')" type="radio" name="Disaster" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="DisasterThree">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starFour('DisasterOne', 'DisasterTwo', 'DisasterThree', 'DisasterFour', 'DisasterFive')" type="radio" name="Disaster" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="DisasterFour">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starFive('DisasterOne', 'DisasterTwo', 'DisasterThree', 'DisasterFour', 'DisasterFive')" type="radio" name="Disaster" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="DisasterFive">
+        </label>
+
+        <br /><br />
+        <p>Education Services </p>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starOne('EducationOne', 'EducationTwo', 'EducationThree', 'EducationFour', 'EducationFive')" type="radio" name="Education" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EducationOne">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starTwo('EducationOne', 'EducationTwo', 'EducationThree', 'EducationFour', 'EducationFive')" type="radio" name="Education" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EducationTwo">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starThree('EducationOne', 'EducationTwo', 'EducationThree', 'EducationFour', 'EducationFive')" type="radio" name="Education" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EducationThree">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starFour('EducationOne', 'EducationTwo', 'EducationThree', 'EducationFour', 'EducationFive')" type="radio" name="Education" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EducationFour">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starFive('EducationOne', 'EducationTwo', 'EducationThree', 'EducationFour', 'EducationFive')" type="radio" name="Education" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EducationFive">
+        </label>
 
 
-    <br /><br />
-    <p>Human Services </p>
-    <div>
-        @Html.LabelFor(m => m.HumanServices, "No skill")
-        @Html.RadioButtonFor(m => m.HumanServices, "0")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.HumanServices, "Very Little Skill")
-        @Html.RadioButtonFor(m => m.HumanServices, "1")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.HumanServices, "Some Skill")
-        @Html.RadioButtonFor(m => m.HumanServices, "2")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.HumanServices, "Average Skill")
-        @Html.RadioButtonFor(m => m.HumanServices, "3")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.HumanServices, "Above Average Skill")
-        @Html.RadioButtonFor(m => m.HumanServices, "4")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.HumanServices, "Expert Skill")
-        @Html.RadioButtonFor(m => m.HumanServices, "5")
-    </div>
+        <br /><br />
+        <p>Enviornment Services </p>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starOne('EnviornmentOne', 'EnviornmentTwo', 'EnviornmentThree', 'EnviornmentFour', 'EnviornmentFive')" type="radio" name="Enviornment" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EnviornmentOne">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starTwo('EnviornmentOne', 'EnviornmentTwo', 'EnviornmentThree', 'EnviornmentFour', 'EnviornmentFive')" type="radio" name="Enviornment" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EnviornmentTwo">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starThree('EnviornmentOne', 'EnviornmentTwo', 'EnviornmentThree', 'EnviornmentFour', 'EnviornmentFive')" type="radio" name="Enviornment" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EnviornmentThree">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starFour('EnviornmentOne', 'EnviornmentTwo', 'EnviornmentThree', 'EnviornmentFour', 'EnviornmentFive')" type="radio" name="Enviornment" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EnviornmentFour">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starFive('EnviornmentOne', 'EnviornmentTwo', 'EnviornmentThree', 'EnviornmentFour', 'EnviornmentFive')" type="radio" name="Enviornment" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EnviornmentFive">
+        </label>
+        
 
-    <p>Tell us a little bit about your skill levels</p>
-    <div>
-        @Html.TextAreaFor(m=> m.AboutSkills)
-    </div>
-    <button type="submit">Submit Skills</button>
-</form>
+
+
+
+
+
+        <br /><br />
+        <p>Health Services </p>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starOne('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthOne">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starTwo('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthTwo">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starThree('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthThree">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starFour('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthFour">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starFive('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthFive">
+        </label>
+
+
+        <br /><br />
+        <p>Human Services </p>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starOne('HumanServicesOne', 'HumanServicesTwo', 'HumanServicesThree', 'HumanServicesFour', 'HumanServicesFive')" type="radio" name="HumanServices" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HumanServicesOne">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starTwo('HumanServicesOne', 'HumanServicesTwo', 'HumanServicesThree', 'HumanServicesFour', 'HumanServicesFive')" type="radio" name="HumanServices" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HumanServicesTwo">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starThree('HumanServicesOne', 'HumanServicesTwo', 'HumanServicesThree', 'HumanServicesFour', 'HumanServicesFive')" type="radio" name="HumanServices" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HumanServicesThree">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starFour('HumanServicesOne', 'HumanServicesTwo', 'HumanServicesThree', 'HumanServicesFour', 'HumanServicesFive')" type="radio" name="HumanServices" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HumanServicesFour">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starFive('HumanServicesOne', 'HumanServicesTwo', 'HumanServicesThree', 'HumanServicesFour', 'HumanServicesFive')" type="radio" name="HumanServices" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HumanServicesFive">
+        </label>
+
+        <p>Tell us a little bit about your skill levels</p>
+        <div>
+        </div>
+        <button type="submit">Submit Skills</button>
+    </form>
 }
+
+<script>
+function starOne(a,b,c,d,e) {
+  document.getElementById(a).src='../images/yellowStar.png'
+  document.getElementById(b).src = '../images/greyStar.png'
+  document.getElementById(c).src = '../images/greyStar.png'
+  document.getElementById(d).src = '../images/greyStar.png'
+  document.getElementById(e).src = '../images/greyStar.png'
+}
+function starTwo(a,b,c,d,e) {
+    document.getElementById(a).src = '../images/yellowStar.png'
+    document.getElementById(b).src = '../images/yellowStar.png'
+    document.getElementById(c).src = '../images/greyStar.png'
+    document.getElementById(d).src = '../images/greyStar.png'
+    document.getElementById(e).src = '../images/greyStar.png'
+}
+function starThree(a,b,c,d,e) {
+    document.getElementById(a).src = '../images/yellowStar.png'
+    document.getElementById(b).src = '../images/yellowStar.png'
+    document.getElementById(c).src = '../images/yellowStar.png'
+    document.getElementById(d).src = '../images/greyStar.png'
+    document.getElementById(e).src = '../images/greyStar.png'
+}
+function starFour(a,b,c,d,e) {
+    document.getElementById(a).src = '../images/yellowStar.png'
+    document.getElementById(b).src = '../images/yellowStar.png'
+    document.getElementById(c).src = '../images/yellowStar.png'
+    document.getElementById(d).src = '../images/yellowStar.png'
+    document.getElementById(e).src = '../images/greyStar.png'
+}
+function starFive(a,b,c,d,e) {
+    document.getElementById(a).src = '../images/yellowStar.png'
+    document.getElementById(b).src = '../images/yellowStar.png'
+    document.getElementById(c).src = '../images/yellowStar.png'
+    document.getElementById(d).src = '../images/yellowStar.png'
+    document.getElementById(e).src = '../images/yellowStar.png'
+}
+function showBox(Id) {
+    document.getElementById(Id).style.visibility = "visible"
+}
+</script>
 
 
 
