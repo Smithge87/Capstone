@@ -26,6 +26,7 @@ namespace VolunteerWebApp.Controllers
             var currentInfo = _context.Address.FirstOrDefault(m => m.UserId == currentUser.Email);
             var currentSettings = _context.VolunteerSettings.FirstOrDefault(m => m.UserId == currentUser.Email);
             var currentSkills = _context.Skill.FirstOrDefault(m => m.UserId == currentUser.Email);
+            List<Opportunity> referOpportunities = getReferences();
             List<Opportunity> myOpportunities = new List<Opportunity>();
             List<Interest> interestToCompare = new List<Interest>();
             var myInterest = new Interest();
@@ -71,6 +72,10 @@ namespace VolunteerWebApp.Controllers
             if (myOpportunities.Count>0)
             {
                 viewModel.MyOpportunities = myOpportunities;
+            }
+            if (referOpportunities.Count>0)
+            {
+                viewModel.ReferOpportunities = referOpportunities;
             }
 
             return View(viewModel);
@@ -371,6 +376,66 @@ namespace VolunteerWebApp.Controllers
                 viewModel.HumanServicesImageSrc = imagePull(wantedSkill.HumanServicesSkill);
             }
             return View(viewModel);
+        }
+        public List<Opportunity> getReferences()
+        {
+            List<Opportunity> referOpps = new List<Opportunity>();
+            var currentUserName = User.Identity.Name;
+            var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
+            var userSkill = _context.Skill.FirstOrDefault(m => m.UserId == currentUser.Email);
+            List<Opportunity> allOpps = _context.Opportunity.ToList();
+            foreach (var need in _context.SkillsNeeded)
+            {
+                if (need.Category == "Animal Services" && need.SkillLevel == userSkill.AnimalSkill)
+                {
+                    var wantedOpp = allOpps.FirstOrDefault(m => m.ID == need.OpportunityId);
+                    if (referOpps.Contains(wantedOpp) == false)
+                    {
+                        referOpps.Add(wantedOpp);
+                    }
+                }
+                if (need.Category == "Disaster Preperation" && need.SkillLevel == userSkill.DisasterSkill)
+                {
+                    var wantedOpp = allOpps.FirstOrDefault(m => m.ID == need.OpportunityId);
+                    if (referOpps.Contains(wantedOpp) == false)
+                    {
+                        referOpps.Add(wantedOpp);
+                    }
+                }
+                if (need.Category == "Education" && need.SkillLevel == userSkill.EducationSkill)
+                {
+                    var wantedOpp = allOpps.FirstOrDefault(m => m.ID == need.OpportunityId);
+                    if (referOpps.Contains(wantedOpp) == false)
+                    {
+                        referOpps.Add(wantedOpp);
+                    }
+                }
+                if (need.Category == "Enviornment" && need.SkillLevel == userSkill.EnviornmentSkill)
+                {
+                    var wantedOpp = allOpps.FirstOrDefault(m => m.ID == need.OpportunityId);
+                    if (referOpps.Contains(wantedOpp) == false)
+                    {
+                        referOpps.Add(wantedOpp);
+                    }
+                }
+                if (need.Category == "Health" && need.SkillLevel == userSkill.HealthSkill)
+                {
+                    var wantedOpp = allOpps.FirstOrDefault(m => m.ID == need.OpportunityId);
+                    if (referOpps.Contains(wantedOpp) == false)
+                    {
+                        referOpps.Add(wantedOpp);
+                    }
+                }
+                if (need.Category == "Human Services" && need.SkillLevel == userSkill.HumanServicesSkill)
+                {
+                    var wantedOpp = allOpps.FirstOrDefault(m => m.ID == need.OpportunityId);
+                    if (referOpps.Contains(wantedOpp) == false)
+                    {
+                        referOpps.Add(wantedOpp);
+                    }
+                }
+            }
+            return referOpps;
         }
         public string imagePull(string value)
         {

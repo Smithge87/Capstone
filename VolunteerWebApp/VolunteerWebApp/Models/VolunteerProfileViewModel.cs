@@ -20,6 +20,7 @@ namespace VolunteerWebApp.Models
         public VolunteerSettings VolunteerSettings { get ;set;}
         public State State { get; set; }
         public List<Opportunity> MyOpportunities { get; set; }
+        public List<Opportunity> ReferOpportunities { get; set; }
         public string AnimalImageSrc { get; set; }
         public string DisasterImageSrc { get; set; }
         public string EducationImageSrc { get; set; }

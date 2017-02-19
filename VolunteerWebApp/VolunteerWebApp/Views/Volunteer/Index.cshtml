@@ -103,7 +103,39 @@
     </tbody>
 </table>
 
+<table>
+    <thead>
+        <tr><th> My Referals</th> </tr>
+    </thead>
+    <tbody>
+        @try
+        {
+            if (Model.VolunteerSettings.CanRefer == true)
+            {
+                try
+                {
+                    foreach (var opp in Model.ReferOpportunities)
+                    {
+                        <tr><td>@opp.OrganizationHostName</td><td>@opp.Category</td><td>@opp.AboutShort</td><td>@Html.ActionLink("More Info", "FullView", "Organization", new { id = @opp.ID }, null)</td></tr>
+                    }
+                }
+                catch
+                {
+                    <tr><td>No opportunities match your skill level, but we'll let you know if one comes up! </td></tr>
+                }
+            }
+            else
+            {
+                <tr><td>Preferences are set to 'Do not refer'. Visit 'My settings' if you'd like to get referals.</td></tr>
+            }
+        }
+        catch
+        {
+            <tr><td>Visit 'My Settings' to be able to enable referals</td></tr>
+        }
 
+    </tbody>
+</table>
 
 
 
