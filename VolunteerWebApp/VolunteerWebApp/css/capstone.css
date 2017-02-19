@@ -1,0 +1,28 @@
+#more {
+    cursor: pointer;
+    background: #eee;
+}
+body{
+  background-color: #d5ff80;
+}
+.roundTable{
+ border: 2px solid;
+  border-radius: 10px;
+  border-color: rgba(0 , 0 , 0, 1);
+}
+.blueBox{
+  background-color: #3366cc;
+}
+
+.tablePadding{
+  padding:5px;
+}
+.yellowText{
+  color: #f7e409;
+}
+.blueText{
+  color: #3366cc;
+}
+.tableHeadText{
+  font-size: 20px;
+}
