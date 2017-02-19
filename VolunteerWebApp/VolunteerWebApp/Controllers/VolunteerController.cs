@@ -346,6 +346,31 @@ namespace VolunteerWebApp.Controllers
                     }
                 return RedirectToAction("Index", "Volunteer");
         }
+        public ActionResult PartialProfile(string id)
+        {
+            var wantedUser = _context.Users.FirstOrDefault(m => m.Email == id);
+            var wantedInfo = _context.Address.FirstOrDefault(m => m.UserId == wantedUser.Email);
+            var wantedInterest = _context.Interest.FirstOrDefault(m => m.VolunteerId == wantedUser.Email);
+            var wantedSkill = _context.Skill.FirstOrDefault(m => m.UserId == wantedUser.Email);
+
+            var viewModel = new PartialProfileVolunteerViewModel()
+            {
+                Volunteer = wantedUser,
+                VulunteerInfo = wantedInfo,
+                VolunteerSkills = wantedSkill,
+                OpportunityInterest = wantedInterest
+            };
+            if (wantedSkill != null)
+            {
+                viewModel.AnimalImageSrc = imagePull(wantedSkill.AnimalSkill);
+                viewModel.DisasterImageSrc = imagePull(wantedSkill.DisasterSkill);
+                viewModel.EducationImageSrc = imagePull(wantedSkill.EducationSkill);
+                viewModel.EnviornmentImageSrc = imagePull(wantedSkill.EnviornmentSkill);
+                viewModel.HealthImageSrc = imagePull(wantedSkill.HealthSkill);
+                viewModel.HumanServicesImageSrc = imagePull(wantedSkill.HumanServicesSkill);
+            }
+            return View(viewModel);
+        }
         public string imagePull(string value)
         {
             if (value == "1")

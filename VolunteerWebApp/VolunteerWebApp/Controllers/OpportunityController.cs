@@ -161,6 +161,7 @@ namespace VolunteerWebApp.Controllers
             if (conflictOfInterest != null)
             {
                 conflictOfInterest.InterestLevel = model.InterestSet;
+                conflictOfInterest.InterestLevelImgSrc = imagePull(model.InterestSet);
             }
             else
             {
@@ -171,7 +172,8 @@ namespace VolunteerWebApp.Controllers
                     VolunteerId = currentUser.Email,
                     InterestLevel = model.InterestSet,
                     CanContact = currentSettings.CanContact,
-                    CanShow = currentSettings.CanSee
+                    CanShow = currentSettings.CanSee,
+                    InterestLevelImgSrc = imagePull(model.InterestSet)
                 };
                 _context.Interest.Add(newInterest);
             }

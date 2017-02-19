@@ -317,6 +317,10 @@
     <Compile Include="Migrations\201702190007530_imagesAddedToViewModels.Designer.cs">
       <DependentUpon>201702190007530_imagesAddedToViewModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702190141516_addedImgToInterestModel.cs" />
+    <Compile Include="Migrations\201702190141516_addedImgToInterestModel.Designer.cs">
+      <DependentUpon>201702190141516_addedImgToInterestModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categories.cs" />
@@ -331,6 +335,7 @@
     <Compile Include="Models\OpportunityViewModel.cs" />
     <Compile Include="Models\OrganizationInfoViewModel.cs" />
     <Compile Include="Models\OrganizationProfileViewModel.cs" />
+    <Compile Include="Models\PartialProfileVolunteerViewModel.cs" />
     <Compile Include="Models\PhotoViewModel.cs" />
     <Compile Include="Models\SearchViewModel.cs" />
     <Compile Include="Models\Skill.cs" />
@@ -422,6 +427,7 @@
     <Content Include="Views\Organization\FullView.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Organization\EditOpp.cshtml" />
+    <Content Include="Views\Volunteer\PartialProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -518,6 +524,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702190007530_imagesAddedToViewModels.resx">
       <DependentUpon>201702190007530_imagesAddedToViewModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702190141516_addedImgToInterestModel.resx">
+      <DependentUpon>201702190141516_addedImgToInterestModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

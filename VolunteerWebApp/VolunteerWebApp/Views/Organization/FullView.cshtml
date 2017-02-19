@@ -75,8 +75,8 @@
         {
             <tr>
                 <td> @user.VolunteerUserName</td>
-                <td> @user.InterestLevel</td>
-                <td> Insert applicible skill level</td>
+                <td><img src="@user.InterestLevelImgSrc" /></td>
+                <td>@Html.ActionLink("View Volunteer Info","PartialProfile","Volunteer", new { id = user.VolunteerId },null )</td>
             </tr>
         }
     </tbody>
