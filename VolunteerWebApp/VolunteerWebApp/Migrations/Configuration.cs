@@ -90,6 +90,14 @@ new Models.MonthNumber { ID = 12, Month = "12" }
            new Models.YearNumber { ID = 3, Year = "2019" },
            new Models.YearNumber { ID = 4, Year = "2020" }
            );
+            context.Distances.AddOrUpdate(m => m.ID,
+                new Models.Distances { ID = 1, Distance = "5 mi."},
+                new Models.Distances { ID = 1, Distance = "10 mi." },
+                new Models.Distances { ID = 1, Distance = "20 mi." },
+                new Models.Distances { ID = 1, Distance = "30 mi." },
+                new Models.Distances { ID = 1, Distance = "50 mi." },
+                new Models.Distances { ID = 1, Distance = "100 mi." }
+                );
             context.Categories.AddOrUpdate(m => m.ID,
             new Models.Categories { ID = 1, Category = "Animal Services" },
             new Models.Categories { ID = 2, Category = "Disaster Preperation" },

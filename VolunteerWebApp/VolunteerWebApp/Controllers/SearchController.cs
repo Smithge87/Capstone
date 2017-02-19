@@ -94,6 +94,7 @@ namespace VolunteerWebApp.Controllers
                     }
                 }
             }
+
             var categoryList = _context.Categories.ToList();
             var currentUserName = User.Identity.Name;
             var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);

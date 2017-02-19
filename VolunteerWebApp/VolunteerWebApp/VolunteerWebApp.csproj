@@ -321,9 +321,18 @@
     <Compile Include="Migrations\201702190141516_addedImgToInterestModel.Designer.cs">
       <DependentUpon>201702190141516_addedImgToInterestModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702191544238_addingDistances.cs" />
+    <Compile Include="Migrations\201702191544238_addingDistances.Designer.cs">
+      <DependentUpon>201702191544238_addingDistances.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702191549210_distances.cs" />
+    <Compile Include="Migrations\201702191549210_distances.Designer.cs">
+      <DependentUpon>201702191549210_distances.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categories.cs" />
+    <Compile Include="Models\Distances.cs" />
     <Compile Include="Models\Interest.cs" />
     <Compile Include="Models\OpportunityEditViewModel.cs" />
     <Compile Include="Models\DayNumber.cs" />
@@ -529,6 +538,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702190141516_addedImgToInterestModel.resx">
       <DependentUpon>201702190141516_addedImgToInterestModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702191544238_addingDistances.resx">
+      <DependentUpon>201702191544238_addingDistances.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702191549210_distances.resx">
+      <DependentUpon>201702191549210_distances.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

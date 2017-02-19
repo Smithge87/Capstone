@@ -40,6 +40,7 @@ namespace VolunteerWebApp.Models
         public DbSet<SkillsNeeded> SkillsNeeded { get; set; }
         public DbSet<Numbers> Numbers { get; set; }
         public DbSet<Interest> Interest { get; set; }
+        public DbSet<Distances> Distances { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
