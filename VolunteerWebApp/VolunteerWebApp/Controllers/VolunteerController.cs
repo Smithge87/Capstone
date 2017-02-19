@@ -27,19 +27,23 @@ namespace VolunteerWebApp.Controllers
             var currentSettings = _context.VolunteerSettings.FirstOrDefault(m => m.UserId == currentUser.Email);
             var currentSkills = _context.Skill.FirstOrDefault(m => m.UserId == currentUser.Email);
             List<Opportunity> myOpportunities = new List<Opportunity>();
+            List<Interest> interestToCompare = new List<Interest>();
             var myInterest = new Interest();
             foreach (var interest in _context.Interest)
             {
-                if(interest.VolunteerId == currentUser.Email)
+                if (interest.VolunteerId == currentUser.Email)
                 {
-                    myInterest = interest;
+                    interestToCompare.Add(interest);
                 }
             }
             foreach (var opportunity in _context.Opportunity)
             {
-                if (opportunity.ID == myInterest.OpportunityId)
+                foreach (var interest in interestToCompare)
                 {
-                    myOpportunities.Add(opportunity);
+                    if (opportunity.ID == interest.OpportunityId)
+                    {
+                        myOpportunities.Add(opportunity);
+                    }
                 }
             }
             var viewModel = new VolunteerProfileViewModel()

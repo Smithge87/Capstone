@@ -68,7 +68,7 @@
                             <td><input name="@("checkBox"+(i.ToString()))" value="true" type="checkbox" /></td>
                             <td></td>
                             <td>@Model.TempSkillsList.ElementAt(i).Category</td>
-                            <td>@Model.TempSkillsList.ElementAt(i).SkillLevel</td>
+                            <td><img src="@Model.TempSkillsList.ElementAt(i).SkillImgSrc" style="height:20px" /></td>
                             <td>@Model.TempSkillsList.ElementAt(i).Amount</td>
                         </tr>
                     </tbody>

@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <h2>Welcome, @Model.ApplicationUser.UserTitle</h2>
 
 <li>@Html.ActionLink("Update my Info", "Info", "Volunteer")</li>
@@ -90,7 +91,10 @@
     <tbody>
         @try
         {
-            <tr><td>@Model.MyOpportunities[0].OrganizationHostName</td></tr>
+            foreach (var opp in Model.MyOpportunities)
+            {
+                <tr><td>@opp.OrganizationHostName</td><td>@opp.Category</td><td>@opp.AboutShort</td><td>@Html.ActionLink("More Info","FullView","Organization", new { id = @opp.ID }, null)</td></tr>
+            }
         }
         catch
         {

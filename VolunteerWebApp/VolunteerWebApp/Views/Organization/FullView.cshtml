@@ -15,7 +15,7 @@
 
 @foreach (var need in Model.SkillsNeededList)
 {
-    <p>'@need.Category' : @need.Amount <img src="@need.SkillImgSrc" /></p>
+    <p>@need.Category : @need.Amount <img src="../@need.SkillImgSrc"  style="height:20px" /></p>
 }
 
 @if (Request.IsAuthenticated && User.IsInRole("organization"))
@@ -40,19 +40,19 @@
     {
         <form>
             <label>
-                <input style="visibility: hidden; position: absolute;" onclick="starOne('IdOne','IdTwo','IdThree','IdFour','IdFive')" type="radio" name="InterestSet" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdOne">
+                <input style="visibility: hidden; position: absolute;" onclick="starOne('IdOne','IdTwo','IdThree','IdFour','IdFive')" type="radio" name="InterestSet" value="1"><img src="../../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdOne">
             </label>
             <label>
-                <input style="visibility: hidden; position: absolute;" onclick="starTwo('IdOne', 'IdTwo', 'IdThree', 'IdFour', 'IdFive')" type="radio" name="InterestSet" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdTwo">
+                <input style="visibility: hidden; position: absolute;" onclick="starTwo('IdOne', 'IdTwo', 'IdThree', 'IdFour', 'IdFive')" type="radio" name="InterestSet" value="2"><img src="../../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdTwo">
             </label>
             <label>
-                <input style="visibility: hidden; position: absolute;" onclick="starThree('IdOne', 'IdTwo', 'IdThree', 'IdFour', 'IdFive')" type="radio" name="InterestSet" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdThree">
+                <input style="visibility: hidden; position: absolute;" onclick="starThree('IdOne', 'IdTwo', 'IdThree', 'IdFour', 'IdFive')" type="radio" name="InterestSet" value="3"><img src="../../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdThree">
             </label>
             <label>
-                <input style="visibility: hidden; position: absolute;" onclick="starFour('IdOne', 'IdTwo', 'IdThree', 'IdFour', 'IdFive')" type="radio" name="InterestSet" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdFour">
+                <input style="visibility: hidden; position: absolute;" onclick="starFour('IdOne', 'IdTwo', 'IdThree', 'IdFour', 'IdFive')" type="radio" name="InterestSet" value="4"><img src="../../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdFour">
             </label>
             <label>
-                <input style="visibility: hidden; position: absolute;" onclick="starFive('IdOne', 'IdTwo', 'IdThree', 'IdFour', 'IdFive')" type="radio" name="InterestSet" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdFive">
+                <input style="visibility: hidden; position: absolute;" onclick="starFive('IdOne', 'IdTwo', 'IdThree', 'IdFour', 'IdFive')" type="radio" name="InterestSet" value="5"><img src="../../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdFive">
             </label>
             <button type="submit">Submit Interest</button>
             @Html.HiddenFor(m => m.oppId )
@@ -86,38 +86,38 @@
 <script>
 
 function starOne(a,b,c,d,e) {
-  document.getElementById(a).src='../images/yellowStar.png'
-  document.getElementById(b).src = '../images/greyStar.png'
-  document.getElementById(c).src = '../images/greyStar.png'
-  document.getElementById(d).src = '../images/greyStar.png'
-  document.getElementById(e).src = '../images/greyStar.png'
+    document.getElementById(a).src = '../../images/yellowStar.png'
+    document.getElementById(b).src = '../../images/greyStar.png'
+    document.getElementById(c).src = '../../images/greyStar.png'
+    document.getElementById(d).src = '../../images/greyStar.png'
+    document.getElementById(e).src = '../../images/greyStar.png'
 }
 function starTwo(a,b,c,d,e) {
-    document.getElementById(a).src = '../images/yellowStar.png'
-    document.getElementById(b).src = '../images/yellowStar.png'
-    document.getElementById(c).src = '../images/greyStar.png'
-    document.getElementById(d).src = '../images/greyStar.png'
-    document.getElementById(e).src = '../images/greyStar.png'
+    document.getElementById(a).src = '../../images/yellowStar.png'
+    document.getElementById(b).src = '../../images/yellowStar.png'
+    document.getElementById(c).src = '../../images/greyStar.png'
+    document.getElementById(d).src = '../../images/greyStar.png'
+    document.getElementById(e).src = '../../images/greyStar.png'
 }
 function starThree(a,b,c,d,e) {
-    document.getElementById(a).src = '../images/yellowStar.png'
-    document.getElementById(b).src = '../images/yellowStar.png'
-    document.getElementById(c).src = '../images/yellowStar.png'
-    document.getElementById(d).src = '../images/greyStar.png'
-    document.getElementById(e).src = '../images/greyStar.png'
+    document.getElementById(a).src = '../../images/yellowStar.png'
+    document.getElementById(b).src = '../../images/yellowStar.png'
+    document.getElementById(c).src = '../../images/yellowStar.png'
+    document.getElementById(d).src = '../../images/greyStar.png'
+    document.getElementById(e).src = '../../images/greyStar.png'
 }
 function starFour(a,b,c,d,e) {
-    document.getElementById(a).src = '../images/yellowStar.png'
-    document.getElementById(b).src = '../images/yellowStar.png'
-    document.getElementById(c).src = '../images/yellowStar.png'
-    document.getElementById(d).src = '../images/yellowStar.png'
-    document.getElementById(e).src = '../images/greyStar.png'
+    document.getElementById(a).src = '../../images/yellowStar.png'
+    document.getElementById(b).src = '../../images/yellowStar.png'
+    document.getElementById(c).src = '../../images/yellowStar.png'
+    document.getElementById(d).src = '../../images/yellowStar.png'
+    document.getElementById(e).src = '../../images/greyStar.png'
 }
 function starFive(a,b,c,d,e) {
-    document.getElementById(a).src = '../images/yellowStar.png'
-    document.getElementById(b).src = '../images/yellowStar.png'
-    document.getElementById(c).src = '../images/yellowStar.png'
-    document.getElementById(d).src = '../images/yellowStar.png'
-    document.getElementById(e).src = '../images/yellowStar.png'
+    document.getElementById(a).src = '../../images/yellowStar.png'
+    document.getElementById(b).src = '../../images/yellowStar.png'
+    document.getElementById(c).src = '../../images/yellowStar.png'
+    document.getElementById(d).src = '../../images/yellowStar.png'
+    document.getElementById(e).src = '../../images/yellowStar.png'
 }
 </script>

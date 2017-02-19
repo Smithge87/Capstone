@@ -157,16 +157,24 @@ namespace VolunteerWebApp.Controllers
             var currentUserName = User.Identity.Name;
             var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
             var currentSettings = _context.VolunteerSettings.FirstOrDefault(m => m.UserId == currentUser.Email);
-            var newInterest = new Interest()
+            var conflictOfInterest = _context.Interest.FirstOrDefault(m => m.VolunteerId == currentUser.Email);
+            if (conflictOfInterest != null)
             {
-                OpportunityId = currentOpp.ID,
-                VolunteerUserName = currentUser.UserTitle,
-                VolunteerId = currentUser.Email,
-                InterestLevel = model.InterestSet,
-                CanContact = currentSettings.CanContact,
-                CanShow = currentSettings.CanSee
-            };
-            _context.Interest.Add(newInterest);
+                conflictOfInterest.InterestLevel = model.InterestSet;
+            }
+            else
+            {
+                var newInterest = new Interest()
+                {
+                    OpportunityId = currentOpp.ID,
+                    VolunteerUserName = currentUser.UserTitle,
+                    VolunteerId = currentUser.Email,
+                    InterestLevel = model.InterestSet,
+                    CanContact = currentSettings.CanContact,
+                    CanShow = currentSettings.CanSee
+                };
+                _context.Interest.Add(newInterest);
+            }
             _context.SaveChanges();
             return RedirectToAction("Index", "Volunteer");
 
