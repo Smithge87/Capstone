@@ -23,6 +23,7 @@ namespace VolunteerWebApp.Controllers
         public ActionResult Index()
         {
             var categoryList = _context.Categories.ToList();
+            var distanceList = _context.Distances.ToList();
             List<string> orgNames = new List<string>();
             foreach (var user in _context.Users)
             {
@@ -53,13 +54,16 @@ namespace VolunteerWebApp.Controllers
                 cleanOpps = opps,
                 userLocation = userGeo,
                 CategoryList = categoryList,
-                OrgNames = orgNames
+                OrgNames = orgNames,
+                Distances = distanceList
             };
             return View(viewModel);
         }
         [ActionName ("FilterSearch")]
         public ActionResult Index (SearchViewModel model)
         {
+            var currentUserName = User.Identity.Name;
+            var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
             List<Opportunity> filteredOpps = new List<Opportunity>();
             if (model.CategoryFilter != null)
             {
@@ -94,10 +98,20 @@ namespace VolunteerWebApp.Controllers
                     }
                 }
             }
-
+            if (model.DistanceFilter != null)
+            {
+                var tempDist = Int32.Parse(model.DistanceFilter);
+                var distance = _context.Distances.SingleOrDefault(m => m.ID == tempDist);
+                var justDist = distance.Distance;
+                var intDist = float.Parse(cleanXML(justDist));
+                List<Opportunity> wantedOpps = getDistances(currentUser, intDist);
+                foreach (var opp in wantedOpps)
+                {
+                    filteredOpps.Add(opp);
+                }
+            }
+            var distanceList = _context.Distances.ToList();
             var categoryList = _context.Categories.ToList();
-            var currentUserName = User.Identity.Name;
-            var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
             var userInfo = _context.Address.FirstOrDefault(m => m.UserId == currentUser.Email);
             List<float> userGeo = getGeocode(userInfo.StreetAddress + " " + userInfo.City + " " + userInfo.State + " " + userInfo.Zipcode);
             List<Opportunity> opps = new List<Opportunity>();
@@ -126,39 +140,42 @@ namespace VolunteerWebApp.Controllers
                 cleanOpps = opps,
                 userLocation = userGeo,
                 CategoryList = categoryList,
-                OrgNames = orgNames
+                OrgNames = orgNames,
+                Distances = distanceList
             };
             return View("Index", viewModel);
         }
-        public ActionResult getDistances(SearchViewModel model)
+        public List<Opportunity> getDistances(ApplicationUser user, float distanceConstraint)
         {
-            var currentUserName = User.Identity.Name;
-            var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
-            var userInfo = _context.Address.FirstOrDefault(m => m.UserId == currentUser.Email);
-            List<float> userGeo = getGeocode(userInfo.StreetAddress + " " + userInfo.City + " " + userInfo.State + " " + userInfo.Zipcode);
+            List<Opportunity> wantedOpps = new List<Opportunity>();
+            var userInfo = _context.Address.FirstOrDefault(m => m.UserId == user.Email);
             var rootUrl = "https://maps.googleapis.com/maps/api/directions/json?origin=";
             foreach (var opp in _context.Opportunity)
             {
-                var addressOne = "3245+s+146+st+new+berlin+53151";
-                var addressTwo = "1915+s+83rd+st+west+allis+53219";
-                var startSt = userInfo.StreetAddress.Replace(" ", "+") + "+";
-                var startCity = userInfo.City.Replace(" ", "+");
-                var startZip = userInfo.Zipcode;
-                var endSt = opp.StreetAddress.Replace(" ", "+") + "+";
-                var endCity = opp.City.Replace(" ", "+") + "+";
-                var endZip = opp.Zipcode;
-                var URL = rootUrl + addressOne + "&destination=" + addressTwo + "&key=AIzaSyABln82MFoySBkjQPoJjeVYgeoK_R_RKPE";
-                var request = WebRequest.Create(URL);
-                var response = request.GetResponse();
-                var stream = new StreamReader(response.GetResponseStream(), Encoding.UTF8);
-                var distance =  JObject.Parse(stream.ReadToEnd());
-                var readAble = distance.ToString();
-                var answer = distance["routes"][0]["legs"][0]["distance"]["text"].ToString();
-                var cleanDistance = cleanXML(answer);
-                var banana = "Banana";
+                try
+                {
+                    var startSt = userInfo.StreetAddress.Replace(" ", "+") + "+";
+                    var startCity = userInfo.City.Replace(" ", "+") + "+";
+                    var startZip = userInfo.Zipcode;
+                    var endSt = opp.StreetAddress.Replace(" ", "+") + "+";
+                    var endCity = opp.City.Replace(" ", "+") + "+";
+                    var endZip = opp.Zipcode;
+                    var URL = rootUrl + startSt + startCity + startZip + "&destination=" + endSt + endCity + endZip + "&key=AIzaSyABln82MFoySBkjQPoJjeVYgeoK_R_RKPE";
+                    var request = WebRequest.Create(URL);
+                    var response = request.GetResponse();
+                    var stream = new StreamReader(response.GetResponseStream(), Encoding.UTF8);
+                    var distance = JObject.Parse(stream.ReadToEnd());
+                    var readAble = distance.ToString();
+                    var answer = distance["routes"][0]["legs"][0]["distance"]["text"].ToString();
+                    var cleanDistance = float.Parse(cleanXML(answer));
+                    if (cleanDistance < distanceConstraint)
+                    {
+                        wantedOpps.Add(opp);
+                    }
+                }
+                catch { }
             }
-                return View();
-
+                return wantedOpps;
         }
         public List<float> getGeocode(string address)
         {
