@@ -6,7 +6,7 @@
 
 <h2>Partial Volunteer Profile </h2>
 
-<h2>@Model.Volunteer.Email</h2>
+<h2>@Model.Volunteer.UserName</h2>
 
 <h3>About Volunteer</h3>
 
@@ -30,12 +30,12 @@
         @try
         {
             <tr><td>@Model.VolunteerSkills.AboutSkills</td></tr>
-            <tr><td>Animal Services Skill Level:</td><td><img src='@Model.AnimalImageSrc' style="height:20px"></td></tr>
-            <tr><td>Disaster Prevention Skill Level:</td><td><img src='@Model.DisasterImageSrc' style="height:20px" class="starFit"></td></tr>
-            <tr><td>Educational Services Skill Level:</td><td><img src='@Model.EducationImageSrc' style="height:20px" class="starFit"></td></tr>
-            <tr><td>Enviornmental Services Skill Level:</td><td><img src='@Model.EnviornmentImageSrc' style="height:20px" class="starFit"></td></tr>
-            <tr><td>Health Services Skill Level:</td><td><img src='@Model.HealthImageSrc' style="height:20px" class="starFit"></td></tr>
-            <tr><td>Human Services Skill Level:</td><td><img src='@Model.HumanServicesImageSrc' style="height:20px" class="starFit"></td></tr>
+            <tr><td>Animal Services Skill Level:</td><td><img src='../@Model.AnimalImageSrc' style="height:20px"></td></tr>
+            <tr><td>Disaster Prevention Skill Level:</td><td><img src='../@Model.DisasterImageSrc' style="height:20px" class="starFit"></td></tr>
+            <tr><td>Educational Services Skill Level:</td><td><img src='../@Model.EducationImageSrc' style="height:20px" class="starFit"></td></tr>
+            <tr><td>Enviornmental Services Skill Level:</td><td><img src='../@Model.EnviornmentImageSrc' style="height:20px" class="starFit"></td></tr>
+            <tr><td>Health Services Skill Level:</td><td><img src='../@Model.HealthImageSrc' style="height:20px" class="starFit"></td></tr>
+            <tr><td>Human Services Skill Level:</td><td><img src='../@Model.HumanServicesImageSrc' style="height:20px" class="starFit"></td></tr>
         }
         catch
         {

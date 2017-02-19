@@ -346,9 +346,10 @@ namespace VolunteerWebApp.Controllers
                     }
                 return RedirectToAction("Index", "Volunteer");
         }
-        public ActionResult PartialProfile(string id)
+        public ActionResult PartialProfile(int id)
         {
-            var wantedUser = _context.Users.FirstOrDefault(m => m.Email == id);
+            var refInterest = _context.Interest.FirstOrDefault(m => m.ID == id);
+            var wantedUser = _context.Users.FirstOrDefault(m => m.Email == refInterest.VolunteerId);
             var wantedInfo = _context.Address.FirstOrDefault(m => m.UserId == wantedUser.Email);
             var wantedInterest = _context.Interest.FirstOrDefault(m => m.VolunteerId == wantedUser.Email);
             var wantedSkill = _context.Skill.FirstOrDefault(m => m.UserId == wantedUser.Email);

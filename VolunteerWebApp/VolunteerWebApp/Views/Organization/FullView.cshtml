@@ -76,7 +76,7 @@
             <tr>
                 <td> @user.VolunteerUserName</td>
                 <td><img src="@user.InterestLevelImgSrc" /></td>
-                <td>@Html.ActionLink("View Volunteer Info","PartialProfile","Volunteer", new { id = user.VolunteerId },null )</td>
+                <td>@Html.ActionLink("View Volunteer Info","PartialProfile","Volunteer", new { id = user.ID },null )</td>
             </tr>
         }
     </tbody>
