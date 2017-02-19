@@ -115,7 +115,8 @@ namespace VolunteerWebApp.Controllers
                         OrganizationId = tempRest.OrganizationId,
                         Category = tempRest.Category,
                         SkillLevel = tempRest.SkillLevel,
-                        Amount = tempRest.Amount
+                        Amount = tempRest.Amount,
+                        SkillImgSrc = imagePull(tempRest.SkillLevel)
                     };
                     _context.SkillsNeeded.Add(temper);
                 }
@@ -143,7 +144,8 @@ namespace VolunteerWebApp.Controllers
                 OrganizationId = currentUser.Email,
                 Category = justCat,
                 SkillLevel = model.SkillSet,
-                Amount = justAmount
+                Amount = justAmount,
+                SkillImgSrc = imagePull(model.SkillSet)
             };
             _context.TempSkills.Add(newSkillNeed);
             _context.SaveChanges();
@@ -168,6 +170,29 @@ namespace VolunteerWebApp.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index", "Volunteer");
 
+        }
+        public string imagePull(string value)
+        {
+            if (value == "1")
+            {
+                return ("../images/oneStar.png");
+            }
+            else if (value == "2")
+            {
+                return ("../images/twoStar.png");
+            }
+            else if (value == "3")
+            {
+                return ("../images/threeStar.png");
+            }
+            else if (value == "4")
+            {
+                return ("../images/fourStar.png");
+            }
+            else
+            {
+                return ("../images/fiveStar.png");
+            }
         }
         //public ActionResult Index(int id)
         //{

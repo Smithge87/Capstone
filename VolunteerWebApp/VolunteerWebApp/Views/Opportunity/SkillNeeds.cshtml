@@ -18,31 +18,21 @@
             @Html.DropDownListFor(m => m.Category , new SelectList(Model.CategoryList, "ID", "Category"), new { @class = "form-control" })
         </div>
     </div>
-    <div>
-        @Html.LabelFor(m => m.SkillSet, "No skill")
-        @Html.RadioButtonFor(m => m.SkillSet, "0")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.SkillSet, "Very Little Skill")
-        @Html.RadioButtonFor(m => m.SkillSet, "1")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.SkillSet, "Some Skill")
-        @Html.RadioButtonFor(m => m.SkillSet, "2")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.SkillSet, "Average Skill")
-        @Html.RadioButtonFor(m => m.SkillSet, "3")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.SkillSet, "Above Average Skill")
-        @Html.RadioButtonFor(m => m.SkillSet, "4")
-    </div>
-    <div>
-        @Html.LabelFor(m => m.SkillSet, "Expert Skill")
-        @Html.RadioButtonFor(m => m.SkillSet, "5")
-    </div>
-
+    <label>
+        <input style="visibility: hidden; position: absolute;" onclick="starOne('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthOne">
+    </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starTwo('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthTwo">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starThree('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthThree">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starFour('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthFour">
+        </label>
+        <label>
+            <input style="visibility: hidden; position: absolute;" onclick="starFive('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthFive">
+        </label>
     <div class="form-group">
         @Html.LabelFor(m => m.Amount, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
@@ -88,3 +78,42 @@
         </form>
     </div>
 }
+
+<script>
+function starOne(a,b,c,d,e) {
+  document.getElementById(a).src='../images/yellowStar.png'
+  document.getElementById(b).src = '../images/greyStar.png'
+  document.getElementById(c).src = '../images/greyStar.png'
+  document.getElementById(d).src = '../images/greyStar.png'
+  document.getElementById(e).src = '../images/greyStar.png'
+}
+function starTwo(a,b,c,d,e) {
+    document.getElementById(a).src = '../images/yellowStar.png'
+    document.getElementById(b).src = '../images/yellowStar.png'
+    document.getElementById(c).src = '../images/greyStar.png'
+    document.getElementById(d).src = '../images/greyStar.png'
+    document.getElementById(e).src = '../images/greyStar.png'
+}
+function starThree(a,b,c,d,e) {
+    document.getElementById(a).src = '../images/yellowStar.png'
+    document.getElementById(b).src = '../images/yellowStar.png'
+    document.getElementById(c).src = '../images/yellowStar.png'
+    document.getElementById(d).src = '../images/greyStar.png'
+    document.getElementById(e).src = '../images/greyStar.png'
+}
+function starFour(a,b,c,d,e) {
+    document.getElementById(a).src = '../images/yellowStar.png'
+    document.getElementById(b).src = '../images/yellowStar.png'
+    document.getElementById(c).src = '../images/yellowStar.png'
+    document.getElementById(d).src = '../images/yellowStar.png'
+    document.getElementById(e).src = '../images/greyStar.png'
+}
+function starFive(a,b,c,d,e) {
+    document.getElementById(a).src = '../images/yellowStar.png'
+    document.getElementById(b).src = '../images/yellowStar.png'
+    document.getElementById(c).src = '../images/yellowStar.png'
+    document.getElementById(d).src = '../images/yellowStar.png'
+    document.getElementById(e).src = '../images/yellowStar.png'
+}
+
+</script>

@@ -309,6 +309,14 @@
     <Compile Include="Migrations\201702181834138_addedSkillDescriptions.Designer.cs">
       <DependentUpon>201702181834138_addedSkillDescriptions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702182353506_addedImgToSkillsNeeded.cs" />
+    <Compile Include="Migrations\201702182353506_addedImgToSkillsNeeded.Designer.cs">
+      <DependentUpon>201702182353506_addedImgToSkillsNeeded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702190007530_imagesAddedToViewModels.cs" />
+    <Compile Include="Migrations\201702190007530_imagesAddedToViewModels.Designer.cs">
+      <DependentUpon>201702190007530_imagesAddedToViewModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categories.cs" />
@@ -504,6 +512,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702181834138_addedSkillDescriptions.resx">
       <DependentUpon>201702181834138_addedSkillDescriptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702182353506_addedImgToSkillsNeeded.resx">
+      <DependentUpon>201702182353506_addedImgToSkillsNeeded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702190007530_imagesAddedToViewModels.resx">
+      <DependentUpon>201702190007530_imagesAddedToViewModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

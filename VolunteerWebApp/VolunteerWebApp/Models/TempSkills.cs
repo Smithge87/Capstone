@@ -16,5 +16,6 @@ namespace VolunteerWebApp.Models
         public string Category { get; set; }
         public string SkillLevel { get; set; }
         public string Amount { get; set; }
+        public string SkillImgSrc { get; set; }
     }
 }
