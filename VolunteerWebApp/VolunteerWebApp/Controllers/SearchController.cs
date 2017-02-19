@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Xml.Linq;
@@ -126,7 +129,36 @@ namespace VolunteerWebApp.Controllers
             };
             return View("Index", viewModel);
         }
+        public ActionResult getDistances(SearchViewModel model)
+        {
+            var currentUserName = User.Identity.Name;
+            var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
+            var userInfo = _context.Address.FirstOrDefault(m => m.UserId == currentUser.Email);
+            List<float> userGeo = getGeocode(userInfo.StreetAddress + " " + userInfo.City + " " + userInfo.State + " " + userInfo.Zipcode);
+            var rootUrl = "https://maps.googleapis.com/maps/api/directions/json?origin=";
+            foreach (var opp in _context.Opportunity)
+            {
+                var addressOne = "3245+s+146+st+new+berlin+53151";
+                var addressTwo = "1915+s+83rd+st+west+allis+53219";
+                var startSt = userInfo.StreetAddress.Replace(" ", "+") + "+";
+                var startCity = userInfo.City.Replace(" ", "+");
+                var startZip = userInfo.Zipcode;
+                var endSt = opp.StreetAddress.Replace(" ", "+") + "+";
+                var endCity = opp.City.Replace(" ", "+") + "+";
+                var endZip = opp.Zipcode;
+                var URL = rootUrl + addressOne + "&destination=" + addressTwo + "&key=AIzaSyABln82MFoySBkjQPoJjeVYgeoK_R_RKPE";
+                var request = WebRequest.Create(URL);
+                var response = request.GetResponse();
+                var stream = new StreamReader(response.GetResponseStream(), Encoding.UTF8);
+                var distance =  JObject.Parse(stream.ReadToEnd());
+                var readAble = distance.ToString();
+                var answer = distance["routes"][0]["legs"][0]["distance"]["text"].ToString();
+                var cleanDistance = cleanXML(answer);
+                var banana = "Banana";
+            }
+                return View();
 
+        }
         public List<float> getGeocode(string address)
         {
             var requestUri = string.Format("http://maps.googleapis.com/maps/api/geocode/xml?address={0}&sensor=false", Uri.EscapeDataString(address));
