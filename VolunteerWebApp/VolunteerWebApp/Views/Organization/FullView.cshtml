@@ -9,7 +9,8 @@
 
 <p>Event name: @Model.Opportunity.Title</p>
 
-
+<p>Event hosted by: @Model.Opportunity.OrganizationHostId</p>
+@Html.ActionLink("View Organization Profile", "PartialProfile", "Organization", new { id = Model.Opportunity.ID },null );
 
 <p>Opportunity Needs:</p>
 

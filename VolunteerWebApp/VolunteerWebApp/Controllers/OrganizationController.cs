@@ -282,5 +282,26 @@ namespace VolunteerWebApp.Controllers
 
             return RedirectToAction("Index", "Organization");
         }
+        public ActionResult PartialProfile(int id)
+        {
+            var refOpportunity = _context.Opportunity.FirstOrDefault(m => m.ID == id);
+            var wantedUser = _context.Users.FirstOrDefault(m => m.Email == refOpportunity.OrganizationHostId);
+            var wantedInfo = _context.Address.FirstOrDefault(m => m.UserId == wantedUser.Email);
+            List<Opportunity> orgOpps = new List<Opportunity>();
+            foreach(var opp in _context.Opportunity)
+            {
+                if(opp.OrganizationHostId == wantedUser.Email)
+                {
+                    orgOpps.Add(opp);
+                }
+            }
+            var viewModel = new PartialProfileOrganizationViewModel()
+            {
+                Organization = wantedUser,
+                OrganizationInfo = wantedInfo,
+                Opportunities = orgOpps
+            };
+            return View(viewModel);
+        }
     }
 }

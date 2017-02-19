@@ -335,6 +335,7 @@
     <Compile Include="Models\OpportunityViewModel.cs" />
     <Compile Include="Models\OrganizationInfoViewModel.cs" />
     <Compile Include="Models\OrganizationProfileViewModel.cs" />
+    <Compile Include="Models\PartialProfileOrganizationViewModel.cs" />
     <Compile Include="Models\PartialProfileVolunteerViewModel.cs" />
     <Compile Include="Models\PhotoViewModel.cs" />
     <Compile Include="Models\SearchViewModel.cs" />
@@ -428,6 +429,7 @@
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Organization\EditOpp.cshtml" />
     <Content Include="Views\Volunteer\PartialProfile.cshtml" />
+    <Content Include="Views\Organization\PartialProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

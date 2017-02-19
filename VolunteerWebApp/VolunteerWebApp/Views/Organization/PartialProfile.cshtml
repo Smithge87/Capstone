@@ -1,0 +1,38 @@
+﻿@model VolunteerWebApp.Models.PartialProfileOrganizationViewModel
+@{
+    ViewBag.Title = "PartialProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Partial Organization Profile for @Model.Organization.OrganizationName</h2>
+
+<h3>About Info</h3>
+
+<p>@Model.OrganizationInfo.AboutInfo</p>
+
+<h3>Organization Opportunities</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Organization</th>
+            <th>Category</th>
+            <th>Start Date</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var opp in Model.Opportunities)
+        {
+            <tr>
+                <td>@opp.Title </td>
+                <td> @opp.OrganizationHostName</td>
+                <td> @opp.Category</td>
+                <td> @opp.StartMonth/ @opp.StartDay/ @opp.StartYear</td>
+                <td> @opp.AboutShort</td>
+                <td>@Html.ActionLink("View More", "FullView", new { id = opp.ID }) </td>
+            </tr>
+        }
+    </tbody>
+</table>
