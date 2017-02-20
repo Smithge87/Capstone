@@ -32,6 +32,7 @@ namespace VolunteerWebApp.Controllers
                     opportunityList.Add(opportunity);
                 }
             }
+
             var currentInfo = _context.Address.FirstOrDefault(m => m.UserId == currentUser.Email);
             var viewModel = new OrganizationProfileViewModel()
             {

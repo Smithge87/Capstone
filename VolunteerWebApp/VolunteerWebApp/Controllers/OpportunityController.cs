@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,6 +20,8 @@ namespace VolunteerWebApp.Controllers
         // GET: Opportunity
         public ActionResult Create()
         {
+            var currentUserName = User.Identity.Name;
+            var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
             var statesList = _context.State.ToList();
             var dayList = _context.DayNumber.ToList();
             var monthList = _context.MonthNumber.ToList();
@@ -54,7 +59,9 @@ namespace VolunteerWebApp.Controllers
             var tempState = Int32.Parse(model.State);
             var state = _context.State.SingleOrDefault(m => m.ID == tempState);
             var justState = state.States;
-
+            string exitLocation = currentUser.ProfilePhoto.Substring(10);
+            Resize((@"C:\Users\Jack\Desktop\Projects\Capstone\VolunteerWebApp\VolunteerWebApp" + currentUser.ProfilePhoto), @"C:\Users\Jack\Desktop\Projects\Capstone\VolunteerWebApp\VolunteerWebApp/mapImages/" + exitLocation, .5);
+            string pinImage = "../mapImages/" + exitLocation;
 
             var newOpportunity = new Opportunity()
             {
@@ -74,7 +81,8 @@ namespace VolunteerWebApp.Controllers
                 State = justState,
                 Zipcode = model.Zipcode,
                 AboutOpportunity = model.AboutOpportunity,
-                AboutShort = model.ShortDescription
+                AboutShort = model.ShortDescription,
+                LogoSrc = pinImage
             };
             _context.Opportunity.Add(newOpportunity);
             _context.SaveChanges();
@@ -180,6 +188,25 @@ namespace VolunteerWebApp.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index", "Volunteer");
 
+        }
+        public void Resize(string imageFile, string outputFile, double scaleFactor)
+        {
+            using (var srcImage = Image.FromFile(imageFile))
+            {
+                var newWidth = (int)(40);
+                var newHeight = (int)(40);
+                using (var newImage = new Bitmap(newWidth, newHeight))
+                using (var graphics = Graphics.FromImage(newImage))
+                {
+                    graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                    graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                    graphics.DrawImage(srcImage, new Rectangle(0, 0, newWidth, newHeight));
+                    newImage.Save(outputFile);
+                }
+                var imagePath = imageFile.Split('/');
+                var banana = "banana";
+            }
         }
         public string imagePull(string value)
         {

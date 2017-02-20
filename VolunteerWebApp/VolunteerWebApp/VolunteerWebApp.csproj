@@ -329,6 +329,14 @@
     <Compile Include="Migrations\201702191549210_distances.Designer.cs">
       <DependentUpon>201702191549210_distances.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702201632037_addedLogoToOpportunity.cs" />
+    <Compile Include="Migrations\201702201632037_addedLogoToOpportunity.Designer.cs">
+      <DependentUpon>201702201632037_addedLogoToOpportunity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702201823527_somethingChanged.cs" />
+    <Compile Include="Migrations\201702201823527_somethingChanged.Designer.cs">
+      <DependentUpon>201702201823527_somethingChanged.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categories.cs" />
@@ -544,6 +552,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702191549210_distances.resx">
       <DependentUpon>201702191549210_distances.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702201632037_addedLogoToOpportunity.resx">
+      <DependentUpon>201702201632037_addedLogoToOpportunity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702201823527_somethingChanged.resx">
+      <DependentUpon>201702201823527_somethingChanged.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

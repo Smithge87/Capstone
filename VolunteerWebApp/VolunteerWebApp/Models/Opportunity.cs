@@ -28,5 +28,6 @@ namespace VolunteerWebApp.Models
         public List<float> GeoLocation { get; set; }
         public string AboutOpportunity { get; set; }
         public string AboutShort { get; set; }
+        public string LogoSrc { get; set; }
     }
 }

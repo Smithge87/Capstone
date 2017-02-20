@@ -16,7 +16,7 @@
 
 @foreach (var need in Model.SkillsNeededList)
 {
-    <p>@need.Category : @need.Amount <img src="../@need.SkillImgSrc"  style="height:20px" /></p>
+    <p>@need.Category : @need.Amount <img src="~/images/oneStar.png"  style="height:20px" /></p>
 }
 
 @if (Request.IsAuthenticated && User.IsInRole("organization"))
