@@ -80,6 +80,14 @@ namespace VolunteerWebApp.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    if(User.IsInRole("volunteer"))
+                    {
+                        return RedirectToAction("Index", "Volunteer");
+                    }
+                    else if (User.IsInRole("organization"))
+                    {
+                        return RedirectToAction("Index", "Organization");
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -207,7 +215,7 @@ namespace VolunteerWebApp.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Organization");
+                    return RedirectToAction("LogOffRegistration", "Account");
                 }
                 AddErrors(result);
             }
