@@ -205,7 +205,6 @@ namespace VolunteerWebApp.Controllers
                     newImage.Save(outputFile);
                 }
                 var imagePath = imageFile.Split('/');
-                var banana = "banana";
             }
         }
         public string imagePull(string value)

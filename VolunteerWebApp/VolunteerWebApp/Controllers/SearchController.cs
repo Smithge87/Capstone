@@ -1,14 +1,18 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Web;
 using System.Web.Mvc;
 using System.Xml.Linq;
 using VolunteerWebApp.Models;
+using System.Device.Location;
+
+
 
 namespace VolunteerWebApp.Controllers
 {
@@ -22,6 +26,36 @@ namespace VolunteerWebApp.Controllers
         // GET: Search
         public ActionResult Index()
         {
+            GetLocationProperty();
+
+            List<ApplicationUser> orgs = new List<ApplicationUser>();
+            List<Information> addresses = new List<Information>();
+            foreach (var address in _context.Address)
+            {
+                addresses.Add(address);
+            }
+            foreach (var user in _context.Users)
+            {
+                if (user.OrganizationName != null)
+                {
+                    string exitLocation = user.ProfilePhoto.Substring(10);
+                    Resize((@"C:\Users\Jack\Desktop\Projects\Capstone\VolunteerWebApp\VolunteerWebApp" + user.ProfilePhoto), @"C:\Users\Jack\Desktop\Projects\Capstone\VolunteerWebApp\VolunteerWebApp/mapImages/" + exitLocation, .5);
+                    string pinImage = "../mapImages/" + exitLocation;
+                    user.LogoImgSrc = pinImage;
+                    try
+                    {
+                        var currentAddress = addresses.FirstOrDefault(m => m.UserId == user.Email);
+                        string address = currentAddress.StreetAddress + " " + currentAddress.City + " " + currentAddress.State + " " + currentAddress.Zipcode;
+                        List<float> geoBit = getGeocode(address);
+                        if (geoBit.Count > 1)
+                        {
+                            user.GeoLocation = geoBit;
+                        }
+                        orgs.Add(user);
+                    }
+                    catch { };
+                }
+            }
             var categoryList = _context.Categories.ToList();
             var distanceList = _context.Distances.ToList();
             List<string> orgNames = new List<string>();
@@ -55,13 +89,42 @@ namespace VolunteerWebApp.Controllers
                 userLocation = userGeo,
                 CategoryList = categoryList,
                 OrgNames = orgNames,
-                Distances = distanceList
+                Distances = distanceList,
+                Organizations = orgs
             };
             return View(viewModel);
         }
-        [ActionName ("FilterSearch")]
-        public ActionResult Index (SearchViewModel model)
+        [ActionName("FilterSearch")]
+        public ActionResult Index(SearchViewModel model)
         {
+            List<ApplicationUser> orgs = new List<ApplicationUser>();
+            List<Information> addresses = new List<Information>();
+            foreach (var address in _context.Address)
+            {
+                addresses.Add(address);
+            }
+            foreach (var user in _context.Users)
+            {
+                if (user.OrganizationName != null)
+                {
+                    string exitLocation = user.ProfilePhoto.Substring(10);
+                    Resize((@"C:\Users\Jack\Desktop\Projects\Capstone\VolunteerWebApp\VolunteerWebApp" + user.ProfilePhoto), @"C:\Users\Jack\Desktop\Projects\Capstone\VolunteerWebApp\VolunteerWebApp/mapImages/" + exitLocation, .5);
+                    string pinImage = "../mapImages/" + exitLocation;
+                    user.LogoImgSrc = pinImage;
+                    try
+                    {
+                        var currentAddress = addresses.FirstOrDefault(m => m.UserId == user.Email);
+                        string address = currentAddress.StreetAddress + " " + currentAddress.City + " " + currentAddress.State + " " + currentAddress.Zipcode;
+                        List<float> geoBit = getGeocode(address);
+                        if (geoBit.Count > 1)
+                        {
+                            user.GeoLocation = geoBit;
+                        }
+                        orgs.Add(user);
+                    }
+                    catch { };
+                }
+            }
             var currentUserName = User.Identity.Name;
             var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
             List<Opportunity> filteredOpps = new List<Opportunity>();
@@ -90,9 +153,9 @@ namespace VolunteerWebApp.Controllers
             }
             if (model.KeywordFilter != null)
             {
-                foreach( var opportunity in _context.Opportunity)
+                foreach (var opportunity in _context.Opportunity)
                 {
-                    if (opportunity.AboutOpportunity.Contains(model.KeywordFilter) == true )
+                    if (opportunity.AboutOpportunity.Contains(model.KeywordFilter) == true)
                     {
                         filteredOpps.Add(opportunity);
                     }
@@ -116,7 +179,7 @@ namespace VolunteerWebApp.Controllers
             List<float> userGeo = getGeocode(userInfo.StreetAddress + " " + userInfo.City + " " + userInfo.State + " " + userInfo.Zipcode);
             List<Opportunity> opps = new List<Opportunity>();
             List<List<float>> geoCoded = new List<List<float>>();
-            foreach (var opp in filteredOpps )
+            foreach (var opp in filteredOpps)
             {
 
                 string address = opp.StreetAddress + " " + opp.City + " " + opp.State + " " + opp.Zipcode;
@@ -141,7 +204,8 @@ namespace VolunteerWebApp.Controllers
                 userLocation = userGeo,
                 CategoryList = categoryList,
                 OrgNames = orgNames,
-                Distances = distanceList
+                Distances = distanceList,
+                Organizations = orgs
             };
             return View("Index", viewModel);
         }
@@ -175,7 +239,7 @@ namespace VolunteerWebApp.Controllers
                 }
                 catch { }
             }
-                return wantedOpps;
+            return wantedOpps;
         }
         public List<float> getGeocode(string address)
         {
@@ -204,7 +268,7 @@ namespace VolunteerWebApp.Controllers
             foreach (char i in data)
             {
                 string j = i.ToString();
-                if (j =="0"|| j == "1" || j == "2" || j == "3" || j == "4" || j == "5" || j == "6" || j == "7" || j == "8" || j == "9" || j == "." || j == "-" )
+                if (j == "0" || j == "1" || j == "2" || j == "3" || j == "4" || j == "5" || j == "6" || j == "7" || j == "8" || j == "9" || j == "." || j == "-")
                 {
                     string newData = cleanData + j;
                     cleanData = newData;
@@ -213,6 +277,35 @@ namespace VolunteerWebApp.Controllers
             return cleanData;
         }
 
+        public void Resize(string imageFile, string outputFile, double scaleFactor)
+        {
+            using (var srcImage = Image.FromFile(imageFile))
+            {
+                var newWidth = (int)(40);
+                var newHeight = (int)(40);
+                using (var newImage = new Bitmap(newWidth, newHeight))
+                using (var graphics = Graphics.FromImage(newImage))
+                {
+                    graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                    graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                    graphics.DrawImage(srcImage, new Rectangle(0, 0, newWidth, newHeight));
+                    newImage.Save(outputFile);
+                }
+                var imagePath = imageFile.Split('/');
+            }
+        }
+        public void GetLocationProperty()
+        { 
+            GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
+
+            watcher.TryStart(false, TimeSpan.FromMilliseconds(3000));
+
+            GeoCoordinate coord = watcher.Position.Location;
+            var banana = "abana";
+        }
     }
+
+
 }
 

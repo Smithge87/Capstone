@@ -20,7 +20,7 @@ namespace VolunteerWebApp.Models
         public List<string> OrgNames { get; set; }
         public List<float>userLocation { get; set; }
         public List<Distances> Distances { get; set; }
-
+        public List<ApplicationUser> Organizations { get; set; }
 
         [Display(Name = "Filter by Category")]
         public string CategoryFilter { get; set; }

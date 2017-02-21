@@ -79,6 +79,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -337,6 +338,10 @@
     <Compile Include="Migrations\201702201823527_somethingChanged.Designer.cs">
       <DependentUpon>201702201823527_somethingChanged.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702202031475_addedGeoLocToUser.cs" />
+    <Compile Include="Migrations\201702202031475_addedGeoLocToUser.Designer.cs">
+      <DependentUpon>201702202031475_addedGeoLocToUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categories.cs" />
@@ -558,6 +563,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702201823527_somethingChanged.resx">
       <DependentUpon>201702201823527_somethingChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702202031475_addedGeoLocToUser.resx">
+      <DependentUpon>201702202031475_addedGeoLocToUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

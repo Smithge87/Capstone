@@ -2,23 +2,41 @@
     cursor: pointer;
     background: #eee;
 }
+
 body{
   background-color: #d5ff80;
+  background-image: url("../images/northernlights4.jpeg");
+
 }
 .roundTable{
  border: 2px solid;
   border-radius: 10px;
   border-color: rgba(0 , 0 , 0, 1);
 }
+.yellowButton{
+  background-color: #ffe066;
+  border-radius: 10px;
+  border-color: black;
+  border-style: double;
+}
+.greyBox{
+  background-color: rgba(242,242,242,.6);
+}
+
 .blueBox{
   background-color: #3366cc;
 }
-
+.blueBorder{
+  border-style: solid;
+  border-color:#000066;
+  border-width: 5px;
+  border-radius: 10px;
+}
 .tablePadding{
   padding:5px;
 }
 .yellowText{
-  color: #f7e409;
+  color: #ffe066;
 }
 .blueText{
   color: #3366cc;

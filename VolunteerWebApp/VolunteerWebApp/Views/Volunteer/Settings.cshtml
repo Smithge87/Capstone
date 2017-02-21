@@ -3,50 +3,70 @@
     ViewBag.Title = "Settings";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" type="text/css" href="../css/capstone.css">
 
-<h2>Contact Settings</h2>
+
+
+<h1 class="yellowText" style="margin-left:50px"><b>Contact Settings</b></h1>
 <br />
-
+<br />
+<div>
 @using (Html.BeginForm("Settings", "Volunteer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
-    <form action="">
-        <p>Can Contact </p>
-        <div>
-            @Html.LabelFor(m => m.CanContact, "Do not contact")
-            @Html.RadioButtonFor(m => m.CanContact, "0")
-        </div>
-        <div>
-            @Html.LabelFor(m => m.CanContact, "Feel free to contact ")
-            @Html.RadioButtonFor(m => m.CanContact, "1")
-        </div>
-        <br />
-        <p>Can See</p>
+    <hr />
 
-        <div>
-            @Html.LabelFor(m => m.CanSee, "Do not show user name")
-            @Html.RadioButtonFor(m => m.CanSee, "0")
-        </div>
-        <div>
-            @Html.LabelFor(m => m.CanSee, "Feel free to show username")
-            @Html.RadioButtonFor(m => m.CanSee, "1")
-        </div>
-        <br />
-        <p>Can Refer</p>
+    <div class="blueBorder greyBox" style="width:400px; margin-left:10%">
+        <div style="margin:15px">
+            <form >
+                <h3><b>Allow Help.Hub to contact me</b></h3>
+                <h5><b>This will allow Organizations on Help.Hub to be able to contact you with opportiunity details, questions, or updates right your e-mail.</b></h5>
+                <div>
+                    @Html.LabelFor(m => m.CanContact, "Do not contact me")
+                    @Html.RadioButtonFor(m => m.CanContact, "0")
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.CanContact, "Feel free to contact me ")
+                    @Html.RadioButtonFor(m => m.CanContact, "1")
+                </div>
+                <br />
+                <br />
 
-        <div>
-            @Html.LabelFor(m => m.CanRefer, "Do not send references")
-            @Html.RadioButtonFor(m => m.CanRefer, "0")
-        </div>
-        <div>
-            @Html.LabelFor(m => m.CanRefer, "Feel free to refer")
-            @Html.RadioButtonFor(m => m.CanRefer, "1")
-        </div>
-        <button type="submit">Submit Settings</button>
+                <h3><b>Allow Organizations and Volunteers to see me</b></h3>
+                <h5><b>This will let Organizations and other Volunteers see your username when you set an interest for an event</b></h5>
+                <div>
+                    @Html.LabelFor(m => m.CanSee, "Hide my username")
+                    @Html.RadioButtonFor(m => m.CanSee, "0")
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.CanSee, "Let me be seen!")
+                    @Html.RadioButtonFor(m => m.CanSee, "1")
+                </div>
+                <br />
+                <br />
+                <h3><b>Allow Help.Hub so send me opportunities</b></h3>
+                <h5><b>When you set your skill levels, the will let Help.Hub search it's database for Opportunities that need your help and update it right to your Hub!</b></h5>
+                <div>
+                    @Html.LabelFor(m => m.CanRefer, "Do not send references")
+                    @Html.RadioButtonFor(m => m.CanRefer, "0")
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.CanRefer, "Sure! That sounds great!")
+                    @Html.RadioButtonFor(m => m.CanRefer, "1")
+                </div>
+                <br />
+                <br />
+                <button type="submit" class="yellowButton">Submit Settings</button>
+                
 
-        </form>
+            </form>
+            <input type="button" class ="yellowButton" value="Back to MyHub" onclick="location.href='@Url.Action("Index", "Volunteer")'" />
+            <br />
+            <br />
+        </div>
+    </div>
 }
+</div>
 
 
 
 
-        <li>@Html.ActionLink("Back to my Profile", "Index", "Volunteer")</li>

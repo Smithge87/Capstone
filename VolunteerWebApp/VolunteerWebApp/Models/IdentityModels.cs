@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 
 namespace VolunteerWebApp.Models
 {
@@ -15,6 +16,8 @@ namespace VolunteerWebApp.Models
         public string OrganizationName { get; set; }
         public string UserTitle { get; set; }
         public string ProfilePhoto { get; set; }
+        public string LogoImgSrc { get; set; }
+        public List<float> GeoLocation { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

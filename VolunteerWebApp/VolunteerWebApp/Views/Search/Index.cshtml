@@ -68,15 +68,39 @@
             zoom: 8
         });
 
+        @foreach (var org in Model.Organizations)
+        {
+           @:var contentString = '@Html.ActionLink("MoreInfo","PartialProfile","Organization", new {id=org.Id},  null)'
+           @:addOrg(@org.GeoLocation[0], @org.GeoLocation[1], '@org.OrganizationName', contentString, '@org.LogoImgSrc' )
+        }
+
 
 
         @foreach (var item in Model.cleanOpps)
         {
            @:var contentString = "<h2 id='firstHeading' class='firstHeading'><b>" + '@item.Title' + "</b></h2><br>"+'@item.AboutShort'+"<br>"+'@Html.ActionLink("MoreInfo","FullView","Organization", new {id=item.ID},  null)';
-            @:addPin(@item.GeoLocation[0], @item.GeoLocation[1], '@item.Title', contentString, '@item.LogoSrc' )
-                                }
+                    @:addPin(@item.GeoLocation[0], @item.GeoLocation[1], '@item.Title', contentString, '@item.LogoSrc' )
+                                        }
         infowindow = new google.maps.InfoWindow({
             content: "loading..."
+        });
+    }
+
+
+    function addOrg(latitude, longitude, Title, Info, Image) {
+        var marker = new google.maps.Marker({
+            position: { lat: latitude, lng: longitude },
+            map: map,
+            icon : Image,
+            title : Title,
+            html : Info
+        });
+
+        var content = "loading content";
+
+        google.maps.event.addListener(marker, "click", function () {
+            infowindow.setContent(this.html);
+            infowindow.open(map, this);
         });
     }
 
@@ -86,7 +110,6 @@
             position: { lat: latitude, lng: longitude },
             label: labels[labelIndex++ % labels.length],
             map: map,
-            icon: Image,
             title : Title,
             html : Info
         });
