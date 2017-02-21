@@ -165,7 +165,15 @@ namespace VolunteerWebApp.Controllers
             var currentUserName = User.Identity.Name;
             var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
             var currentSettings = _context.VolunteerSettings.FirstOrDefault(m => m.UserId == currentUser.Email);
-            var conflictOfInterest = _context.Interest.FirstOrDefault(m => m.VolunteerId == currentUser.Email);
+            List<Interest> conflicts = new List<Interest>();
+            foreach (var interest in _context.Interest)
+            {
+                if (interest.VolunteerId == currentUser.Email)
+                {
+                    conflicts.Add(interest);
+                }
+            }
+            var conflictOfInterest = conflicts.FirstOrDefault(m => m.OpportunityId == currentOpp.ID);
             if (conflictOfInterest != null)
             {
                 conflictOfInterest.InterestLevel = model.InterestSet;
