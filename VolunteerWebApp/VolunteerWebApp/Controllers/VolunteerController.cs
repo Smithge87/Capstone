@@ -1,4 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using Microsoft.AspNet.Identity.EntityFramework;
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,6 +11,7 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using VolunteerWebApp.Models;
+using System.Net;
 
 namespace VolunteerWebApp.Controllers
 { 
@@ -153,12 +159,12 @@ namespace VolunteerWebApp.Controllers
                         AboutInfo = model.AboutInfo
                     };
                     _context.Address.Add(newAddress);
+                    _context.SaveChanges();
+                    return RedirectToAction("Settings", "Volunteer");
                 }
                 _context.SaveChanges();
-                return RedirectToAction("Index", "Volunteer");
-
             }
-            return View(model);
+            return RedirectToAction("Index", "Volunteer");
         }
         public ActionResult Skills()
         {
@@ -303,6 +309,8 @@ namespace VolunteerWebApp.Controllers
                 currentSettings.CanContact = tempContact ;
                 currentSettings.CanSee = tempSee;
                 currentSettings.CanRefer = tempRefer;
+                _context.SaveChanges();
+                return RedirectToAction("Index", "Volunteer");
             }
             else
             {
@@ -316,8 +324,7 @@ namespace VolunteerWebApp.Controllers
                 _context.VolunteerSettings.Add(newSettings);
             }
             _context.SaveChanges();
-
-            return RedirectToAction("Index", "Volunteer");
+            return RedirectToAction("LogOffRegistration", "Account");
         }
         public ActionResult AddPhoto()
         {
@@ -386,52 +393,55 @@ namespace VolunteerWebApp.Controllers
             List<Opportunity> allOpps = _context.Opportunity.ToList();
             foreach (var need in _context.SkillsNeeded)
             {
-                if (need.Category == "Animal Services" && need.SkillLevel == userSkill.AnimalSkill)
+                if (userSkill != null)
                 {
-                    var wantedOpp = allOpps.FirstOrDefault(m => m.ID == need.OpportunityId);
-                    if (referOpps.Contains(wantedOpp) == false)
+                    if (need.Category == "Animal Services" && need.SkillLevel == userSkill.AnimalSkill)
                     {
-                        referOpps.Add(wantedOpp);
+                        var wantedOpp = allOpps.FirstOrDefault(m => m.ID == need.OpportunityId);
+                        if (referOpps.Contains(wantedOpp) == false)
+                        {
+                            referOpps.Add(wantedOpp);
+                        }
                     }
-                }
-                if (need.Category == "Disaster Preperation" && need.SkillLevel == userSkill.DisasterSkill)
-                {
-                    var wantedOpp = allOpps.FirstOrDefault(m => m.ID == need.OpportunityId);
-                    if (referOpps.Contains(wantedOpp) == false)
+                    if (need.Category == "Disaster Preperation" && need.SkillLevel == userSkill.DisasterSkill)
                     {
-                        referOpps.Add(wantedOpp);
+                        var wantedOpp = allOpps.FirstOrDefault(m => m.ID == need.OpportunityId);
+                        if (referOpps.Contains(wantedOpp) == false)
+                        {
+                            referOpps.Add(wantedOpp);
+                        }
                     }
-                }
-                if (need.Category == "Education" && need.SkillLevel == userSkill.EducationSkill)
-                {
-                    var wantedOpp = allOpps.FirstOrDefault(m => m.ID == need.OpportunityId);
-                    if (referOpps.Contains(wantedOpp) == false)
+                    if (need.Category == "Education" && need.SkillLevel == userSkill.EducationSkill)
                     {
-                        referOpps.Add(wantedOpp);
+                        var wantedOpp = allOpps.FirstOrDefault(m => m.ID == need.OpportunityId);
+                        if (referOpps.Contains(wantedOpp) == false)
+                        {
+                            referOpps.Add(wantedOpp);
+                        }
                     }
-                }
-                if (need.Category == "Enviornment" && need.SkillLevel == userSkill.EnviornmentSkill)
-                {
-                    var wantedOpp = allOpps.FirstOrDefault(m => m.ID == need.OpportunityId);
-                    if (referOpps.Contains(wantedOpp) == false)
+                    if (need.Category == "Enviornment" && need.SkillLevel == userSkill.EnviornmentSkill)
                     {
-                        referOpps.Add(wantedOpp);
+                        var wantedOpp = allOpps.FirstOrDefault(m => m.ID == need.OpportunityId);
+                        if (referOpps.Contains(wantedOpp) == false)
+                        {
+                            referOpps.Add(wantedOpp);
+                        }
                     }
-                }
-                if (need.Category == "Health" && need.SkillLevel == userSkill.HealthSkill)
-                {
-                    var wantedOpp = allOpps.FirstOrDefault(m => m.ID == need.OpportunityId);
-                    if (referOpps.Contains(wantedOpp) == false)
+                    if (need.Category == "Health" && need.SkillLevel == userSkill.HealthSkill)
                     {
-                        referOpps.Add(wantedOpp);
+                        var wantedOpp = allOpps.FirstOrDefault(m => m.ID == need.OpportunityId);
+                        if (referOpps.Contains(wantedOpp) == false)
+                        {
+                            referOpps.Add(wantedOpp);
+                        }
                     }
-                }
-                if (need.Category == "Human Services" && need.SkillLevel == userSkill.HumanServicesSkill)
-                {
-                    var wantedOpp = allOpps.FirstOrDefault(m => m.ID == need.OpportunityId);
-                    if (referOpps.Contains(wantedOpp) == false)
+                    if (need.Category == "Human Services" && need.SkillLevel == userSkill.HumanServicesSkill)
                     {
-                        referOpps.Add(wantedOpp);
+                        var wantedOpp = allOpps.FirstOrDefault(m => m.ID == need.OpportunityId);
+                        if (referOpps.Contains(wantedOpp) == false)
+                        {
+                            referOpps.Add(wantedOpp);
+                        }
                     }
                 }
             }

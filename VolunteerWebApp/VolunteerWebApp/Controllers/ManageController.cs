@@ -337,7 +337,7 @@ namespace VolunteerWebApp.Controllers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
-        private IAuthenticationManager AuthenticationManager
+        public IAuthenticationManager AuthenticationManager
         {
             get
             {

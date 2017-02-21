@@ -427,7 +427,11 @@ namespace VolunteerWebApp.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
-
+        public ActionResult LogOffRegistration()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Login", "Account");
+        }
         //
         // POST: /Account/LogOff
         [HttpPost]
@@ -470,7 +474,7 @@ namespace VolunteerWebApp.Controllers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
-        private IAuthenticationManager AuthenticationManager
+        public IAuthenticationManager AuthenticationManager
         {
             get
             {
