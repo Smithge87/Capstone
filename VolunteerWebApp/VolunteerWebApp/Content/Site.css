@@ -77,12 +77,11 @@ a:hover
 #menuToggle span
 {
   display: block;
-  width: 50px;
-  height: 10px;
+  width: 55px;
+  height: 12px;
   margin-bottom: 5px;
   position: relative;
-
-  background: #ffe066;
+  background: #ffa64d;
   border-radius: 3px;
 
   z-index: 1;

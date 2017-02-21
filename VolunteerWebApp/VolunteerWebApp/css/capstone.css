@@ -3,24 +3,36 @@
     background: #eee;
 }
 
-body{
-  background-color: #d5ff80;
-  background-image: url("../images/northernlights4.jpeg");
+/*body{
+  background-image: url("../images/logo.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position: left;
 
+}*/
+.logoOne{
+  background-image: url("../images/logo.jpeg");
+  background-repeat: no-repeat;
+  background-size: 500px 500px;
 }
 .roundTable{
  border: 2px solid;
   border-radius: 10px;
   border-color: rgba(0 , 0 , 0, 1);
 }
+.blackBorder{
+  border-width: 1px;
+  border-color: black;
+  border-style: solid;
+}
 .yellowButton{
-  background-color: #ffe066;
-  border-radius: 10px;
+  background-color: #668cff;
+  border-radius: 5px;
   border-color: black;
   border-style: double;
 }
 .greyBox{
-  background-color: rgba(242,242,242,.6);
+  background-color: rgba(255, 255, 230,.6);
 }
 
 .blueBox{
@@ -30,7 +42,6 @@ body{
   border-style: solid;
   border-color:#000066;
   border-width: 5px;
-  border-radius: 10px;
 }
 .tablePadding{
   padding:5px;
@@ -43,4 +54,21 @@ body{
 }
 .tableHeadText{
   font-size: 20px;
+}
+.containered{width:100%;}
+.left{float:left;}
+.right{float:right;}
+.center{margin:0 auto;}
+
+.Row{
+  display:table;
+  margin-bottom:20px;
+}
+.Column{
+  display:table-cell;
+}
+.skillBox{
+  display: none;
+  height: 100px;
+  width: 200px;
 }

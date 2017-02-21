@@ -6,77 +6,80 @@
 <link rel="stylesheet" type="text/css" href="../css/capstone.css">
 
 
-<h2 class="yellowText"><b>My Basic Info</h2>
+<h1 class=""><b>My  Contact Information</b></h1>
 
-@using (Html.BeginForm("Info", "Volunteer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <hr />
-    <div class="blueBorder greyBox" style="width:500px">
-        <div style="margin:15px">
-            @Html.ValidationSummary("", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(m => m.UserTitle, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.UserTitle, new { @class = "form-control" })
+<div class="logoOne">
+    <div style="margin:60px; padding-top:100px">
+        @using (Html.BeginForm("Info", "Volunteer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="greyBox" style="width:700px; margin-left:10%; padding-top:20px">
+                <div style="margin:15px">
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UserTitle, new { @class = "col-md-2 control-label " })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.UserTitle, new { @class = "form-control blackBorder" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control blackBorder" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control blackBorder" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control blackBorder" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.StreetAddress, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.StreetAddress, new { @class = "form-control blackBorder" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.City, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.City, new { @class = "form-control blackBorder" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Address.StateId, "State", new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(m => m.Address.StateId, new SelectList(Model.StateList, "ID", "States"), "", new { @class = "form-control blackBorder" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Zipcode, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10"> 
+                            @Html.TextBoxFor(m => m.Zipcode, new { @class = "form-control blackBorder" })
+                        </div>
+                    </div>
+                    <br />
+                    <p style="margin-left:30px">Tell us a little bit about yourself</p>
+                    <div class="form-group" style="margin-left:110px">
+                        @Html.TextAreaFor(m => m.AboutInfo, new { @style = "width:900px; height:100px" })
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button type="submit" class="yellowButton">Submit Settings</button>
+                            <input type="button"  class="yellowButton" style="margin-left:20px" value="Back to MyHub" onclick="location.href='@Url.Action("Index", "Volunteer")'" />
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.StreetAddress, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.StreetAddress, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.City, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Address.StateId, "State", new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.DropDownListFor(m => m.Address.StateId, new SelectList(Model.StateList, "ID", "States"), "", new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Zipcode, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Zipcode, new { @class = "form-control" })
-                </div>
-            </div>
-            <br />
-            <p>Tell us a little bit about yourself</p>
-            <div>
-                @Html.TextAreaFor(m => m.AboutInfo)
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-default" value="Register" />
-                </div>
-            </div>
-        </div>
-        </div>
 
-}
+        }
+    </div>
+</div>
 
 
-<li>@Html.ActionLink("Back to my Profile", "Index", "Volunteer")</li>

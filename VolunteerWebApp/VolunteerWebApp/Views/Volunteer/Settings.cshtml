@@ -7,64 +7,59 @@
 
 
 
-<h1 class="yellowText" style="margin-left:50px"><b>Contact Settings</b></h1>
+<h1 class=""><b>Contact Settings</b></h1>
 <br />
 <br />
-<div>
-@using (Html.BeginForm("Settings", "Volunteer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    <hr />
+<div class="logoOne">
+    <div style="margin:60px; padding-top:120px">
+        @using (Html.BeginForm("Settings", "Volunteer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
 
-    <div class="blueBorder greyBox" style="width:400px; margin-left:10%">
-        <div style="margin:15px">
-            <form >
-                <h3><b>Allow Help.Hub to contact me</b></h3>
-                <h5><b>This will allow Organizations on Help.Hub to be able to contact you with opportiunity details, questions, or updates right your e-mail.</b></h5>
-                <div>
-                    @Html.LabelFor(m => m.CanContact, "Do not contact me")
-                    @Html.RadioButtonFor(m => m.CanContact, "0")
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.CanContact, "Feel free to contact me ")
-                    @Html.RadioButtonFor(m => m.CanContact, "1")
-                </div>
-                <br />
-                <br />
+            <div class="greyBox" style="width:400px; margin-left:10%">
+                <div style="margin:15px">
+                    <form>
+                        <h3><b>Allow Help.Hub to contact me</b></h3>
+                        <div>
+                            @Html.LabelFor(m => m.CanContact, "Do not contact me")
+                            @Html.RadioButtonFor(m => m.CanContact, "0")
+                        </div>
+                        <div>
+                            @Html.LabelFor(m => m.CanContact, "Feel free to contact me ")
+                            @Html.RadioButtonFor(m => m.CanContact, "1")
+                        </div>
+                        <br />
+                        <h3><b>Allow Organizations and Volunteers to see me</b></h3>
+                        <div>
+                            @Html.LabelFor(m => m.CanSee, "Hide my username")
+                            @Html.RadioButtonFor(m => m.CanSee, "0")
+                        </div>
+                        <div>
+                            @Html.LabelFor(m => m.CanSee, "Let me be seen!")
+                            @Html.RadioButtonFor(m => m.CanSee, "1")
+                        </div>
+                        <br />
+                        <h3><b>Allow Help.Hub so send me opportunities</b></h3>
+                        <div>
+                            @Html.LabelFor(m => m.CanRefer, "Do not send references")
+                            @Html.RadioButtonFor(m => m.CanRefer, "0")
+                        </div>
+                        <div>
+                            @Html.LabelFor(m => m.CanRefer, "Sure! That sounds great!")
+                            @Html.RadioButtonFor(m => m.CanRefer, "1")
+                        </div>
+                        <br />
+                        <br />
+                        <button type="submit" style="margin-right:40px" class="yellowButton">Submit Settings</button>
 
-                <h3><b>Allow Organizations and Volunteers to see me</b></h3>
-                <h5><b>This will let Organizations and other Volunteers see your username when you set an interest for an event</b></h5>
-                <div>
-                    @Html.LabelFor(m => m.CanSee, "Hide my username")
-                    @Html.RadioButtonFor(m => m.CanSee, "0")
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.CanSee, "Let me be seen!")
-                    @Html.RadioButtonFor(m => m.CanSee, "1")
-                </div>
-                <br />
-                <br />
-                <h3><b>Allow Help.Hub so send me opportunities</b></h3>
-                <h5><b>When you set your skill levels, the will let Help.Hub search it's database for Opportunities that need your help and update it right to your Hub!</b></h5>
-                <div>
-                    @Html.LabelFor(m => m.CanRefer, "Do not send references")
-                    @Html.RadioButtonFor(m => m.CanRefer, "0")
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.CanRefer, "Sure! That sounds great!")
-                    @Html.RadioButtonFor(m => m.CanRefer, "1")
-                </div>
-                <br />
-                <br />
-                <button type="submit" class="yellowButton">Submit Settings</button>
-                
 
-            </form>
-            <input type="button" class ="yellowButton" value="Back to MyHub" onclick="location.href='@Url.Action("Index", "Volunteer")'" />
-            <br />
-            <br />
-        </div>
+                    </form>
+                    <input type="button" class="yellowButton" value="Back to MyHub" onclick="location.href='@Url.Action("Index", "Volunteer")'" />
+                    <br />
+                    <br />
+                </div>
+            </div>
+        }
     </div>
-}
 </div>
 
 

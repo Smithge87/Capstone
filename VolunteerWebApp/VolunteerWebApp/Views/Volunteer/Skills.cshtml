@@ -3,207 +3,235 @@
     ViewBag.Title = "Skills";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>My Skills</h2>
-@using (Html.BeginForm("Skills", "Volunteer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    <p>Animal Services </p>
-    <form>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starOne('IdOne','IdTwo','IdThree','IdFour','IdFive')" type="radio" name="Animal" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdOne">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starTwo('IdOne', 'IdTwo', 'IdThree', 'IdFour', 'IdFive')" type="radio" name="Animal" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdTwo">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starThree('IdOne', 'IdTwo', 'IdThree', 'IdFour', 'IdFive')" type="radio" name="Animal" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent"  id="IdThree">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starFour('IdOne', 'IdTwo', 'IdThree', 'IdFour', 'IdFive')" type="radio" name="Animal" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent"  id="IdFour">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starFive('IdOne', 'IdTwo', 'IdThree', 'IdFour', 'IdFive')" type="radio" name="Animal" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdFive">
-        </label>
-        <br /><br />
-
-        <button onclick="showBox('AnimalBox')" type="button">Add Description of skills</button>
-        <br />
-        @Html.TextAreaFor(m => m.AboutAnimal, new { style = "visibility:hidden", id = "AnimalBox" })
+<link rel="stylesheet" type="text/css" href="../css/capstone.css">
 
 
+<h1><b>My Personal Skill Levels</b></h1>
+<br />
+<br />
+<div class="logoOne">
+    <div style="margin:60px; padding-top:120px">
+        @using (Html.BeginForm("Skills", "Volunteer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <div class="greyBox" style="width:900px; margin-left:10%; padding-left:20px">
+                <form>
+                    <div class="Row">
+                        <div class="Column" style="width:290px">
+                            <h3><b>Animal Services</b> </h3>
 
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starOne('IdOne','IdTwo','IdThree','IdFour','IdFive')" type="radio" name="Animal" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdOne">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starTwo('IdOne', 'IdTwo', 'IdThree', 'IdFour', 'IdFive')" type="radio" name="Animal" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdTwo">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starThree('IdOne', 'IdTwo', 'IdThree', 'IdFour', 'IdFive')" type="radio" name="Animal" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdThree">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starFour('IdOne', 'IdTwo', 'IdThree', 'IdFour', 'IdFive')" type="radio" name="Animal" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdFour">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starFive('IdOne', 'IdTwo', 'IdThree', 'IdFour', 'IdFive')" type="radio" name="Animal" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="IdFive">
+                            </label>
+                            <br /><br />
 
-        <br /><br />
-        <p>Disaster Services </p>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starOne('DisasterOne', 'DisasterTwo', 'DisasterThree', 'DisasterFour', 'DisasterFive')" type="radio" name="Disaster" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="DisasterOne">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starTwo('DisasterOne', 'DisasterTwo', 'DisasterThree', 'DisasterFour', 'DisasterFive')" type="radio" name="Disaster" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="DisasterTwo">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starThree('DisasterOne', 'DisasterTwo', 'DisasterThree', 'DisasterFour', 'DisasterFive')" type="radio" name="Disaster" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="DisasterThree">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starFour('DisasterOne', 'DisasterTwo', 'DisasterThree', 'DisasterFour', 'DisasterFive')" type="radio" name="Disaster" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="DisasterFour">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starFive('DisasterOne', 'DisasterTwo', 'DisasterThree', 'DisasterFour', 'DisasterFive')" type="radio" name="Disaster" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="DisasterFive">
-        </label>
-        <br /><br />
+                            <button onclick="showBox('AnimalBox')" class="yellowButton" type="button">Add Description of skills</button>
+                            <br />
+                            <br />
+                            @Html.TextAreaFor(m => m.AboutAnimal, new { @class="skillBox", id = "AnimalBox" })
+                        </div>
 
-        <button onclick="showBox('DisasterBox')" type="button">Add Description of skills</button>
-        <br />
-        @Html.TextAreaFor(m => m.AboutDisaster, new { style = "visibility:hidden", id = "DisasterBox" })
+                        <div class="Column" style="width:290px">
+                            <h3><b>Disaster Services</b> </h3>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starOne('DisasterOne', 'DisasterTwo', 'DisasterThree', 'DisasterFour', 'DisasterFive')" type="radio" name="Disaster" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="DisasterOne">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starTwo('DisasterOne', 'DisasterTwo', 'DisasterThree', 'DisasterFour', 'DisasterFive')" type="radio" name="Disaster" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="DisasterTwo">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starThree('DisasterOne', 'DisasterTwo', 'DisasterThree', 'DisasterFour', 'DisasterFive')" type="radio" name="Disaster" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="DisasterThree">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starFour('DisasterOne', 'DisasterTwo', 'DisasterThree', 'DisasterFour', 'DisasterFive')" type="radio" name="Disaster" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="DisasterFour">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starFive('DisasterOne', 'DisasterTwo', 'DisasterThree', 'DisasterFour', 'DisasterFive')" type="radio" name="Disaster" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="DisasterFive">
+                            </label>
 
-        <br /><br />
-        <p>Education Services </p>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starOne('EducationOne', 'EducationTwo', 'EducationThree', 'EducationFour', 'EducationFive')" type="radio" name="Education" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EducationOne">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starTwo('EducationOne', 'EducationTwo', 'EducationThree', 'EducationFour', 'EducationFive')" type="radio" name="Education" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EducationTwo">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starThree('EducationOne', 'EducationTwo', 'EducationThree', 'EducationFour', 'EducationFive')" type="radio" name="Education" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EducationThree">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starFour('EducationOne', 'EducationTwo', 'EducationThree', 'EducationFour', 'EducationFive')" type="radio" name="Education" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EducationFour">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starFive('EducationOne', 'EducationTwo', 'EducationThree', 'EducationFour', 'EducationFive')" type="radio" name="Education" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EducationFive">
-        </label>
-        <br /><br />
+                            <br /><br />
 
-        <button onclick="showBox('EducationBox')" type="button">Add Description of skills</button>
-        <br />
-        @Html.TextAreaFor(m => m.AboutEducation, new { style = "visibility:hidden", id = "EducationBox" })
+                            <button onclick="showBox('DisasterBox')" class="yellowButton" type="button">Add Description of skills</button>
+                            <br />
+                            <br />
+                            @Html.TextAreaFor(m => m.AboutDisaster, new { @class = "skillBox", id = "DisasterBox" })
+                        </div>
 
-        <br /><br />
-        <p>Enviornment Services </p>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starOne('EnviornmentOne', 'EnviornmentTwo', 'EnviornmentThree', 'EnviornmentFour', 'EnviornmentFive')" type="radio" name="Enviornment" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EnviornmentOne">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starTwo('EnviornmentOne', 'EnviornmentTwo', 'EnviornmentThree', 'EnviornmentFour', 'EnviornmentFive')" type="radio" name="Enviornment" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EnviornmentTwo">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starThree('EnviornmentOne', 'EnviornmentTwo', 'EnviornmentThree', 'EnviornmentFour', 'EnviornmentFive')" type="radio" name="Enviornment" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EnviornmentThree">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starFour('EnviornmentOne', 'EnviornmentTwo', 'EnviornmentThree', 'EnviornmentFour', 'EnviornmentFive')" type="radio" name="Enviornment" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EnviornmentFour">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starFive('EnviornmentOne', 'EnviornmentTwo', 'EnviornmentThree', 'EnviornmentFour', 'EnviornmentFive')" type="radio" name="Enviornment" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EnviornmentFive">
-        </label>
-        <br /><br />
-
-        <button onclick="showBox('EnviornmentBox')" type="button">Add Description of skills</button>
-        <br />
-        @Html.TextAreaFor(m => m.AboutEnviornment, new { style = "visibility:hidden", id = "EnviornmentBox" })
+                        <div class="Column" style="width:290px">
+                            <h3><b>Education Services </b></h3>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starOne('EducationOne', 'EducationTwo', 'EducationThree', 'EducationFour', 'EducationFive')" type="radio" name="Education" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EducationOne">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starTwo('EducationOne', 'EducationTwo', 'EducationThree', 'EducationFour', 'EducationFive')" type="radio" name="Education" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EducationTwo">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starThree('EducationOne', 'EducationTwo', 'EducationThree', 'EducationFour', 'EducationFive')" type="radio" name="Education" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EducationThree">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starFour('EducationOne', 'EducationTwo', 'EducationThree', 'EducationFour', 'EducationFive')" type="radio" name="Education" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EducationFour">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starFive('EducationOne', 'EducationTwo', 'EducationThree', 'EducationFour', 'EducationFive')" type="radio" name="Education" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EducationFive">
+                            </label>
+                            <br />
+                            <br />
+                            <button onclick="showBox('EducationBox')" class="yellowButton" type="button">Add Description of skills</button>
+                            <br />
+                            <br />
+                            @Html.TextAreaFor(m => m.AboutEducation, new { @class = "skillBox", id = "EducationBox" })
+                        </div>
+                    </div>
 
 
 
+                    <div class="Row">
+                        <div class="Column" style="width:290px">
+                            <h3><b>Enviornment Services </b></h3>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starOne('EnviornmentOne', 'EnviornmentTwo', 'EnviornmentThree', 'EnviornmentFour', 'EnviornmentFive')" type="radio" name="Enviornment" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EnviornmentOne">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starTwo('EnviornmentOne', 'EnviornmentTwo', 'EnviornmentThree', 'EnviornmentFour', 'EnviornmentFive')" type="radio" name="Enviornment" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EnviornmentTwo">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starThree('EnviornmentOne', 'EnviornmentTwo', 'EnviornmentThree', 'EnviornmentFour', 'EnviornmentFive')" type="radio" name="Enviornment" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EnviornmentThree">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starFour('EnviornmentOne', 'EnviornmentTwo', 'EnviornmentThree', 'EnviornmentFour', 'EnviornmentFive')" type="radio" name="Enviornment" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EnviornmentFour">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starFive('EnviornmentOne', 'EnviornmentTwo', 'EnviornmentThree', 'EnviornmentFour', 'EnviornmentFive')" type="radio" name="Enviornment" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="EnviornmentFive">
+                            </label>
+                            <br /><br />
+
+                            <button onclick="showBox('EnviornmentBox')" class="yellowButton" type="button">Add Description of skills</button>
+                            <br />
+                            <br />
+                            @Html.TextAreaFor(m => m.AboutEnviornment, new { @class = "skillBox", id = "EnviornmentBox" })
+                        </div>
 
 
 
-        <br /><br />
-        <p>Health Services </p>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starOne('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthOne">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starTwo('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthTwo">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starThree('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthThree">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starFour('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthFour">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starFive('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthFive">
-        </label>
-        <br /><br />
 
-        <button onclick="showBox('HealthBox')" type="button">Add Description of skills</button>
-        <br />
-        @Html.TextAreaFor(m => m.AboutHealth, new { style = "visibility:hidden", id = "HealthBox" })
+                        <div class="Column" style="width:290px">
+                            <h3><b>Health Services </b></h3>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starOne('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthOne">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starTwo('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthTwo">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starThree('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthThree">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starFour('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthFour">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starFive('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthFive">
+                            </label>
+                            <br /><br />
 
+                            <button onclick="showBox('HealthBox')" class="yellowButton" type="button">Add Description of skills</button>
+                            <br />
+                            <br />
+                            @Html.TextAreaFor(m => m.AboutHealth, new { @class = "skillBox", id = "HealthBox" })
+                        </div>
+                        <div class="Column" style="width:290px">
+                            <h3><b>Human Services </b></h3>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starOne('HumanServicesOne', 'HumanServicesTwo', 'HumanServicesThree', 'HumanServicesFour', 'HumanServicesFive')" type="radio" name="HumanServices" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HumanServicesOne">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starTwo('HumanServicesOne', 'HumanServicesTwo', 'HumanServicesThree', 'HumanServicesFour', 'HumanServicesFive')" type="radio" name="HumanServices" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HumanServicesTwo">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starThree('HumanServicesOne', 'HumanServicesTwo', 'HumanServicesThree', 'HumanServicesFour', 'HumanServicesFive')" type="radio" name="HumanServices" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HumanServicesThree">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starFour('HumanServicesOne', 'HumanServicesTwo', 'HumanServicesThree', 'HumanServicesFour', 'HumanServicesFive')" type="radio" name="HumanServices" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HumanServicesFour">
+                            </label>
+                            <label>
+                                <input style="visibility: hidden; position: absolute;" onclick="starFive('HumanServicesOne', 'HumanServicesTwo', 'HumanServicesThree', 'HumanServicesFour', 'HumanServicesFive')" type="radio" name="HumanServices" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HumanServicesFive">
+                            </label>
+                            <br /><br />
 
-        <br /><br />
-        <p>Human Services </p>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starOne('HumanServicesOne', 'HumanServicesTwo', 'HumanServicesThree', 'HumanServicesFour', 'HumanServicesFive')" type="radio" name="HumanServices" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HumanServicesOne">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starTwo('HumanServicesOne', 'HumanServicesTwo', 'HumanServicesThree', 'HumanServicesFour', 'HumanServicesFive')" type="radio" name="HumanServices" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HumanServicesTwo">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starThree('HumanServicesOne', 'HumanServicesTwo', 'HumanServicesThree', 'HumanServicesFour', 'HumanServicesFive')" type="radio" name="HumanServices" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HumanServicesThree">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starFour('HumanServicesOne', 'HumanServicesTwo', 'HumanServicesThree', 'HumanServicesFour', 'HumanServicesFive')" type="radio" name="HumanServices" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HumanServicesFour">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starFive('HumanServicesOne', 'HumanServicesTwo', 'HumanServicesThree', 'HumanServicesFour', 'HumanServicesFive')" type="radio" name="HumanServices" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HumanServicesFive">
-        </label>
-        <br /><br />
+                            <button onclick="showBox('HumanServicesBox')" class="yellowButton" type="button">Add Description of skills</button>
+                            <br />
+                            <br />
+                            @Html.TextAreaFor(m => m.AboutHumanServices, new { @class = "skillBox", id = "HumanServicesBox" })
+                            <br />
 
-        <button onclick="showBox('HumanServicesBox')" type="button">Add Description of skills</button>
-        <br />
-        @Html.TextAreaFor(m => m.AboutHumanServices, new { style = "visibility:hidden", id = "HumanServicesBox" })
-        <br />
-        <br /><br />
-
-        <button onclick="showBox('SkillsBox')" type="button">Add A summary of your volunteer history</button>
-        <br />
-        @Html.TextAreaFor(m => m.AboutSkills, new { style = "visibility:hidden", id = "SkillsBox" })
-        <button type="submit">Submit Skills</button>
-    </form>
-}
-
-<script>
-function starOne(a,b,c,d,e) {
-  document.getElementById(a).src='../images/yellowStar.png'
-  document.getElementById(b).src = '../images/greyStar.png'
-  document.getElementById(c).src = '../images/greyStar.png'
-  document.getElementById(d).src = '../images/greyStar.png'
-  document.getElementById(e).src = '../images/greyStar.png'
-}
-function starTwo(a,b,c,d,e) {
-    document.getElementById(a).src = '../images/yellowStar.png'
-    document.getElementById(b).src = '../images/yellowStar.png'
-    document.getElementById(c).src = '../images/greyStar.png'
-    document.getElementById(d).src = '../images/greyStar.png'
-    document.getElementById(e).src = '../images/greyStar.png'
-}
-function starThree(a,b,c,d,e) {
-    document.getElementById(a).src = '../images/yellowStar.png'
-    document.getElementById(b).src = '../images/yellowStar.png'
-    document.getElementById(c).src = '../images/yellowStar.png'
-    document.getElementById(d).src = '../images/greyStar.png'
-    document.getElementById(e).src = '../images/greyStar.png'
-}
-function starFour(a,b,c,d,e) {
-    document.getElementById(a).src = '../images/yellowStar.png'
-    document.getElementById(b).src = '../images/yellowStar.png'
-    document.getElementById(c).src = '../images/yellowStar.png'
-    document.getElementById(d).src = '../images/yellowStar.png'
-    document.getElementById(e).src = '../images/greyStar.png'
-}
-function starFive(a,b,c,d,e) {
-    document.getElementById(a).src = '../images/yellowStar.png'
-    document.getElementById(b).src = '../images/yellowStar.png'
-    document.getElementById(c).src = '../images/yellowStar.png'
-    document.getElementById(d).src = '../images/yellowStar.png'
-    document.getElementById(e).src = '../images/yellowStar.png'
-}
-function showBox(Id) {
-    document.getElementById(Id).style.visibility = "visible"
-}
-</script>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <button onclick="showBox('SkillsBox')" type="button" class="yellowButton">Add A summary of your volunteer history</button>
+                    <br />
+                    <br />
+                    @Html.TextAreaFor(m => m.AboutSkills, new { style = "display:none;width:600px;height:200px", id = "SkillsBox" })
+                    <br />
+                    <input type="button" class="yellowButton" value="Back to MyHub" style="float:right; margin-right:120px" onclick="location.href='@Url.Action("Index", "Volunteer")'" />
+                    <button type="submit" class="yellowButton" style="float:right; margin-right:40px">Submit Skills</button>
+                </form>
+            </div>
+        }
+    </div>
+</div>
 
 
+                <script>
+                    function starOne(a, b, c, d, e) {
+                        document.getElementById(a).src = '../images/yellowStar.png'
+                        document.getElementById(b).src = '../images/greyStar.png'
+                        document.getElementById(c).src = '../images/greyStar.png'
+                        document.getElementById(d).src = '../images/greyStar.png'
+                        document.getElementById(e).src = '../images/greyStar.png'
+                    }
+                    function starTwo(a, b, c, d, e) {
+                        document.getElementById(a).src = '../images/yellowStar.png'
+                        document.getElementById(b).src = '../images/yellowStar.png'
+                        document.getElementById(c).src = '../images/greyStar.png'
+                        document.getElementById(d).src = '../images/greyStar.png'
+                        document.getElementById(e).src = '../images/greyStar.png'
+                    }
+                    function starThree(a, b, c, d, e) {
+                        document.getElementById(a).src = '../images/yellowStar.png'
+                        document.getElementById(b).src = '../images/yellowStar.png'
+                        document.getElementById(c).src = '../images/yellowStar.png'
+                        document.getElementById(d).src = '../images/greyStar.png'
+                        document.getElementById(e).src = '../images/greyStar.png'
+                    }
+                    function starFour(a, b, c, d, e) {
+                        document.getElementById(a).src = '../images/yellowStar.png'
+                        document.getElementById(b).src = '../images/yellowStar.png'
+                        document.getElementById(c).src = '../images/yellowStar.png'
+                        document.getElementById(d).src = '../images/yellowStar.png'
+                        document.getElementById(e).src = '../images/greyStar.png'
+                    }
+                    function starFive(a, b, c, d, e) {
+                        document.getElementById(a).src = '../images/yellowStar.png'
+                        document.getElementById(b).src = '../images/yellowStar.png'
+                        document.getElementById(c).src = '../images/yellowStar.png'
+                        document.getElementById(d).src = '../images/yellowStar.png'
+                        document.getElementById(e).src = '../images/yellowStar.png'
+                    }
+                    function showBox(Id) {
+                        document.getElementById(Id).style.display = "block"
+                    }
+                </script>
 
-<li>@Html.ActionLink("Back to my Profile", "Index", "Volunteer")</li>
+
+
