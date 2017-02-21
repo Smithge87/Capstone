@@ -7,13 +7,12 @@
 
 
 <h1 class=""><b>My  Contact Information</b></h1>
-
 <div class="logoOne">
-    <div style="margin:60px; padding-top:100px">
+    <div style="margin:60px; padding-top:80px">
         @using (Html.BeginForm("Info", "Volunteer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
             @Html.AntiForgeryToken()
-            <div class="greyBox" style="width:700px; margin-left:10%; padding-top:20px">
+            <div class="greyBox" style="width:800px; margin-left:10%; padding-top:20px">
                 <div style="margin:15px">
                     @Html.ValidationSummary("", new { @class = "text-danger" })
                     <div class="form-group">

@@ -3,17 +3,15 @@
     ViewBag.Title = "AddPhoto";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>AddPhoto</h2>
-
-    <form action="AddPhoto" method="post" enctype="multipart/form-data">
-        <fieldset>
-            <legend> Upload Image </legend>
-            <label for="Image">Image</label>
-            <input type="file" name="Image" />
-            <br />
-            <input id="photo" type="submit" value="Upload" />
-        </fieldset>
-    </form>
+<link rel="stylesheet" type="text/css" href="../css/capstone.css">
 
 
+
+
+
+<form action="AddPhoto" method="post" enctype="multipart/form-data">
+    <label class="custom-file-upload">
+        <input type="file" onchange="this.form.submit()" name="myFile" />
+        Change Photo
+    </label>
+</form>

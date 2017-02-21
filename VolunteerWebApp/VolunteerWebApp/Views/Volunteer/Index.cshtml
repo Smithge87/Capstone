@@ -25,9 +25,13 @@
         <div style="height:200px;width:200px; background-color:grey">
             </div>
     }
-
+        <form action="Volunteer/AddPhoto" method="post" enctype="multipart/form-data">
+            <label class="custom-file-upload">
+                <input type="file" onchange="this.form.submit()" name="myFile" />
+                Change Photo
+            </label>
+        </form>
         <li>@Html.ActionLink("Account Settings", "Settings", "Volunteer")</li>
-        <li> @Html.ActionLink("Add/Change a profile photo", "AddPhoto", "Volunteer")</li>
 </div>
 
 

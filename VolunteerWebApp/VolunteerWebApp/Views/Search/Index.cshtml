@@ -3,57 +3,72 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-<h2>Index</h2>
+<link rel="stylesheet" type="text/css" href="../css/capstone.css">
 
 <style>
-     /* Always set the map height explicitly to define the size of the div
+    body{
+        background-image: url("../images/logo.jpeg");
+        background-repeat:no-repeat;
+        background-size:700px 700px;
+        background-position-x:200px;
+        background-position-y:160px
+    }
+    /* Always set the map height explicitly to define the size of the div
     * element that contains the map. */
-     #map {
-         height: 200px;
-     }
+    #map {
+        height: 500px;
+    }
 </style>
+<div class="Row">
+    <div class="Column" style="width:250px">
+        <h1><b>Hub Opportunity Search</b></h1>
+    </div>
 
-@using (Html.BeginForm("FilterSearch", "Search", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Enter Hotel Details</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.KeywordFilter, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.KeywordFilter , new { @class = "form-control" })
+    @using (Html.BeginForm("FilterSearch", "Search", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+        <div class="Column" style="width:450px; padding-left:20px" >
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                <h4><b>Filter By Keyword</b></h4>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.KeywordFilter, new { @class = "form-control blackBorder" })
+                </div>
+            </div>
+            <div class="form-group">
+                <h4><b>Filter By Category</b></h4>
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.CategoryFilter, new SelectList(Model.CategoryList, "ID", "Category"), "", new { @class = "form-control blackBorder" })
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.CategoryFilter, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.CategoryFilter, new SelectList(Model.CategoryList, "ID", "Category"), "", new { @class = "form-control" })
+        <div class="Column" style="width:450px; padding-top:10px">
+                <div class="form-group">
+                    <h4><b>Filter By Organization</b></h4>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(m => m.OrganizationFilter, new SelectList(Model.OrgNames), "", new { @class = "form-control blackBorder" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h4><b>Filter By Distance</b></h4>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(m => m.DistanceFilter, new SelectList(Model.Distances, "ID", "Distance"), "", new { @class = "form-control blackBorder" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="yellowButton" value="Filter Search" style="float:right; margin-right:150px" />
+                    </div>
+                </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.OrganizationFilter, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.OrganizationFilter, new SelectList(Model.OrgNames), "", new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.DistanceFilter, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.DistanceFilter, new SelectList(Model.Distances, "ID", "Distance"), "", new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Filter Search!" />
-        </div>
-    </div>
-}
+    }
+</div>
 
 
-<div id="map"></div>
+
+
+
+<div id="map" class="blackBorder" style="border-radius: 5px"></div>
 
 <script>
     var map;
@@ -65,22 +80,22 @@
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             center: { lat: 43.0389 , lng: -87.9065 },
-            zoom: 8
+            zoom: 10
         });
 
         @foreach (var org in Model.Organizations)
         {
            @:var contentString = '@Html.ActionLink("MoreInfo","PartialProfile","Organization", new {id=org.Id},  null)'
-           @:addOrg(@org.GeoLocation[0], @org.GeoLocation[1], '@org.OrganizationName', contentString, '@org.LogoImgSrc' )
-        }
+                           @:addOrg(@org.GeoLocation[0], @org.GeoLocation[1], '@org.OrganizationName', contentString, '@org.LogoImgSrc' )
+                        }
 
 
 
         @foreach (var item in Model.cleanOpps)
         {
            @:var contentString = "<h2 id='firstHeading' class='firstHeading'><b>" + '@item.Title' + "</b></h2><br>"+'@item.AboutShort'+"<br>"+'@Html.ActionLink("MoreInfo","FullView","Organization", new {id=item.ID},  null)';
-                    @:addPin(@item.GeoLocation[0], @item.GeoLocation[1], '@item.Title', contentString, '@item.LogoSrc' )
-                                        }
+                                    @:addPin(@item.GeoLocation[0], @item.GeoLocation[1], '@item.Title', contentString, '@item.LogoSrc' )
+                                                        }
         infowindow = new google.maps.InfoWindow({
             content: "loading..."
         });
@@ -125,6 +140,5 @@
 
 </script>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABln82MFoySBkjQPoJjeVYgeoK_R_RKPE&callback=initMap"
-        >
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABln82MFoySBkjQPoJjeVYgeoK_R_RKPE&callback=initMap">
 </script>
