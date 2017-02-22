@@ -164,6 +164,7 @@ namespace VolunteerWebApp.Controllers
             {
                 if (skill.OpportunityId == id)
                 {
+                    skill.SkillImgSrc = imagePull(skill.SkillLevel);
                     skillList.Add(skill);
                 }
             }
@@ -303,6 +304,29 @@ namespace VolunteerWebApp.Controllers
                 Opportunities = orgOpps
             };
             return View(viewModel);
+        }
+        public string imagePull(string value)
+        {
+            if (value == "1")
+            {
+                return ("../images/oneStar.png");
+            }
+            else if (value == "2")
+            {
+                return ("../images/twoStar.png");
+            }
+            else if (value == "3")
+            {
+                return ("../images/threeStar.png");
+            }
+            else if (value == "4")
+            {
+                return ("../images/fourStar.png");
+            }
+            else
+            {
+                return ("../images/fiveStar.png");
+            }
         }
     }
 }

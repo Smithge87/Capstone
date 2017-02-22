@@ -35,7 +35,7 @@ a
 
 a:hover
 {
-  color: blue;
+  color: black;
 }
 
 #menuToggle
@@ -68,7 +68,7 @@ a:hover
   -webkit-touch-callout: none;
 }
 #whiteHover{
-    background-color: rgb(193, 208, 240);
+    background-color: #ffa64d;
     padding-left: 50px;
 }
 #whiteHover:hover{
@@ -108,7 +108,7 @@ a:hover
 {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
-  background: #000066;
+  background: black;
 }
 #menuToggle input:checked ~ span:nth-last-child(3)
 {
@@ -123,6 +123,7 @@ a:hover
 #menu
 {
   position: absolute;
+  height:1000px;
   width: 220px;
   margin: -110px 0 0 -90px;
   padding-bottom: 20px;
@@ -130,12 +131,12 @@ a:hover
   border-radius: 10px;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
-  background-color: rgba(255, 224, 102,.5);
+  background-color: #ffa64d;
   transform-origin: 0% 0%;
   transform: translate(-100%, 0);
   border-style:solid;
-  border-width:5px;
-  border-color: #000066;
+  border-width:2px;
+  border-color: black;
 
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
@@ -144,6 +145,7 @@ a:hover
 {
   padding: 10px 0;
   font-size: 22px;
+  font-weight:700;
 }
 
 /*

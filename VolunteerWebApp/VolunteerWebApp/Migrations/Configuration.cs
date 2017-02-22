@@ -92,11 +92,11 @@ new Models.MonthNumber { ID = 12, Month = "12" }
            );
             context.Distances.AddOrUpdate(m => m.ID,
                 new Models.Distances { ID = 1, Distance = "5 mi."},
-                new Models.Distances { ID = 1, Distance = "10 mi." },
-                new Models.Distances { ID = 1, Distance = "20 mi." },
-                new Models.Distances { ID = 1, Distance = "30 mi." },
-                new Models.Distances { ID = 1, Distance = "50 mi." },
-                new Models.Distances { ID = 1, Distance = "100 mi." }
+                new Models.Distances { ID = 2, Distance = "10 mi." },
+                new Models.Distances { ID = 3, Distance = "20 mi." },
+                new Models.Distances { ID = 4, Distance = "30 mi." },
+                new Models.Distances { ID = 5, Distance = "50 mi." },
+                new Models.Distances { ID = 6, Distance = "100 mi." }
                 );
             context.Categories.AddOrUpdate(m => m.ID,
             new Models.Categories { ID = 1, Category = "Animal Services" },

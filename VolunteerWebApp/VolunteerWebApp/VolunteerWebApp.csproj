@@ -199,6 +199,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\OpportunityController.cs" />
     <Compile Include="Controllers\OrganizationController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -342,11 +343,16 @@
     <Compile Include="Migrations\201702202031475_addedGeoLocToUser.Designer.cs">
       <DependentUpon>201702202031475_addedGeoLocToUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702221501515_FixedDistances.cs" />
+    <Compile Include="Migrations\201702221501515_FixedDistances.Designer.cs">
+      <DependentUpon>201702221501515_FixedDistances.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\Distances.cs" />
     <Compile Include="Models\Interest.cs" />
+    <Compile Include="Models\MessageViewModel.cs" />
     <Compile Include="Models\OpportunityEditViewModel.cs" />
     <Compile Include="Models\DayNumber.cs" />
     <Compile Include="Models\Information.cs" />
@@ -452,6 +458,7 @@
     <Content Include="Views\Organization\EditOpp.cshtml" />
     <Content Include="Views\Volunteer\PartialProfile.cshtml" />
     <Content Include="Views\Organization\PartialProfile.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -566,6 +573,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702202031475_addedGeoLocToUser.resx">
       <DependentUpon>201702202031475_addedGeoLocToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702221501515_FixedDistances.resx">
+      <DependentUpon>201702221501515_FixedDistances.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

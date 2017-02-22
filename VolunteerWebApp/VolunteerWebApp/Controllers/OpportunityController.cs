@@ -194,7 +194,7 @@ namespace VolunteerWebApp.Controllers
                 _context.Interest.Add(newInterest);
             }
             _context.SaveChanges();
-            return RedirectToAction("Index", "Volunteer");
+            return RedirectToAction("FullView", "Organization", new { id = currentOpp.ID});
 
         }
         public void Resize(string imageFile, string outputFile, double scaleFactor)

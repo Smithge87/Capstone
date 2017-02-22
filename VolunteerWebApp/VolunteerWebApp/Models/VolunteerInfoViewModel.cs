@@ -18,7 +18,7 @@ namespace VolunteerWebApp.Models
         public IEnumerable<State> StateList { get; set; }
         public IEnumerable<ApplicationUser> UserList { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Your must provide a First Name")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 

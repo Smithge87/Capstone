@@ -1,0 +1,29 @@
+﻿@model VolunteerWebApp.Models.MessageViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Index</h2>
+
+
+@using (Html.BeginForm("Index", "Message", FormMethod.Post, new { @class = "form-horizontal", role = "form", sender = Model.SendFrom }))
+{
+    <form>
+        <p>Message to:</p>
+        @foreach (var user in Model.SendList)
+        {
+        <p>@user.Email </p>
+        }
+
+        <p>Subject</p>
+        @Html.TextBoxFor(m => m.Subject, new { @class = "skillBox", id = "AnimalBox" })
+
+        <p>Message</p>
+        @Html.TextAreaFor(m => m.Message, new { @class = "skillBox", id = "AnimalBox" })
+
+        <button type="submit">Send</button>
+    </form>
+}

@@ -168,10 +168,22 @@ namespace VolunteerWebApp.Controllers
                 var justDist = distance.Distance;
                 var intDist = float.Parse(cleanXML(justDist));
                 List<Opportunity> wantedOpps = getDistances(currentUser, intDist);
-                foreach (var opp in wantedOpps)
+                if (filteredOpps.Count>0)
                 {
-                    filteredOpps.Add(opp);
+                    foreach( var opp in filteredOpps)
+                    {
+                        if (wantedOpps.Contains(opp)) { }
+                        else { filteredOpps.Remove(opp); }
+                    }
                 }
+                else
+                {
+                    foreach (var opp in wantedOpps)
+                    {
+                        filteredOpps.Add(opp);
+                    }
+                }
+
             }
             var distanceList = _context.Distances.ToList();
             var categoryList = _context.Categories.ToList();
