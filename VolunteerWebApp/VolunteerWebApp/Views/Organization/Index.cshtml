@@ -3,14 +3,19 @@
     ViewBag.Title = "OrganizationIndex";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" type="text/css" href="../css/capstone.css">
 
 
 <h2>Welcome @Model.ApplicationUser.OrganizationName</h2>
 
 
 <li>@Html.ActionLink("Update my Info", "Info", "Organization")</li>
-<li> @Html.ActionLink("Add/Change logo image", "AddPhoto", "Organization")</li>
-
+<form action="Organization/AddPhoto" method="post" enctype="multipart/form-data">
+    <label class="custom-file-upload">
+        <input type="file" onchange="this.form.submit()" name="myFile" />
+        Change Photo
+    </label>
+</form>
 
 @try
 {

@@ -18,7 +18,7 @@ namespace VolunteerWebApp.Models
         public List<ApplicationUser> SendList { get; set; }
 
 
-        public ApplicationUser SendFromPost { get; set; }
+        public string senderId { get; set; }
 
         [Required]
         public string Subject { get; set; }

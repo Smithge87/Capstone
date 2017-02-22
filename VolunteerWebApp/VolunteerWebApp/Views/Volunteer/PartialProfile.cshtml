@@ -3,52 +3,73 @@
     ViewBag.Title = "PartialProfile";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" type="text/css" href="../../css/capstone.css">
 
-<h2>Partial Volunteer Profile </h2>
 
-<h2>@Model.Volunteer.UserName</h2>
+<h1><b>@Model.Volunteer.UserName</b></h1>
+<br />
+<div class="logoTwo">
+    <div style="margin:60px; padding-top:80px ; padding-bottom:300px">
+        <div class="Row" style="margin-left: 80px">
+            <div class="Column" style="width: 400px">
+                <div class="greyBox" style="width:300px">
+                    <h3 ><b>About Volunteer</b></h3>
 
-<h3>About Volunteer</h3>
+                    <table>
+                        <tbody>
+                            @try
+            {
+                                <tr><td>@Model.VulunteerInfo.AboutInfo </td></tr>
+                            }
+                            catch
+                            {
+                                <tr><td>Volunteer Info has not been set yet </td></tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <br />
+                <br />
+                <div>
+                    <img src="../@Model.Volunteer.ProfilePhoto" style="height:300px" />
+                </div>
+                <br />
+                <br />
+                @if (Model.OpportunityInterest.CanContact == true)
+            {
+                    <input type="button" class="yellowButton" value="Message User" />
+                }
+                else
+                {
+                    <p>This user does not wish to be contacted</p>
+                }
+            </div>
+            <div class="Column">
+                @try
 
-<table>
-    <tbody>
-        @try
-        {
-            <tr><td>@Model.VulunteerInfo.AboutInfo </td></tr>
-        }
-        catch
-        {
-            <tr><td>Volunteer Info has not been set yet </td></tr>
-        }
-    </tbody>
-</table>
-<table>
-    <thead>
-        <tr><th> Volunteer's skills</th> </tr>
-    </thead>
-    <tbody>
-        @try
-        {
-            <tr><td>@Model.VolunteerSkills.AboutSkills</td></tr>
-            <tr><td>Animal Services Skill Level:</td><td><img src='../@Model.AnimalImageSrc' style="height:20px"></td></tr>
-            <tr><td>Disaster Prevention Skill Level:</td><td><img src='../@Model.DisasterImageSrc' style="height:20px" class="starFit"></td></tr>
-            <tr><td>Educational Services Skill Level:</td><td><img src='../@Model.EducationImageSrc' style="height:20px" class="starFit"></td></tr>
-            <tr><td>Enviornmental Services Skill Level:</td><td><img src='../@Model.EnviornmentImageSrc' style="height:20px" class="starFit"></td></tr>
-            <tr><td>Health Services Skill Level:</td><td><img src='../@Model.HealthImageSrc' style="height:20px" class="starFit"></td></tr>
-            <tr><td>Human Services Skill Level:</td><td><img src='../@Model.HumanServicesImageSrc' style="height:20px" class="starFit"></td></tr>
-        }
-        catch
-        {
-            <tr><td>Volunteer's Skills haven't been set yet </td></tr>
-        }
-    </tbody>
-</table>
+            {
+                    <h3><b>Volunteer Skills</b></h3>
+                    <div class="greyBox" style="margin:40px">
+                        <b>Animal Services Skill Level:</b> <img src='../@Model.AnimalImageSrc' style="height:25px"><br />
+                        <p style="margin-left:20px">@Model.VolunteerSkills.AboutAnimal</p><br />
+                        <b>Disaster Prevention Skill Level:</b> <img src='../@Model.DisasterImageSrc' style="height:25px" class="starFit"><br />
+                        <p style="margin-left:20px">@Model.VolunteerSkills.AboutDisaster</p><br />
+                        <b>Educational Services Skill Level:</b> <img src='../@Model.EducationImageSrc' style="height:25px" class="starFit"><br />
+                        <p style="margin-left:20px">@Model.VolunteerSkills.AboutEducation</p><br />
+                        <b>Enviornmental Services Skill Level:</b> <img src='../@Model.EnviornmentImageSrc' style="height:25px" class="starFit"><br />
+                        <p style="margin-left:20px">@Model.VolunteerSkills.AboutEnviornment</p><br />
+                        <b>Health Services Skill Level:</b> <img src='../@Model.HealthImageSrc' style="height:25px" class="starFit"><br />
+                        <p style="margin-left:20px">@Model.VolunteerSkills.AboutHealth</p><br />
+                        <b>Human Services Skill Level:</b> <img src='../@Model.HumanServicesImageSrc' style="height:25px" class="starFit">
+                        <p style="margin-left:20px">@Model.VolunteerSkills.AboutHumanServices</p><br />
+                    </div>
+                }
+                catch
+                {
+                    <p>Volunteer's Skills haven't been set yet</p>
+                }
+            </div>
+        </div>
 
-@if (Model.OpportunityInterest.CanContact == true )
-{
-    <p>Contact User Link</p>
-}
-else
-{
-    <p>This user does not wish to be contacted</p>
-}
+</div>
+</div>

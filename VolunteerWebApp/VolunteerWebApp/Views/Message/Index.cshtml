@@ -24,6 +24,11 @@
         <p>Message</p>
         @Html.TextAreaFor(m => m.Message, new { @class = "skillBox", id = "AnimalBox" })
 
+         <input value="@Model.SendFrom.Id" name="@Model.SendFrom.Id" style="display:none" />
+        @foreach (var person in Model.SendList)
+        {
+            <input type="text" value="@person.Id" name="sendTo" />
+        }
         <button type="submit">Send</button>
     </form>
 }

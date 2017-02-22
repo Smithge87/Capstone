@@ -114,8 +114,6 @@ namespace VolunteerWebApp.Controllers
             for (int i = 0; i < 100; i++)
             {
                 var tempBox = "checkBox" + i.ToString();
-                if (!string.IsNullOrEmpty(collection[tempBox]))
-                {
                     var tempRest = _context.TempSkills.Find(Ids[i]);
                     var temper = new SkillsNeeded()
                     {
@@ -127,7 +125,6 @@ namespace VolunteerWebApp.Controllers
                         SkillImgSrc = imagePull(tempRest.SkillLevel)
                     };
                     _context.SkillsNeeded.Add(temper);
-                }
             }
             _context.TempSkills.RemoveRange(_context.TempSkills);
             _context.SaveChanges();

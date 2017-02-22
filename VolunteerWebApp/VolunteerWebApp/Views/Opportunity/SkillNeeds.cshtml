@@ -3,117 +3,136 @@
     ViewBag.Title = "SkillNeeds";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" type="text/css" href="../css/capstone.css">
 
-<h2>SkillNeeds</h2>
+<style>
+        td{
+        padding:5px;
+    }
+    th{
+        padding:5px;
+    }
+</style>
 
-@using (Html.BeginForm("AddTempSkill", "Opportunity", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    <p>Add a new needed skill:</p>
 
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Category, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.Category , new SelectList(Model.CategoryList, "ID", "Category"), new { @class = "form-control" })
+<h1><b>SkillNeeds</b></h1>
+<div class="logoOne">
+    <div style="margin:60px; padding-top:80px">
+    @using (Html.BeginForm("AddTempSkill", "Opportunity", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <h2><b>Add a new need:</b></h2>
+            @Html.AntiForgeryToken()
+        <div class="greyBox" style="width:800px; margin-left:10%; padding-top:20px">
+
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.Category, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.Category, new SelectList(Model.CategoryList, "ID", "Category"), new { @class = "form-control blackBorder" })
+                </div>
+            </div>
+            <label>
+                <input style="visibility: hidden; position: absolute;" onclick="starOne('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="SkillSet" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthOne">
+            </label>
+            <label>
+                <input style="visibility: hidden; position: absolute;" onclick="starTwo('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="SkillSet" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthTwo">
+            </label>
+            <label>
+                <input style="visibility: hidden; position: absolute;" onclick="starThree('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="SkillSet" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthThree">
+            </label>
+            <label>
+                <input style="visibility: hidden; position: absolute;" onclick="starFour('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="SkillSet" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthFour">
+            </label>
+            <label>
+                <input style="visibility: hidden; position: absolute;" onclick="starFive('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="SkillSet" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthFive">
+            </label>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Amount, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.Amount, new SelectList(Model.NumberList, "ID", "Number"), new { @class = "form-control  blackBorder" })
+                </div>
+            </div>
+            <br />
+            <input type="submit" class="yellowButton" value="Add need to list" />
         </div>
-    </div>
-    <label>
-        <input style="visibility: hidden; position: absolute;" onclick="starOne('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="1"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthOne">
-    </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starTwo('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="2"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthTwo">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starThree('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="3"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthThree">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starFour('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="4"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthFour">
-        </label>
-        <label>
-            <input style="visibility: hidden; position: absolute;" onclick="starFive('HealthOne', 'HealthTwo', 'HealthThree', 'HealthFour', 'HealthFive')" type="radio" name="Health" value="5"><img src="../images/greyStar.png" style="height:30px; width:30px; cursor:pointer; border:2px solid transparent" id="HealthFive">
-        </label>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Amount, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.Amount, new SelectList(Model.NumberList, "ID", "Number"), new { @class = "form-control" })
-        </div>
-    </div>
-    <input type="submit" class="btn btn-default" value="Add to list!" />
 
-}
-
-<p>Summary of my current needs:</p>
-<p>Please check boxes you would like to keep</p>
+    }
+            <br />
+            <br />
 
 
-@using (Html.BeginForm("SkillNeeds", "Opportunity", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    <div class="container" style"width:100%">
-        <form id="skillsTable">
-            <table class="table">
-                <thead>
-                    <tr style="margin-bottom:20px">
-                        <th class="tableTitle">Add</th>
-                        <th></th>
-                        <th class="tableTitle">Category</th>
-                        <th class="tableTitle">Skill Level</th>
-                        <th class="tableTitle">Amount</th>
-                    </tr>
-                </thead>
-                @for (var i = 0; i < Model.TempSkillsList.Count(); i++)
+            <h2><b>Summary of my current needs:</b></h2>
+            <br />
+
+
+            @using (Html.BeginForm("SkillNeeds", "Opportunity", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
-                    <tbody>
-                        <tr>
-                            <td><input name="@("checkBox"+(i.ToString()))" value="true" type="checkbox" /></td>
-                            <td></td>
-                            <td>@Model.TempSkillsList.ElementAt(i).Category</td>
-                            <td><img src="@Model.TempSkillsList.ElementAt(i).SkillImgSrc" style="height:20px" /></td>
-                            <td>@Model.TempSkillsList.ElementAt(i).Amount</td>
-                        </tr>
-                    </tbody>
-                }
-            </table>
-            <button type="submit" class="btn yellowBox blackBorderSmall">Add Needs to Opportunity</button>
-        </form>
-    </div>
-}
+                <div class="container" style"width:100%">
+                    <form id="skillsTable">
+                        <table class="table greyBox tablePadding" style="border-radius:5px">
+                            <thead class="blueBox" style="text-align:center">
+                                <tr style="margin-bottom:20px">
+                                    <th></th>
+                                    <th class="tableTitle">Category</th>
+                                    <th class="tableTitle">Skill Level</th>
+                                    <th class="tableTitle">Amount</th>
+                                </tr>
+                            </thead>
+                            @for (var i = 0; i < Model.TempSkillsList.Count(); i++)
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td><input name="@("checkBox"+(i.ToString()))" value="true" type="checkbox" style="visibility:hidden" /></td>
+                                        <td>@Model.TempSkillsList.ElementAt(i).Category</td>
+                                        <td><img src="@Model.TempSkillsList.ElementAt(i).SkillImgSrc" style="height:20px" /></td>
+                                        <td>@Model.TempSkillsList.ElementAt(i).Amount</td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                        <button type="submit" class="yellowButton">Save Needs to Opportunity</button>
+                    </form>
+                </div>
 
-<script>
-function starOne(a,b,c,d,e) {
-  document.getElementById(a).src='../images/yellowStar.png'
-  document.getElementById(b).src = '../images/greyStar.png'
-  document.getElementById(c).src = '../images/greyStar.png'
-  document.getElementById(d).src = '../images/greyStar.png'
-  document.getElementById(e).src = '../images/greyStar.png'
-}
-function starTwo(a,b,c,d,e) {
-    document.getElementById(a).src = '../images/yellowStar.png'
-    document.getElementById(b).src = '../images/yellowStar.png'
-    document.getElementById(c).src = '../images/greyStar.png'
-    document.getElementById(d).src = '../images/greyStar.png'
-    document.getElementById(e).src = '../images/greyStar.png'
-}
-function starThree(a,b,c,d,e) {
-    document.getElementById(a).src = '../images/yellowStar.png'
-    document.getElementById(b).src = '../images/yellowStar.png'
-    document.getElementById(c).src = '../images/yellowStar.png'
-    document.getElementById(d).src = '../images/greyStar.png'
-    document.getElementById(e).src = '../images/greyStar.png'
-}
-function starFour(a,b,c,d,e) {
-    document.getElementById(a).src = '../images/yellowStar.png'
-    document.getElementById(b).src = '../images/yellowStar.png'
-    document.getElementById(c).src = '../images/yellowStar.png'
-    document.getElementById(d).src = '../images/yellowStar.png'
-    document.getElementById(e).src = '../images/greyStar.png'
-}
-function starFive(a,b,c,d,e) {
-    document.getElementById(a).src = '../images/yellowStar.png'
-    document.getElementById(b).src = '../images/yellowStar.png'
-    document.getElementById(c).src = '../images/yellowStar.png'
-    document.getElementById(d).src = '../images/yellowStar.png'
-    document.getElementById(e).src = '../images/yellowStar.png'
-}
+            }
+        </div>
+</div>
 
-</script>
+        <script>
+            function starOne(a, b, c, d, e) {
+                document.getElementById(a).src = '../images/yellowStar.png'
+                document.getElementById(b).src = '../images/greyStar.png'
+                document.getElementById(c).src = '../images/greyStar.png'
+                document.getElementById(d).src = '../images/greyStar.png'
+                document.getElementById(e).src = '../images/greyStar.png'
+            }
+            function starTwo(a, b, c, d, e) {
+                document.getElementById(a).src = '../images/yellowStar.png'
+                document.getElementById(b).src = '../images/yellowStar.png'
+                document.getElementById(c).src = '../images/greyStar.png'
+                document.getElementById(d).src = '../images/greyStar.png'
+                document.getElementById(e).src = '../images/greyStar.png'
+            }
+            function starThree(a, b, c, d, e) {
+                document.getElementById(a).src = '../images/yellowStar.png'
+                document.getElementById(b).src = '../images/yellowStar.png'
+                document.getElementById(c).src = '../images/yellowStar.png'
+                document.getElementById(d).src = '../images/greyStar.png'
+                document.getElementById(e).src = '../images/greyStar.png'
+            }
+            function starFour(a, b, c, d, e) {
+                document.getElementById(a).src = '../images/yellowStar.png'
+                document.getElementById(b).src = '../images/yellowStar.png'
+                document.getElementById(c).src = '../images/yellowStar.png'
+                document.getElementById(d).src = '../images/yellowStar.png'
+                document.getElementById(e).src = '../images/greyStar.png'
+            }
+            function starFive(a, b, c, d, e) {
+                document.getElementById(a).src = '../images/yellowStar.png'
+                document.getElementById(b).src = '../images/yellowStar.png'
+                document.getElementById(c).src = '../images/yellowStar.png'
+                document.getElementById(d).src = '../images/yellowStar.png'
+                document.getElementById(e).src = '../images/yellowStar.png'
+            }
+
+        </script>

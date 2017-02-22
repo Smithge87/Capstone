@@ -41,25 +41,41 @@ namespace VolunteerWebApp.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Index(MessageViewModel model, ApplicationUser sender)
+        public ActionResult Index(MessageViewModel model, FormCollection form, List<string> sendTo)
         {
-            var Sender = _context.Users.FirstOrDefault(m => m.Id == sender.Id);
+            List<string> sending = new List<string>();
+            string line;
+            System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\Jack\Desktop\helphubemail.txt");
+            while ((line = file.ReadLine()) != null)
+            {
+                sending.Add(line);
+            }
+            file.Close();
+            var subject = "";
             var message = model.Message;
-            var subject = "Help.Hub message from" + model.SendFrom.Email + "regarding" + model.Subject;
-
+            var senderId = form.AllKeys[2];
+            var sender = _context.Users.FirstOrDefault(m => m.Id == senderId);
+            if (User.IsInRole("organization"))
+            {
+                subject = "Help.Hub message from " + sender.OrganizationName + " regarding " + model.Subject;
+            }
+            else if (User.IsInRole("volunteer"))
+            {
+                subject = "Help.Hub message from " + sender.Email + " regarding " + model.Subject;
+            }
 
             var client = new SmtpClient("smtp.gmail.com", 587)
             {
                 UseDefaultCredentials = true,
-                Credentials = new NetworkCredential("helphubmessageservice@gmail.com", "Blockaway87."),
+                Credentials = new NetworkCredential(sending[0], sending[1]),
                 EnableSsl = true
             };
-            //foreach (var user in model.SendList)
-            //{
-                client.Send("helphubmessageservice@gmail.com", "smithge87@gmail.com", "test" , "testbody");
-            //}
 
-
+            foreach (var person in sendTo)
+            {
+                var actualPerson = _context.Users.FirstOrDefault(m => m.Id == person);
+                client.Send("helphubmessageservice@gmail.com", actualPerson.Email, subject, message);
+            }
 
             if (User.IsInRole("volunteer"))
             {
@@ -71,30 +87,6 @@ namespace VolunteerWebApp.Controllers
             }
             return RedirectToAction("Index", "Home");
 
-
-            //try
-            //{
-            //    WebMail.EnableSsl = true;
-            //    WebMail.SmtpUseDefaultCredentials = true;
-            //    WebMail.SmtpServer = "smtp.gmail.com";
-            //    WebMail.SmtpPort = 465;
-            //    WebMail.UserName = "smithge87";
-            //    WebMail.Password = "blockawaytub";
-            //    WebMail.From = model.SendFrom;
-
-            //    // Create array containing file name
-            //    //var filesList = new string[] { fileAttachment };
-
-            //    // Attach file and send email
-            //    WebMail.Send(to: customerEmail,
-            //        subject: subjectLine,
-            //        body: fileAttachment + customerName
-            //        /*filesToAttach: filesList*/);
-            //}
-            //catch (Exception ex)
-            //{
-            //    errorMessage = ex.Message;
-            //}
         }
 
     }

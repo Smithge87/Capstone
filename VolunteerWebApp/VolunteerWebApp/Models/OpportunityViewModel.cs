@@ -21,7 +21,7 @@ namespace VolunteerWebApp.Models
         public IEnumerable<State> StateList { get; set; }
 
         [Required]
-        [Display(Name = "Short description or opportunity")]
+        [Display(Name = "A Short description of your opportunity")]
         public string ShortDescription { get; set; }
 
         [Required]
@@ -73,7 +73,7 @@ namespace VolunteerWebApp.Models
         public string Title { get; set; }
 
         [Required]
-        [Display(Name = "Description")]
+        [Display(Name = "A detailed description of you Opportunity")]
         public string AboutOpportunity { get; set; }
 
         [Required]

@@ -62,14 +62,12 @@
 
             @if (Request.IsAuthenticated && User.IsInRole("organization"))
             {
+                <input type="button" class="yellowButton" value="Edit Opportunity" onclick="location.href='@Url.Action( "EditOpp","Organization", new { id = Model.Opportunity.ID }, null)'" />
+                <input type="button" class="yellowButton" value="Delete Opportunity" onclick="location.href='@Url.Action( "Delete","Organization",  new { id = Model.Opportunity.ID , onclick = "return confirm('Are you sure you want to delete this opportunity?');" }, null)'" />
 
                 @Html.ActionLink("Delete", "Delete",
         new { id = Model.Opportunity.ID },
         new { onclick = "return confirm('Are you sure you want to delete this opportunity?');" })
-
-                @Html.ActionLink("Edit", "EditOpp", new { id = Model.Opportunity.ID })
-
-
 
             }
 
