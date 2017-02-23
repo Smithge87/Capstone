@@ -127,37 +127,47 @@ namespace VolunteerWebApp.Controllers
             }
             var currentUserName = User.Identity.Name;
             var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
-            List<Opportunity> filteredOpps = new List<Opportunity>();
+            List<Opportunity> filteredOpps = _context.Opportunity.ToList();
             if (model.CategoryFilter != null)
             {
                 var tempcat = Int32.Parse(model.CategoryFilter);
                 var category = _context.Categories.SingleOrDefault(m => m.ID == tempcat);
                 var justCat = category.Category;
-                foreach (var opportunity in _context.Opportunity)
-                {
-                    if (opportunity.Category == justCat)
+                    for (int i = (filteredOpps.Count - 1); i >= 0; i--)
                     {
-                        filteredOpps.Add(opportunity);
+                        if (filteredOpps[i].Category == justCat)
+                        {
+                        }
+                        else
+                        {
+                            filteredOpps.RemoveAt(i);
+                        }
+                    }
+                
+            }
+            if (model.OrganizationFilter != null && filteredOpps.Count >0)
+            {
+                for (int i = (filteredOpps.Count - 1); i >= 0; i--)
+                {
+                    if (filteredOpps[i].OrganizationHostName == model.OrganizationFilter)
+                    {
+                    }
+                    else
+                    {
+                        filteredOpps.RemoveAt(i);
                     }
                 }
             }
-            if (model.OrganizationFilter != null)
+            if (model.KeywordFilter != null && filteredOpps.Count >0)
             {
-                foreach (var opportunity in _context.Opportunity)
+                for (int i = (filteredOpps.Count - 1); i >= 0; i--)
                 {
-                    if (opportunity.OrganizationHostName == model.OrganizationFilter)
+                    if (filteredOpps[i].AboutOpportunity.Contains(model.KeywordFilter))
                     {
-                        filteredOpps.Add(opportunity);
                     }
-                }
-            }
-            if (model.KeywordFilter != null)
-            {
-                foreach (var opportunity in _context.Opportunity)
-                {
-                    if (opportunity.AboutOpportunity.Contains(model.KeywordFilter) == true)
+                    else
                     {
-                        filteredOpps.Add(opportunity);
+                        filteredOpps.RemoveAt(i);
                     }
                 }
             }
@@ -168,22 +178,19 @@ namespace VolunteerWebApp.Controllers
                 var justDist = distance.Distance;
                 var intDist = float.Parse(cleanXML(justDist));
                 List<Opportunity> wantedOpps = getDistances(currentUser, intDist);
-                if (filteredOpps.Count>0)
+                if (filteredOpps.Count>0 && wantedOpps.Count>0)
                 {
-                    foreach( var opp in filteredOpps)
+                    for (int i = (filteredOpps.Count -1); i>=0;i--)
                     {
-                        if (wantedOpps.Contains(opp)) { }
-                        else { filteredOpps.Remove(opp); }
+                        if (wantedOpps.Contains(filteredOpps[i]))
+                        {
+                        }
+                        else
+                        {
+                            filteredOpps.RemoveAt(i);
+                        }
                     }
                 }
-                else
-                {
-                    foreach (var opp in wantedOpps)
-                    {
-                        filteredOpps.Add(opp);
-                    }
-                }
-
             }
             var distanceList = _context.Distances.ToList();
             var categoryList = _context.Categories.ToList();

@@ -82,7 +82,7 @@
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             center: { lat: 43.0389 , lng: -87.9065 },
-            zoom: 10
+            zoom: 11
         });
 
         @foreach (var org in Model.Organizations)
@@ -120,6 +120,11 @@
             infowindow.open(map, this);
         });
     }
+    var latlngbounds = new google.maps.LatLngBounds();
+    for (var i = 0; i < latlng.length; i++) {
+        latlngbounds.extend(latlng[i]);
+    }
+    map.fitBounds(latlngbounds);
 
 
     function addPin(latitude, longitude, Title, Info, Image) {
@@ -127,9 +132,11 @@
             position: { lat: latitude, lng: longitude },
             label: labels[labelIndex++ % labels.length],
             map: map,
+            animation: google.maps.Animation.DROP,
             title : Title,
             html : Info
         });
+    
 
         var content = "loading content";
 
@@ -137,6 +144,14 @@
             infowindow.setContent(this.html);
             infowindow.open(map, this);
         });
+        marker.addListener('click', toggleBounce);
+    }
+    function toggleBounce() {
+        if (marker.getAnimation() !== null) {
+            marker.setAnimation(null);
+        } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
     }
 
 

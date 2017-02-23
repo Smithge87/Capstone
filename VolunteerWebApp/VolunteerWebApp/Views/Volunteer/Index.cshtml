@@ -30,8 +30,8 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3" style="padding-top:40px">
-                <div class="blackBorder"style="height:250px;width:250px; background-color:grey; float:left">
-                    <img src="@Model.ApplicationUser.ProfilePhoto" style="height:100%;width:100%" />
+                <div class="blackBorder"style="height:250px;width:250px; background-color:grey; float:left;border-radius:4px">
+                    <img src="@Model.ApplicationUser.ProfilePhoto" style="height:100%;width:100%;border-radius:4px" />
                 </div>
                 <form action="Volunteer/AddPhoto" method="post" enctype="multipart/form-data">
                     <label class="custom-file-upload">
@@ -47,8 +47,8 @@
             <div class="col-sm-6" style="padding-top:40px">
                 <h3 style="text-align:center"><b>My Skills</b></h3>
                 <table style="margin-top:20px; width:100%; border-radius:5px;-moz-border-radius:10px;-webkit-border-radius:10px">
-                    <thead style="background-color:#668cff">
-                        <tr><th class="tablePadding" style="text-align:center"><h4><b>Category</b></h4></th><th><h4><b>Skill Level</b></h4></th> </tr>
+                    <thead style="background-color:#668cff;" >
+                        <tr><th class="tablePadding" style="text-align:center; border-top-left-radius:6px"><h5><b>Category</b></h5></th><th style="border-top-right-radius:6px"><h5><b>Skill Level</b></h5></th> </tr>
                     </thead>
                     <tbody class="greyBox">
                         <tr></tr>
@@ -109,12 +109,12 @@
         <table id="opps" style="width:100%">
             <thead style="background-color:#668cff">
 
-                <tr><th></th>
+                <tr><th style="border-top-left-radius:6px"></thstyle="border-top-right-radius:6px">
                 <th>Organization</th>
                 <th>Category</th>
                 <th>Date</th>
                 <th></th>
-                <th></th>
+                <th style="border-top-right-radius:6px"></th>
                 </tr>
             </thead>
             <tbody class="greyBox" style="width:100%">
@@ -148,12 +148,12 @@
             <thead style="background-color:#668cff">
 
                 <tr>
-                    <th></th>
+                    <th style="border-top-left-radius:6px"></th>
                     <th>Organization</th>
                     <th>Category</th>
                     <th>Date</th>
                     <th></th>
-                    <th></th>
+                    <th style="border-top-right-radius:6px"></th>
                 </tr>
             </thead>
             <tbody class="greyBox">

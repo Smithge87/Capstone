@@ -17,9 +17,19 @@
                 <h2><b>Message to:</b></h2>
                 <div style="margin-left:60px; padding-top:10px;padding-bottom:200px">
                     <div class="greyBox" style="width:340px">
-                        @foreach (var user in Model.SendList)
-                {
-                            <h4><b>@user.Email </b></h4>
+                        @if (User.IsInRole("organization"))
+                        {
+                            foreach (var user in Model.SendList)
+                            {
+                                <h4><b>@user.UserName </b></h4>
+                            }
+                        }
+                        else if (User.IsInRole("volunteer"))
+                        {
+                            foreach (var user in Model.SendList)
+                            {
+                                <h4><b>@user.OrganizationName </b></h4>
+                            }
                         }
                         <br />
                         <p><b>Subject</b></p>

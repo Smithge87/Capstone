@@ -35,7 +35,7 @@
     <div class="Column" style="padding-left:40px; width:20%">
         <br />
         <br />
-        <img src="../@Model.Organization.ProfilePhoto" style="height:250px" class="blackBorder" />
+        <img src="../@Model.Organization.ProfilePhoto" style="height:250px ;border-radius: 4px" class="blackBorder" />
     </div>
     <div class="Column greayBox" style="padding-left:40px;width:60%">
         <br /><br /><br /><br />
@@ -59,6 +59,12 @@
                 </div>
             </div>
         </div>
+        <br />
+        @using (Html.BeginForm("Index", "Message", FormMethod.Get))
+            {
+            <input type="text" style="display:none" name="users" value="@Model.Organization.Email" />
+            <input type="submit" class="yellowButton" style="margin-left:20px" value="Message Organization" />
+        }
     </div>
 </div>
 <div style="margin-top:40px">
@@ -66,12 +72,12 @@
     <table style="width:100%">
         <thead style="background-color:#668cff">
             <tr>
-                <th>Title</th>
+                <th style="border-top-left-radius:6px">Title</th>
                 <th>Organization</th>
                 <th>Category</th>
                 <th>Start Date</th>
                 <th>Description</th>
-                <th></th>
+                <th style="border-top-right-radius:6px"></th>
             </tr>
         </thead>
         <tbody class="greyBox">
