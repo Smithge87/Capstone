@@ -3,13 +3,9 @@
     background: #eee;
 }
 
-/*body{
-  background-image: url("../images/logo.jpeg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-position: left;
-
-}*/
+body{
+  font: georgia;
+}
 .logoOne{
   background-image: url("../images/logo.jpeg");
   background-repeat: no-repeat;

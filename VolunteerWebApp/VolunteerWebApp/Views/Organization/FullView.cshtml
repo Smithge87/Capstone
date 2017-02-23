@@ -30,7 +30,7 @@
             <h4><b>Location:</b> @Model.Opportunity.Venue</h4>
             <h4><b>Category:</b>@Model.Opportunity.Category</h4>
             <h4><b>Date:</b>@Model.Opportunity.StartMonth/@Model.Opportunity.StartDay/@Model.Opportunity.StartYear</h4>
-            <input type="button" class="yellowButton" value="View Organization Profile" onclick="location.href='@Url.Action( "PartialProfile", "Organization", new { id = Model.Opportunity.ID },null)'" /><br />
+            <input type="button" class="yellowButton" value="View Organization Profile" onclick="location.href='@Url.Action( "PartialProfile", "Organization", new { id = Model.Organization.Id },null)'" /><br />
 
         </div>
         <div class="greyBox" style="width:200px">
@@ -85,6 +85,19 @@
                     }
                 </tbody>
             </table>
+            <br />
+            <br />
+            @if (Request.IsAuthenticated && User.IsInRole("organization") && (Model.InterestedUsers.Count() > 0))
+            {
+                using (Html.BeginForm("Index", "Message", FormMethod.Get))
+                {
+                    foreach (var person in Model.InterestedUsers)
+                    {
+                        <input type="text" value="@person.VolunteerId" name="users" style="display:none" />
+                    }
+                    <input class="yellowButton" type="submit" value="Message All Users" />
+                }
+            }
         </div>
     </div>
     <div class="Column" style="width:30%; margin-left:20px;padding-left:30px">
@@ -139,10 +152,6 @@
                     </form>
                     }
                 </div>
-            }
-            else if(User.IsInRole("organization"))
-            {
-                @*<input class="yellowButton" value="Message All Users" onclick="location.href='@Html.Action("MessageAll","Message", new { users = Model.InterestedUsers.ToList()})'" />*@
             }
         </div>
     </div>

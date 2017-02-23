@@ -14,7 +14,7 @@ namespace VolunteerWebApp.Models
         {
             _context = new ApplicationDbContext();
         }
-
+        public ApplicationUser Organization { get; set; }
         public Opportunity Opportunity { get; set; }
         public IEnumerable<SkillsNeeded> SkillsNeededList { get; set; }
         public IEnumerable<Interest> InterestedUsers { get; set; }

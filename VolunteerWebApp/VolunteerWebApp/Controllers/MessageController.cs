@@ -17,14 +17,17 @@ namespace VolunteerWebApp.Controllers
         {
             _context = new ApplicationDbContext();
         }
-        // GET: Message
-        public ActionResult Index(string email)
+        [HttpGet]
+        public ActionResult Index(List<string> users)
         {
             List<ApplicationUser> sendToList = new List<ApplicationUser>();
             var currentUserName = User.Identity.Name;
             var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
-            var sendTo = _context.Users.FirstOrDefault(m => m.Email == email);
-            sendToList.Add(sendTo);
+            foreach (string email in users)
+            {
+                var sendTo = _context.Users.FirstOrDefault(m => m.Email == email);
+                sendToList.Add(sendTo);
+            }
             var viewModel = new MessageViewModel()
             {
                 SendFrom = currentUser,
@@ -33,12 +36,6 @@ namespace VolunteerWebApp.Controllers
                 Message = "",
             };
             return View(viewModel);
-        }
-        [ActionName("MessageAll")]
-        public ActionResult Index(List<string> users)
-        {
-            var banana = "banana";
-            return View();
         }
         [HttpPost]
         public ActionResult Index(MessageViewModel model, FormCollection form, List<string> sendTo)

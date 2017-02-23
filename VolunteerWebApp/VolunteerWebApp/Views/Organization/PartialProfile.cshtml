@@ -30,40 +30,62 @@
 
 
 
-<div style="max-height:400px;margin-top:40px">
+<div class="Row">
 
-    <div>
-        <img src="../@Model.Organization.ProfilePhoto" style="height:250px" />
+    <div class="Column" style="padding-left:40px; width:20%">
+        <br />
+        <br />
+        <img src="../@Model.Organization.ProfilePhoto" style="height:250px" class="blackBorder" />
     </div>
-    <div>
-        <h3>About Info</h3>
-
-        <p>@Model.OrganizationInfo.AboutInfo</p>
+    <div class="Column greayBox" style="padding-left:40px;width:60%">
+        <br /><br /><br /><br />
+        <h3 style="text-align:center"><b>About @Model.Organization.OrganizationName</b></h3>
+        <p class="greyBox" style="margin:20px;min-height:150px">@Model.OrganizationInfo.AboutInfo</p>
     </div>
-    <h3 style="text-align:center"><b>Organization Opportunities</b></h3>
+    <div class="Column" style="width:20%">
+        <div class="greyBox" style="width:200px;">
+            <br />
+            <br />
+            <h4><b>Contact Information</b></h4>
+            <br />
+            <div style="margin-left:25px">
+                <p><b>Phone:</b>@Model.Organization.PhoneNumber</p>
+                <p><b>Address:</b></p>
+                <div style="margin-left:20px">
+                    <p>@Model.OrganizationInfo.StreetAddress</p>
+                    <p>@Model.OrganizationInfo.City</p>
+                    <p>Wisconsin</p>
+                    <p>@Model.OrganizationInfo.Zipcode</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<table style="width:100%">
-    <thead style="background-color:#668cff">
-        <tr>
-            <th>Title</th>
-            <th>Organization</th>
-            <th>Category</th>
-            <th>Start Date</th>
-            <th>Description</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody class="greyBox">
-        @foreach (var opp in Model.Opportunities)
-        {
+<div style="margin-top:40px">
+    <h3 style="text-align:center"><b>Organization Opportunities</b></h3>
+    <table style="width:100%">
+        <thead style="background-color:#668cff">
             <tr>
-                <td>@opp.Title </td>
-                <td> @opp.OrganizationHostName</td>
-                <td> @opp.Category</td>
-                <td> @opp.StartMonth/ @opp.StartDay/ @opp.StartYear</td>
-                <td> @opp.AboutShort</td>
-                <td>@Html.ActionLink("View More", "FullView", new { id = opp.ID }) </td>
+                <th>Title</th>
+                <th>Organization</th>
+                <th>Category</th>
+                <th>Start Date</th>
+                <th>Description</th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody class="greyBox">
+            @foreach (var opp in Model.Opportunities)
+            {
+                <tr>
+                    <td>@opp.Title </td>
+                    <td> @opp.OrganizationHostName</td>
+                    <td> @opp.Category</td>
+                    <td> @opp.StartMonth/ @opp.StartDay/ @opp.StartYear</td>
+                    <td> @opp.AboutShort</td>
+                    <td>@Html.ActionLink("View More", "FullView", new { id = opp.ID }) </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

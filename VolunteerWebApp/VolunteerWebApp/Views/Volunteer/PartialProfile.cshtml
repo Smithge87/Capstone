@@ -31,12 +31,16 @@
                 <br />
                 <br />
                 @if (Model.OpportunityInterest.CanContact == true)
-            {
-                    <input type="button" class="yellowButton" style="margin-left:20px" value="Message Volunteer" onclick="location.href='@Url.Action("Index", "Message", new { email = @Model.Volunteer.Email } )'" />
-                           }
-                           else
-                           {
-                    <p>This user does not wish to be contacted</p>
+                {
+                    using (Html.BeginForm("Index", "Message", FormMethod.Get))
+                    {
+                        <input type="text" style="display:none" name="users" value="@Model.Volunteer.Email" />
+                    <input type="submit" class="yellowButton" style="margin-left:20px" value="Message Volunteer'" />
+                    }
+                }
+                else
+                {
+                    < p > This user does not wish to be contacted </ p >
                 }
             </div>
             <div class="Column">

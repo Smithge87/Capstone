@@ -465,9 +465,13 @@ namespace VolunteerWebApp.Controllers
             {
                 return ("../images/fourStar.png");
             }
-            else
+            else if (value == "5")
             {
                 return ("../images/fiveStar.png");
+            }
+            else
+            {
+                return ("../images/noStar.png");
             }
         }
     }

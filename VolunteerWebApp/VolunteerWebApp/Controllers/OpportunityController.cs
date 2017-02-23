@@ -106,25 +106,18 @@ namespace VolunteerWebApp.Controllers
         [HttpPost]
         public ActionResult SkillNeeds(FormCollection collection)
         {
-            List<int> Ids = new List<int>();
-            foreach (var item in _context.TempSkills)
+            foreach (var tempSkill in _context.TempSkills)
             {
-                Ids.Add(item.ID);
-            }
-            for (int i = 0; i < 100; i++)
-            {
-                var tempBox = "checkBox" + i.ToString();
-                    var tempRest = _context.TempSkills.Find(Ids[i]);
-                    var temper = new SkillsNeeded()
-                    {
-                        OpportunityId = tempRest.OpportunityId,
-                        OrganizationId = tempRest.OrganizationId,
-                        Category = tempRest.Category,
-                        SkillLevel = tempRest.SkillLevel,
-                        Amount = tempRest.Amount,
-                        SkillImgSrc = imagePull(tempRest.SkillLevel)
-                    };
-                    _context.SkillsNeeded.Add(temper);
+                var temper = new SkillsNeeded()
+                {
+                    OpportunityId = tempSkill.OpportunityId,
+                    OrganizationId = tempSkill.OrganizationId,
+                    Category = tempSkill.Category,
+                    SkillLevel = tempSkill.SkillLevel,
+                    Amount = tempSkill.Amount,
+                    SkillImgSrc = imagePull(tempSkill.SkillLevel)
+                };
+                _context.SkillsNeeded.Add(temper);
             }
             _context.TempSkills.RemoveRange(_context.TempSkills);
             _context.SaveChanges();
@@ -230,10 +223,15 @@ namespace VolunteerWebApp.Controllers
             {
                 return ("../images/fourStar.png");
             }
-            else
+            else if (value == "5")
             {
                 return ("../images/fiveStar.png");
             }
+            else
+            {
+                return ("../images/noStar.png");
+            }
+
         }
         //public ActionResult Index(int id)
         //{

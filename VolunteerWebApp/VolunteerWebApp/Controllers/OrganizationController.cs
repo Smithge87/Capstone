@@ -169,6 +169,7 @@ namespace VolunteerWebApp.Controllers
                 }
             }
             var currentOpportunity = _context.Opportunity.FirstOrDefault(m => m.ID == id);
+            var currentOrganization = _context.Users.FirstOrDefault(m => m.Email == currentOpportunity.OrganizationHostId);
             var interestedUsers = new List<Interest>();
             foreach (var interests in _context.Interest)
             {
@@ -180,6 +181,7 @@ namespace VolunteerWebApp.Controllers
             var viewModel = new OpportunityIndexViewModel()
             {
                 Opportunity = currentOpportunity,
+                Organization = currentOrganization,
                 SkillsNeededList = skillList,
                 InterestedUsers = interestedUsers,
                 oppId = currentOpportunity.ID
@@ -284,10 +286,9 @@ namespace VolunteerWebApp.Controllers
 
             return RedirectToAction("Index", "Organization");
         }
-        public ActionResult PartialProfile(int id)
+        public ActionResult PartialProfile(string id)
         {
-            var refOpportunity = _context.Opportunity.FirstOrDefault(m => m.ID == id);
-            var wantedUser = _context.Users.FirstOrDefault(m => m.Email == refOpportunity.OrganizationHostId);
+            var wantedUser = _context.Users.FirstOrDefault(m => m.Id == id);
             var wantedInfo = _context.Address.FirstOrDefault(m => m.UserId == wantedUser.Email);
             List<Opportunity> orgOpps = new List<Opportunity>();
             foreach(var opp in _context.Opportunity)
@@ -323,9 +324,13 @@ namespace VolunteerWebApp.Controllers
             {
                 return ("../images/fourStar.png");
             }
-            else
+            else if (value == "5")
             {
                 return ("../images/fiveStar.png");
+            }
+            else
+            {
+                return ("../images/noStar.png");
             }
         }
     }

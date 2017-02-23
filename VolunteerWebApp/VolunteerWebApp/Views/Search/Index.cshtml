@@ -26,23 +26,24 @@
 
     @using (Html.BeginForm("FilterSearch", "Search", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
-        <div class="Column" style="width:450px; padding-left:20px" >
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary("", new { @class = "text-danger" })
-            <div class="form-group">
-                <h4><b>Filter By Keyword</b></h4>
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.KeywordFilter, new { @class = "form-control blackBorder" })
+        <div class="greyBox">
+            <div class="Column" style="width:450px; padding-left:20px">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="form-group">
+                    <h4><b>Filter By Keyword</b></h4>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.KeywordFilter, new { @class = "form-control blackBorder" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h4><b>Filter By Category</b></h4>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(m => m.CategoryFilter, new SelectList(Model.CategoryList, "ID", "Category"), "", new { @class = "form-control blackBorder" })
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <h4><b>Filter By Category</b></h4>
-                <div class="col-md-10">
-                    @Html.DropDownListFor(m => m.CategoryFilter, new SelectList(Model.CategoryList, "ID", "Category"), "", new { @class = "form-control blackBorder" })
-                </div>
-            </div>
-        </div>
-        <div class="Column" style="width:450px; padding-top:10px">
+            <div class="Column" style="width:450px; padding-top:10px">
                 <div class="form-group">
                     <h4><b>Filter By Organization</b></h4>
                     <div class="col-md-10">
@@ -60,6 +61,7 @@
                         <input type="submit" class="yellowButton" value="Filter Search" style="float:right; margin-right:150px" />
                     </div>
                 </div>
+            </div>
         </div>
     }
 </div>
@@ -93,7 +95,7 @@
 
         @foreach (var item in Model.cleanOpps)
         {
-           @:var contentString = "<h2 id='firstHeading' class='firstHeading'><b>" + '@item.Title' + "</b></h2><br>"+'@item.AboutShort'+"<br>"+'@Html.ActionLink("MoreInfo","FullView","Organization", new {id=item.ID},  null)';
+           @:var contentString = "<h3 id='firstHeading' class='firstHeading'><b>" + '@item.Title' + "</b></h3><h4><b>"+'@item.OrganizationHostName'+"</b></h4>"+'@item.AboutShort'+"<br><br>"+'@Html.ActionLink("MoreInfo","FullView","Organization", new {id=item.ID},  null)';
                                     @:addPin(@item.GeoLocation[0], @item.GeoLocation[1], '@item.Title', contentString, '@item.LogoSrc' )
                                                         }
         infowindow = new google.maps.InfoWindow({

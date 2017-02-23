@@ -19,28 +19,28 @@
 
 @if (Request.IsAuthenticated && User.IsInRole("volunteer"))
 {
-    <a href=@Url.Action("Index", "Volunteer")><li id="whiteHover" style="padding-left:50px">My Hub</li></a>
-    <a href=@Url.Action("Index", "Home")><li id="whiteHover" style="padding-left:50px">Home</li></a>
-    <a href=@Url.Action("About", "Home")><li id="whiteHover" style="padding-left:50px">About</li></a>
-    <a href=@Url.Action("Contact", "Home")><li id="whiteHover" style="padding-left:50px">Contact</li></a>
-    <a href=@Url.Action("Index", "Search")><li id="whiteHover" style="padding-left:50px">Search</li></a>
-    <a href=@Url.Action("LogOff", "Account")><li id="whiteHover" style="padding-left:50px">Log Off</li></a>
+    <a href=@Url.Action("Index", "Volunteer")><li id="whiteHover" style="padding-left:50px; font-family:Georgia;">My Hub</li></a>
+    <a href=@Url.Action("Index", "Home")><li id="whiteHover" style="padding-left:50px; font-family:Georgia;">Home</li></a>
+    <a href=@Url.Action("About", "Home")><li id="whiteHover" style="padding-left:50px; font-family:Georgia;">About</li></a>
+    <a href=@Url.Action("Contact", "Home")><li id="whiteHover" style="padding-left:50px; font-family:Georgia;">Contact</li></a>
+    <a href=@Url.Action("Index", "Search")><li id="whiteHover" style="padding-left:50px; font-family:Georgia;">Search</li></a>
+    <a href=@Url.Action("LogOff", "Account")><li id="whiteHover" style="padding-left:50px; font-family:Georgia;">Log Off</li></a>
     }
 else if (Request.IsAuthenticated && User.IsInRole("organization"))
     {
-    <a href=@Url.Action("Index", "Organization")><li id="whiteHover" style="padding-left:50px">My Hub</li></a>
-    <a href=@Url.Action("Index", "Home")><li id="whiteHover" style="padding-left:50px">Home</li></a>
-        <a href=@Url.Action("About", "Home")><li id="whiteHover" style="padding-left:50px">About</li></a>
-        <a href=@Url.Action("Contact", "Home")><li id="whiteHover" style="padding-left:50px">Contact</li></a>
-        <a href=@Url.Action("Index", "Search")><li id="whiteHover" style="padding-left:50px">Search</li></a>
-        <a href=@Url.Action("LogOff", "Account")><li id="whiteHover" style="padding-left:50px">Log Off</li></a>
+    <a href=@Url.Action("Index", "Organization")><li id="whiteHover" style="padding-left:50px; font-family:Georgia;">My Hub</li></a>
+    <a href=@Url.Action("Index", "Home")><li id="whiteHover" style="padding-left:50px; font-family:Georgia;">Home</li></a>
+        <a href=@Url.Action("About", "Home")><li id="whiteHover" style="padding-left:50px; font-family:Georgia;">About</li></a>
+        <a href=@Url.Action("Contact", "Home")><li id="whiteHover" style="padding-left:50px; font-family:Georgia;">Contact</li></a>
+        <a href=@Url.Action("Index", "Search")><li id="whiteHover" style="padding-left:50px; font-family:Georgia;">Search</li></a>
+        <a href=@Url.Action("LogOff", "Account")><li id="whiteHover" style="padding-left:50px; font-family:Georgia;">Log Off</li></a>
 }
 else
 {
-    <a href=@Url.Action("Login","Account")><li id="whiteHover" style="padding-left:50px">Login</li></a>
-    <a href=@Url.Action("Index", "Home")><li id="whiteHover" style="padding-left:50px">Home</li></a>
-        <a href=@Url.Action("About", "Home")><li id="whiteHover" style="padding-left:50px">About</li></a>
-        <a href=@Url.Action("Contact", "Home")><li id="whiteHover" style="padding-left:50px">Contact</li></a>
+    <a href=@Url.Action("Login","Account")><li id="whiteHover" style="padding-left:50px; font-family:Georgia;">Login</li></a>
+    <a href=@Url.Action("Index", "Home")><li id="whiteHover" style="padding-left:50px; font-family:Georgia;">Home</li></a>
+        <a href=@Url.Action("About", "Home")><li id="whiteHover" style="padding-left:50px; font-family:Georgia;">About</li></a>
+        <a href=@Url.Action("Contact", "Home")><li id="whiteHover" style="padding-left:50px; font-family:Georgia;">Contact</li></a>
     }
             </ul>
         </div>
