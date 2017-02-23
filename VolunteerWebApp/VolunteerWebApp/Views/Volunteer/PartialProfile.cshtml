@@ -30,17 +30,12 @@
                 </div>
                 <br />
                 <br />
-                <div>
-                    <img src="../@Model.Volunteer.ProfilePhoto" style="height:300px" />
-                </div>
-                <br />
-                <br />
                 @if (Model.OpportunityInterest.CanContact == true)
             {
-                    <input type="button" class="yellowButton" value="Message User" />
-                }
-                else
-                {
+                    <input type="button" class="yellowButton" style="margin-left:20px" value="Message Volunteer" onclick="location.href='@Url.Action("Index", "Message", new { email = @Model.Volunteer.Email } )'" />
+                           }
+                           else
+                           {
                     <p>This user does not wish to be contacted</p>
                 }
             </div>

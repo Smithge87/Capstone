@@ -3,32 +3,42 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" type="text/css" href="../css/capstone.css">
 
 
 
-<h2>Index</h2>
 
-
-@using (Html.BeginForm("Index", "Message", FormMethod.Post, new { @class = "form-horizontal", role = "form", sender = Model.SendFrom }))
-{
-    <form>
-        <p>Message to:</p>
-        @foreach (var user in Model.SendList)
+<h1><b> Send A Message </b></h1>
+<div class="logoOne">
+    <div style="margin:60px; padding-top:80px">
+        @using (Html.BeginForm("Index", "Message", FormMethod.Post, new { @class = "form-horizontal", role = "form", sender = Model.SendFrom }))
         {
-        <p>@user.Email </p>
+            <form>
+                <h2><b>Message to:</b></h2>
+                <div style="margin-left:60px; padding-top:10px;padding-bottom:200px">
+                    <div class="greyBox" style="width:340px">
+                        @foreach (var user in Model.SendList)
+                {
+                            <h4><b>@user.Email </b></h4>
+                        }
+                        <br />
+                        <p><b>Subject</b></p>
+                        @Html.TextBoxFor(m => m.Subject, new { @class = "form-control" })
+
+                        <p><b>Message</b></p>
+                        @Html.TextAreaFor(m => m.Message, new { @class = "form-control" })
+
+                        <input value="@Model.SendFrom.Id" name="@Model.SendFrom.Id" style="display:none" />
+                        @foreach (var person in Model.SendList)
+                {
+                            <input type="text" value="@person.Id" name="sendTo" style="display:none" />
+                        }
+                        <br />
+                        <button type="submit" class="yellowButton">Send</button>
+                    </div>
+                </div>
+</form>
         }
+    </div>
+</div>
 
-        <p>Subject</p>
-        @Html.TextBoxFor(m => m.Subject, new { @class = "skillBox", id = "AnimalBox" })
-
-        <p>Message</p>
-        @Html.TextAreaFor(m => m.Message, new { @class = "skillBox", id = "AnimalBox" })
-
-         <input value="@Model.SendFrom.Id" name="@Model.SendFrom.Id" style="display:none" />
-        @foreach (var person in Model.SendList)
-        {
-            <input type="text" value="@person.Id" name="sendTo" />
-        }
-        <button type="submit">Send</button>
-    </form>
-}

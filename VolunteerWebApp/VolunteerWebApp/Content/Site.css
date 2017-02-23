@@ -68,7 +68,7 @@ a:hover
   -webkit-touch-callout: none;
 }
 #whiteHover{
-    background-color: #ffa64d;
+    background-color: #ff8c1a;
     padding-left: 50px;
 }
 #whiteHover:hover{
@@ -81,7 +81,7 @@ a:hover
   height: 12px;
   margin-bottom: 5px;
   position: relative;
-  background: #ffa64d;
+  background: #ff9933;
   border-radius: 3px;
 
   z-index: 1;
@@ -131,7 +131,7 @@ a:hover
   border-radius: 10px;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
-  background-color: #ffa64d;
+  background-color: #ff8c1a;
   transform-origin: 0% 0%;
   transform: translate(-100%, 0);
   border-style:solid;

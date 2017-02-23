@@ -160,7 +160,7 @@ namespace VolunteerWebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, UserTitle = model.UserTitle, PhoneNumber = model.PhoneNumber, ProfilePhoto = "../images/waffle.jpeg" };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, UserTitle = model.UserTitle, PhoneNumber = model.PhoneNumber, ProfilePhoto = "../images/defaultLogo.jpg" };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -199,7 +199,7 @@ namespace VolunteerWebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName= model.FirstName, LastName= model.LastName, OrganizationName= model.OrganizationName, PhoneNumber = model.PhoneNumber, ProfilePhoto = "../images/waffle.jpeg" };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName= model.FirstName, LastName= model.LastName, OrganizationName= model.OrganizationName, PhoneNumber = model.PhoneNumber, ProfilePhoto = "../images/defaultLogo.jpg" };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -442,8 +442,7 @@ namespace VolunteerWebApp.Controllers
         }
         //
         // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);

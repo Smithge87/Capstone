@@ -37,7 +37,7 @@ namespace VolunteerWebApp.Controllers
         [ActionName("MessageAll")]
         public ActionResult Index(List<string> users)
         {
-
+            var banana = "banana";
             return View();
         }
         [HttpPost]

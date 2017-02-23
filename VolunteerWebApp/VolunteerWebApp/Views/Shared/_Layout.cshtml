@@ -16,24 +16,36 @@
             <span></span>
             <span></span>
             <ul id="menu">
-                <a href=@Url.Action("Index", "Home")><li id="whiteHover" style="padding-left:50px">Home</li></a>
-                <a href=@Url.Action("About", "Home")><li id="whiteHover" style="padding-left:50px">About</li></a>
-                <a href=@Url.Action("Contact", "Home")><li id="whiteHover" style="padding-left:50px">Contact</li></a>
+
 @if (Request.IsAuthenticated && User.IsInRole("volunteer"))
 {
-    <a href=@Url.Action("Index", "Volunteer")><li id="whiteHover" style="padding-left:50px">Profile</li></a>
-}
+    <a href=@Url.Action("Index", "Volunteer")><li id="whiteHover" style="padding-left:50px">My Hub</li></a>
+    <a href=@Url.Action("Index", "Home")><li id="whiteHover" style="padding-left:50px">Home</li></a>
+    <a href=@Url.Action("About", "Home")><li id="whiteHover" style="padding-left:50px">About</li></a>
+    <a href=@Url.Action("Contact", "Home")><li id="whiteHover" style="padding-left:50px">Contact</li></a>
+    <a href=@Url.Action("Index", "Search")><li id="whiteHover" style="padding-left:50px">Search</li></a>
+    <a href=@Url.Action("LogOff", "Account")><li id="whiteHover" style="padding-left:50px">Log Off</li></a>
+    }
 else if (Request.IsAuthenticated && User.IsInRole("organization"))
-{
-    <a href=@Url.Action("Index", "Organization")><li id="whiteHover" style="padding-left:50px">Profile</li></a>
+    {
+    <a href=@Url.Action("Index", "Organization")><li id="whiteHover" style="padding-left:50px">My Hub</li></a>
+    <a href=@Url.Action("Index", "Home")><li id="whiteHover" style="padding-left:50px">Home</li></a>
+        <a href=@Url.Action("About", "Home")><li id="whiteHover" style="padding-left:50px">About</li></a>
+        <a href=@Url.Action("Contact", "Home")><li id="whiteHover" style="padding-left:50px">Contact</li></a>
+        <a href=@Url.Action("Index", "Search")><li id="whiteHover" style="padding-left:50px">Search</li></a>
+        <a href=@Url.Action("LogOff", "Account")><li id="whiteHover" style="padding-left:50px">Log Off</li></a>
 }
-
+else
+{
+    <a href=@Url.Action("Login","Account")><li id="whiteHover" style="padding-left:50px">Login</li></a>
+    <a href=@Url.Action("Index", "Home")><li id="whiteHover" style="padding-left:50px">Home</li></a>
+        <a href=@Url.Action("About", "Home")><li id="whiteHover" style="padding-left:50px">About</li></a>
+        <a href=@Url.Action("Contact", "Home")><li id="whiteHover" style="padding-left:50px">Contact</li></a>
+    }
             </ul>
         </div>
     </nav>
-    <div>
-        @Html.Partial("_LoginPartial")
-    </div>
+
 
 
 
@@ -47,43 +59,8 @@ else if (Request.IsAuthenticated && User.IsInRole("organization"))
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-@if (Request.IsAuthenticated && User.IsInRole("volunteer"))
-{
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Profile", "Index", "Volunteer")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-}
-else if (Request.IsAuthenticated && User.IsInRole("organization"))
-{
-    <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("About", "About", "Home")</li>
-            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-            <li>@Html.ActionLink("Profile", "Index", "Organization")</li>
-        </ul>
-        @Html.Partial("_LoginPartial")
-    </div>
-}
-else
-{
-    <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("About", "About", "Home")</li>
-            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-        </ul>
-        @Html.Partial("_LoginPartial")
-    </div>
-}
+
         </div>
     </div>
     
@@ -102,9 +79,6 @@ else
             </div>
         </div>
 
-                <footer>
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-                </footer>
             </div>
 
             @Scripts.Render("~/bundles/jquery")

@@ -38,7 +38,7 @@
                             <button onclick="showBox('AnimalBox')" class="yellowButton" type="button">Add Description of skills</button>
                             <br />
                             <br />
-                            @Html.TextAreaFor(m => m.AboutAnimal, new { @class="skillBox", id = "AnimalBox" })
+                            @Html.TextAreaFor(m => m.AboutAnimal, new { @class= "skillBox form-control", id = "AnimalBox" })
                         </div>
 
                         <div class="Column" style="width:290px">
@@ -64,7 +64,7 @@
                             <button onclick="showBox('DisasterBox')" class="yellowButton" type="button">Add Description of skills</button>
                             <br />
                             <br />
-                            @Html.TextAreaFor(m => m.AboutDisaster, new { @class = "skillBox", id = "DisasterBox" })
+                            @Html.TextAreaFor(m => m.AboutDisaster, new { @class = "skillBox form-control", id = "DisasterBox" })
                         </div>
 
                         <div class="Column" style="width:290px">
@@ -89,7 +89,7 @@
                             <button onclick="showBox('EducationBox')" class="yellowButton" type="button">Add Description of skills</button>
                             <br />
                             <br />
-                            @Html.TextAreaFor(m => m.AboutEducation, new { @class = "skillBox", id = "EducationBox" })
+                            @Html.TextAreaFor(m => m.AboutEducation, new { @class = "skillBox form-control", id = "EducationBox" })
                         </div>
                     </div>
 
@@ -118,7 +118,7 @@
                             <button onclick="showBox('EnviornmentBox')" class="yellowButton" type="button">Add Description of skills</button>
                             <br />
                             <br />
-                            @Html.TextAreaFor(m => m.AboutEnviornment, new { @class = "skillBox", id = "EnviornmentBox" })
+                            @Html.TextAreaFor(m => m.AboutEnviornment, new { @class = "skillBox form-control", id = "EnviornmentBox" })
                         </div>
 
 
@@ -146,7 +146,7 @@
                             <button onclick="showBox('HealthBox')" class="yellowButton" type="button">Add Description of skills</button>
                             <br />
                             <br />
-                            @Html.TextAreaFor(m => m.AboutHealth, new { @class = "skillBox", id = "HealthBox" })
+                            @Html.TextAreaFor(m => m.AboutHealth, new { @class = "skillBox form-control", id = "HealthBox" })
                         </div>
                         <div class="Column" style="width:290px">
                             <h3><b>Human Services </b></h3>
@@ -170,7 +170,7 @@
                             <button onclick="showBox('HumanServicesBox')" class="yellowButton" type="button">Add Description of skills</button>
                             <br />
                             <br />
-                            @Html.TextAreaFor(m => m.AboutHumanServices, new { @class = "skillBox", id = "HumanServicesBox" })
+                            @Html.TextAreaFor(m => m.AboutHumanServices, new { @class = "skillBox form-control", id = "HumanServicesBox" })
                             <br />
 
                         </div>
@@ -180,7 +180,7 @@
                     <button onclick="showBox('SkillsBox')" type="button" class="yellowButton">Add A summary of your volunteer history</button>
                     <br />
                     <br />
-                    @Html.TextAreaFor(m => m.AboutSkills, new { style = "display:none;width:600px;height:200px", id = "SkillsBox" })
+                    @Html.TextAreaFor(m => m.AboutSkills, new { style="display:none", @class = "form-control", id = "SkillsBox" })
                     <br />
                     <input type="button" class="yellowButton" value="Back to MyHub" style="float:right; margin-right:120px" onclick="location.href='@Url.Action("Index", "Volunteer")'" />
                     <button type="submit" class="yellowButton" style="float:right; margin-right:40px">Submit Skills</button>

@@ -18,7 +18,7 @@
 
                         <br />
                         <br />
-                        <div class="greyBox" style="width:700px; margin-left:10%; padding-top:40px; margin-bottom:200px">
+                        <div class="greyBox" style="width:700px; margin-left:10%; padding-top:40px; margin-bottom:20px">
 
                             @Html.AntiForgeryToken()
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -51,6 +51,11 @@
                             </div>
                             </div>
                     }
+                    <div style="margin-left:15%;padding-bottom:100px"
+                        <p><b>OR</b></p>
+                        <input style="margin-top:20px;margin-left:80px" type="button" class="yellowButton" value="Register As Organization" onclick="location.href='@Url.Action("RegisterOrganization", "Account")'" /><br />
+                        <input style="margin-top:10px;margin-left:80px" type="button" class="yellowButton" value="Register As Volunteer" onclick="location.href='@Url.Action("RegisterVolunteer", "Account")'" />
+                    </div>
 
 </section>
             </div>

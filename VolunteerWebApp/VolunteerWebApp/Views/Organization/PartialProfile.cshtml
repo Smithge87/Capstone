@@ -4,25 +4,56 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Partial Organization Profile for @Model.Organization.OrganizationName</h2>
+<link rel="stylesheet" type="text/css" href="../../css/capstone.css">
+<style>
+        body {
+        background-image: url("../../images/logo.jpeg");
+        background-repeat: no-repeat;
+        background-size: 800px;
+        background-position: center;
+        background-position-y: 100px;
+        background-attachment:fixed;
+    }
+        td {
+        padding: 10px;
+    }
 
-<h3>About Info</h3>
+    th {
+        padding: 5px;
+    }
+</style>
 
-<p>@Model.OrganizationInfo.AboutInfo</p>
 
-<h3>Organization Opportunities</h3>
 
-<table>
-    <thead>
+
+<h1><b>@Model.Organization.OrganizationName</b></h1>
+
+
+
+<div style="max-height:400px;margin-top:40px">
+
+    <div>
+        <img src="../@Model.Organization.ProfilePhoto" style="height:250px" />
+    </div>
+    <div>
+        <h3>About Info</h3>
+
+        <p>@Model.OrganizationInfo.AboutInfo</p>
+    </div>
+    <h3 style="text-align:center"><b>Organization Opportunities</b></h3>
+</div>
+<table style="width:100%">
+    <thead style="background-color:#668cff">
         <tr>
             <th>Title</th>
             <th>Organization</th>
             <th>Category</th>
             <th>Start Date</th>
             <th>Description</th>
+            <th></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="greyBox">
         @foreach (var opp in Model.Opportunities)
         {
             <tr>

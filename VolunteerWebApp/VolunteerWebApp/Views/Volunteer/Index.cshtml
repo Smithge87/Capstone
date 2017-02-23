@@ -3,185 +3,195 @@
     ViewBag.Title = "VolunteerIndex";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link rel="stylesheet" type="text/css" href="../css/capstone.css">
-
-
-
-<h2><b>Welcome, @Model.ApplicationUser.UserTitle </b></h2>
-<br /><br />
-
-
-<div class="container">
-    <div class="col-sm-3" style="padding-top:40px">
-
-    @try
-    {
-        <div style="height:250px;width:250px; background-color:grey; float:left" >
-            <img src="@Model.ApplicationUser.ProfilePhoto" style="height:100%;width:100%"/>
-        </div>
+<link rel="stylesheet" type="text/css" href="../../css/capstone.css">
+<style>
+    body {
+        background-image: url("../../images/logo.jpeg");
+        background-repeat: no-repeat;
+        background-size: 800px;
+        background-position: center;
+        background-position-y: 100px;
+        background-attachment:fixed;
     }
-    catch
-    {
-        <div style="height:200px;width:200px; background-color:grey">
+
+    td {
+        padding: 10px;
+    }
+
+    th {
+        padding: 5px;
+    }
+</style>
+
+
+
+<h1><b>Welcome, @Model.ApplicationUser.UserTitle </b></h1>
+<div style="margin-bottom:100px">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3" style="padding-top:40px">
+                <div class="blackBorder"style="height:250px;width:250px; background-color:grey; float:left">
+                    <img src="@Model.ApplicationUser.ProfilePhoto" style="height:100%;width:100%" />
+                </div>
+                <form action="Volunteer/AddPhoto" method="post" enctype="multipart/form-data">
+                    <label class="custom-file-upload">
+                        <input type="file" onchange="this.form.submit()" name="myFile" />
+                        Change Photo
+                    </label>
+                </form>
+                <input type="button" class="yellowButton" style="margin-top:10px" value="Settings" onclick="location.href='@Url.Action("Settings", "Volunteer")'" />
             </div>
-    }
-        <form action="Volunteer/AddPhoto" method="post" enctype="multipart/form-data">
-            <label class="custom-file-upload">
-                <input type="file" onchange="this.form.submit()" name="myFile" />
-                Change Photo
-            </label>
-        </form>
-        <li>@Html.ActionLink("Account Settings", "Settings", "Volunteer")</li>
-</div>
+
+
+
+            <div class="col-sm-6" style="padding-top:40px">
+                <h3 style="text-align:center"><b>My Skills</b></h3>
+                <table style="margin-top:20px; width:100%; border-radius:5px;-moz-border-radius:10px;-webkit-border-radius:10px">
+                    <thead style="background-color:#668cff">
+                        <tr><th class="tablePadding" style="text-align:center"><h4><b>Category</b></h4></th><th><h4><b>Skill Level</b></h4></th> </tr>
+                    </thead>
+                    <tbody class="greyBox">
+                        <tr></tr>
+                        @try
+                        {
+                        <tr><td class="tablePadding"><b>Animal Services Skill Level:</b></td><td><img src='@Model.AnimalImageSrc' style="height:20px"></td></tr>
+                        <tr><td class="tablePadding"><b> Disaster Prevention Skill Level </b></td><td><img src='@Model.DisasterImageSrc' style="height:20px" class="starFit"></td></tr>
+                        <tr><td class="tablePadding"><b>Educational Services Skill Level:</b></td><td><img src='@Model.EducationImageSrc' style="height:20px" class="starFit"></td></tr>
+                        <tr><td class="tablePadding"><b>Enviornmental Services Skill Level:</b></td><td><img src='@Model.EnviornmentImageSrc' style="height:20px" class="starFit"></td></tr>
+                        <tr><td class="tablePadding"><b>Health Services Skill Level:</b></td><td><img src='@Model.HealthImageSrc' style="height:20px" class="starFit"></td></tr>
+                        <tr><td class="tablePadding"><b>Human Services Skill Level:</b></td><td><img src='@Model.HumanServicesImageSrc' style="height:20px" class="starFit"></td></tr>
+                        <tr><td class="tablePadding" colspan="2"></td></tr>
+                        <tr><td class="tablePadding" colspan="2">@Model.Skill.AboutSkills</td></tr>
+                        }
+                        catch
+                        {
+                        <tr><td class="tablePadding" colspan="2">Skills haven't been set yet! Click on 'Update skills' to add some information about your skills </td></tr>
+                        }
+                    </tbody>
+                </table>
+                <input type="button" class="yellowButton" style="margin-top:10px" value="Update Skills" onclick="location.href='@Url.Action("Skills", "Volunteer")'" />
+
+            </div>
 
 
 
 
+            <div class="col-sm-3" style="margin-top:20px;">
 
- <div class="col-lg-6" style="padding-top:70px">
+                         <h3><b>My Contact Info</b></h3>
+                <div class="greyBox" style="padding:10px">
+                    <p><b>UserName:</b> @Model.ApplicationUser.UserTitle</p>
+                    <p><b>Name:</b> @Model.ApplicationUser.FirstName  @Model.ApplicationUser.LastName</p>
+                    <p><b> E-mail: </b> @Model.ApplicationUser.Email</p>
+                    <p><b> Phone: </b> @Model.ApplicationUser.PhoneNumber</p>
+                    @if (Model.Information != null)
+                    {
+                        <p><b>Address:</b></p>
+                                <div style="margin-left:20px">
+                                    <p> @Model.Information.StreetAddress</p>
+                                    <p>@Model.Information.City</p>
+                                    <p> Wisconsin <br />
+                                    <p> @Model.Information.Zipcode</p>
+                                </div>
+                    }
 
-     <h3 class="blueText" style="text-align:center"><b>My Skills</b></h3>
-     <table style="margin-top:20px; width:100%">
-         <thead>
-             <tr class="tableHeadText blueBox yellowText"><th class="tablePadding" style="text-align:center">Category</th><th>Skill Level</th> </tr>
-         </thead>
-         <tbody>
-             <tr></tr>
-             @try
-             {
-                 <tr><td class="tablePadding">Animal Services Skill Level:</td><td><img src='@Model.AnimalImageSrc' style="height:20px"></td></tr>
-                 <tr><td class="tablePadding">Disaster Prevention Skill Level:</td><td><img src='@Model.DisasterImageSrc' style="height:20px" class="starFit"></td></tr>
-                 <tr><td class="tablePadding">Educational Services Skill Level:</td><td><img src='@Model.EducationImageSrc' style="height:20px" class="starFit"></td></tr>
-                 <tr><td class="tablePadding">Enviornmental Services Skill Level:</td><td><img src='@Model.EnviornmentImageSrc' style="height:20px" class="starFit"></td></tr>
-                 <tr><td class="tablePadding">Health Services Skill Level:</td><td><img src='@Model.HealthImageSrc' style="height:20px" class="starFit"></td></tr>
-                 <tr><td class="tablePadding">Human Services Skill Level:</td><td><img src='@Model.HumanServicesImageSrc' style="height:20px" class="starFit"></td></tr>
-                 <tr><td class="tablePadding" colspan="2"></td></tr>
-                 <tr><td class="tablePadding" colspan="2">@Model.Skill.AboutSkills</td></tr>
-                <tr><td class="tablePadding" style="text-align:right" colspan="2">@Html.ActionLink("Update my Skills", "Skills", "Volunteer")</td></tr>
+                </div>
+                <input type="button" class="yellowButton" value="Update My Info" onclick="location.href='@Url.Action("Info","Volunteer")'" />
 
-             }
-             catch
-             {
-                 <tr><td class="tablePadding" colspan="2">Skills haven't been set yet! Click on 'update my skills' to add some information about your skills </td></tr>
-                 <tr><td class="tablePadding" colspan="2">@Html.ActionLink("Update my Skills", "Skills", "Volunteer")</td></tr>
-             }
-         </tbody>
-     </table>
-</div>
+            </div>
+        </div>
+    </div>
 
 
 
+    <div>
+        <h3 style="text-align:center"><b>My Opportunities</b></h3>
+        <table id="opps" style="width:100%">
+            <thead style="background-color:#668cff">
 
-    <div class="col-sm-3" style="margin-top:20px;">
-        <table style="float:right">
-            <thead>
-                <tr><th> My Contact Info </th></tr>
+                <tr><th></th>
+                <th>Organization</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th></th>
+                <th></th>
+                </tr>
             </thead>
-            <tbody>
-                <tr><td></td></tr>
-                <tr><td>UserName: @Model.ApplicationUser.UserTitle </td></tr>
-                <tr><td>Name: @Model.ApplicationUser.FirstName  @Model.ApplicationUser.LastName </td></tr>
-                <tr><td>E-mail: @Model.ApplicationUser.Email </td></tr>
-                <tr><td>Phone: @Model.ApplicationUser.PhoneNumber </td></tr>
-                @if (Model.Information != null)
-                {
-                    <tr>
-                        <td>
-                            Address: @Model.Information.StreetAddress <br /> @Model.Information.City <br />
-                            Wisconsin <br /> @Model.Information.Zipcode
-                        </td>
-                    </tr>
-                }
-                <tr><td>@Html.ActionLink("Update my Info", "Info", "Volunteer")</td></tr>
-            </tbody>
-        </table>
-
-        <h3 class="blueText" style="text-align:center"><b> About me</b></h3>
-
-        <table style="width:100%; border-radius:20px">
-            <thead>
-            </thead>
-            <tbody>
+            <tbody class="greyBox" style="width:100%">
                 @try
                 {
-                    <tr><td>@Model.Information.AboutInfo </td></tr>
+                int i = 0;
+                foreach (var opp in Model.MyOpportunities)
+                {
+                if (i < 5)
+                {
+                <tr><td><b>@opp.Title </b></td><td>@opp.OrganizationHostName</td><td>@opp.Category</td><td>@opp.StartMonth/@opp.StartDay/@opp.StartYear</td><td>@opp.AboutShort</td><td>@Html.ActionLink("More Info", "FullView", "Organization", new { id = @opp.ID }, null)</td></tr>
+                i++;
+                }
+                }
+
+                for (int j = 5; j < Model.MyOpportunities.Count; j++)
+                {
+                <tr class="child greyBox" id="allOpps"><td>@Model.MyOpportunities[j].OrganizationHostName</td><td>@Model.MyOpportunities[j].Category</td><td>@Model.MyOpportunities[j].AboutShort</td><td>@Html.ActionLink("More Info", "FullView", "Organization", new { id = @Model.MyOpportunities[j].ID }, null)</td></tr>
+                }
                 }
                 catch
                 {
-                    <tr><td>No info yet! Click on 'update my info' to add some info about yourself </td></tr>
+                <tr><td>No opportunities have been picked yet! Head over to 'Search Opportunities' to find some! </td></tr>
                 }
+            </tbody>
+        </table>
+
+
+        <h3 style="text-align:center"><b>My Referals</b></h3>
+        <table id="opps" style="width:100%">
+            <thead style="background-color:#668cff">
+
+                <tr>
+                    <th></th>
+                    <th>Organization</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="greyBox">
+                @try
+                {
+                    if (Model.VolunteerSettings.CanRefer == true)
+                    {
+                        try
+                        {
+                            int i = 0;
+                            foreach (var opp in Model.ReferOpportunities)
+                            {
+                                if (i<6)
+                                {
+                                    <tr><td><b>@opp.Title </b></td><td>@opp.OrganizationHostName</td><td>@opp.Category</td><td>@opp.StartMonth/@opp.StartDay/@opp.StartYear</td><td>@opp.AboutShort</td><td>@Html.ActionLink("More Info", "FullView", "Organization", new { id = @opp.ID }, null)</td></tr>
+                                    i++;
+                                }
+                            }
+                        }
+                        catch
+                        {
+                            <tr><td>No opportunities match your skill level, but we'll let you know if one comes up! </td></tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><td>Preferences are set to 'Do not refer'. Visit 'My settings' if you'd like to get referals.</td></tr>
+                    }
+                }
+                catch
+                {
+                    <tr><td>Visit 'My Settings' to be able to enable referals</td></tr>
+                }
+
             </tbody>
         </table>
     </div>
 </div>
-<br />
-<br />
-<table id="opps">
-    <thead>
-        <tr><th> My Opportunities</th> </tr>
-    </thead>
-    <tbody>
-        @try
-        {
-            int i = 0;
-            foreach (var opp in Model.MyOpportunities)
-            {
-                if (i < 5)
-                {
-                    <tr><td>@opp.OrganizationHostName</td><td>@opp.Category</td><td>@opp.AboutShort</td><td>@Html.ActionLink("More Info", "FullView", "Organization", new { id = @opp.ID }, null)</td></tr>
-                    i++;
-                }
-            }
-
-            for (int j = 5; j < Model.MyOpportunities.Count; j++)
-            {
-                <tr class="child" id="allOpps"><td>@Model.MyOpportunities[j].OrganizationHostName</td><td>@Model.MyOpportunities[j].Category</td><td>@Model.MyOpportunities[j].AboutShort</td><td>@Html.ActionLink("More Info", "FullView", "Organization", new { id = @Model.MyOpportunities[j].ID }, null)</td></tr>
-            }
-        }
-        catch
-        {
-            <tr><td>No opportunities have been picked yet! Head over to 'Search Opportunities' to find some! </td></tr>
-        }
-    </tbody>
-</table>
-
-
-<table>
-    <thead>
-        <tr><th> My Referals</th> </tr>
-    </thead>
-    <tbody>
-        @try
-        {
-            if (Model.VolunteerSettings.CanRefer == true)
-            {
-                try
-                {
-                    foreach (var opp in Model.ReferOpportunities)
-                    {
-                        {
-                            <tr><td>@opp.OrganizationHostName</td><td>@opp.Category</td><td>@opp.AboutShort</td><td>@Html.ActionLink("More Info", "FullView", "Organization", new { id = @opp.ID }, null)</td></tr>
-                        }
-                    }
-
-                }
-                catch
-                {
-                    <tr><td>No opportunities match your skill level, but we'll let you know if one comes up! </td></tr>
-                }
-            }
-            else
-            {
-                <tr><td>Preferences are set to 'Do not refer'. Visit 'My settings' if you'd like to get referals.</td></tr>
-            }
-        }
-        catch
-        {
-            <tr><td>Visit 'My Settings' to be able to enable referals</td></tr>
-        }
-
-    </tbody>
-</table>
 
 
 

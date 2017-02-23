@@ -30,7 +30,7 @@
             <h4><b>Location:</b> @Model.Opportunity.Venue</h4>
             <h4><b>Category:</b>@Model.Opportunity.Category</h4>
             <h4><b>Date:</b>@Model.Opportunity.StartMonth/@Model.Opportunity.StartDay/@Model.Opportunity.StartYear</h4>
-            <input type="button" class="yellowButton" value="View Organization Profile" onclick="location.href='@Url.Action( "PartialProfile", "Organization", new { id = Model.Opportunity.ID },null)'" />
+            <input type="button" class="yellowButton" value="View Organization Profile" onclick="location.href='@Url.Action( "PartialProfile", "Organization", new { id = Model.Opportunity.ID },null)'" /><br />
 
         </div>
         <div class="greyBox" style="width:200px">
@@ -60,16 +60,7 @@
             </div>
 
 
-            @if (Request.IsAuthenticated && User.IsInRole("organization"))
-            {
-                <input type="button" class="yellowButton" value="Edit Opportunity" onclick="location.href='@Url.Action( "EditOpp","Organization", new { id = Model.Opportunity.ID }, null)'" />
-                <input type="button" class="yellowButton" value="Delete Opportunity" onclick="location.href='@Url.Action( "Delete","Organization",  new { id = Model.Opportunity.ID , onclick = "return confirm('Are you sure you want to delete this opportunity?');" }, null)'" />
 
-                @Html.ActionLink("Delete", "Delete",
-        new { id = Model.Opportunity.ID },
-        new { onclick = "return confirm('Are you sure you want to delete this opportunity?');" })
-
-            }
 
             <h3><b>Interested Volunteers</b></h3>
 
@@ -107,6 +98,18 @@
                 <p><b>@need.Category Volunteers</b> : @need.Amount <br /><img src="../@need.SkillImgSrc" style="height:25px" /></p>
             }
         </div>
+        <div style="float:right">
+            @if (Request.IsAuthenticated && User.IsInRole("organization"))
+            {
+                <input style="margin-top:10px;float:right" type="button" class="yellowButton" value="Edit Opportunity" onclick="location.href='@Url.Action( "EditOpp","Organization", new { id = Model.Opportunity.ID }, null)'" /><br />
+                <input style="margin-top:10px; float:right" type="button" class="yellowButton" value="Delete Opportunity" onclick="location.href='@Url.Action( "Delete","Organization",  new { id = Model.Opportunity.ID , onclick = "return confirm('Are you sure you want to delete this opportunity?');" }, null)'" />
+
+                @*@Html.ActionLink("Delete", "Delete",
+                new { id = Model.Opportunity.ID },
+                new { onclick = "return confirm('Are you sure you want to delete this opportunity?');" })*@
+
+            }
+        </div>
         <div>
             @if (Request.IsAuthenticated && User.IsInRole("volunteer"))
             {
@@ -136,6 +139,10 @@
                     </form>
                     }
                 </div>
+            }
+            else if(User.IsInRole("organization"))
+            {
+                @*<input class="yellowButton" value="Message All Users" onclick="location.href='@Html.Action("MessageAll","Message", new { users = Model.InterestedUsers.ToList()})'" />*@
             }
         </div>
     </div>
