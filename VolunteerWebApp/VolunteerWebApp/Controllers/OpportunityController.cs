@@ -5,6 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using Twilio;
@@ -239,6 +240,33 @@ namespace VolunteerWebApp.Controllers
                 _context.Interest.Add(newInterest);
             }
             _context.SaveChanges();
+            try
+            {
+                if (Int32.Parse(model.InterestSet) > 3)
+                {
+                    List<string> sending = new List<string>();
+                    string line;
+                    System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\Jack\Desktop\helphubemail.txt");
+                    while ((line = file.ReadLine()) != null)
+                    {
+                        sending.Add(line);
+                    }
+                    file.Close();
+                    var subject = "";
+                    var message = "Hey " + model.Organization.OrganizationName + ". " + currentUser.UserTitle + " is interested in " + model.Opportunity.Title + ". Head over to Help.Hub to check it out!";
+                    var sender = currentUser.Email;
+                    subject = "Help.Hub message regarding " + model.Opportunity.Title;
+                    var client = new SmtpClient("smtp.gmail.com", 587)
+                    {
+                        UseDefaultCredentials = true,
+                        Credentials = new NetworkCredential(sending[0], sending[1]),
+                        EnableSsl = true
+                    };
+                    client.Send("helphubmessageservice@gmail.com", model.Organization.Email, subject, message);
+                }
+            }
+            catch { }
+
             return RedirectToAction("FullView", "Organization", new { id = currentOpp.ID});
 
         }
@@ -300,7 +328,7 @@ namespace VolunteerWebApp.Controllers
                     sending.Add(line);
                 }
                 file.Close();
-                string message = "Hey" + user.FirstName + "! " + skill.OrganizationId + " just added a new opportunity that needs your skills! Head to Help.Hub to check it out!";
+                string message = "Hey " + user.FirstName + "! " + skill.OrganizationId + " just added a new opportunity that needs your skills! Head to Help.Hub to check it out!";
                 string toNumber = phoneFormat(user.PhoneNumber);
                 string AccountSid = sending[0];
                 string AuthToken = sending[1];

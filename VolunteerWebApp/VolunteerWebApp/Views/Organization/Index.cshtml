@@ -69,6 +69,8 @@
             <div class="greyBox" style="padding:10px">
                 <p><b> E-mail: </b> @Model.ApplicationUser.Email</p>
                 <p><b> Phone: </b> @Model.ApplicationUser.PhoneNumber</p>
+                @try
+                {
                 <p><b>Address:</b></p>
                 <div style="margin-left:20px">
                     <p> @Model.Information.StreetAddress</p>
@@ -76,6 +78,9 @@
                     <p> Wisconsin <br />
                     <p> @Model.Information.Zipcode</p>
                 </div>
+                }
+                catch { }
+
             </div>
             <br />
             <input type="button" class="yellowButton" style="margin-top:10px; float:right" value="Settings" onclick="location.href='@Url.Action("Info", "Organization")'" />
