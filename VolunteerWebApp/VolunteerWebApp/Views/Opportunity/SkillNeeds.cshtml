@@ -1,6 +1,6 @@
 ﻿@model VolunteerWebApp.Models.SkillsNeededViewModel
 @{
-    ViewBag.Title = "SkillNeeds";
+    ViewBag.Title = "My.Needs";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" type="text/css" href="../css/capstone.css">
@@ -15,12 +15,12 @@
 </style>
 
 
-<h1><b>SkillNeeds</b></h1>
+<h1 class="titleStyle"><b>SkillNeeds</b></h1>
 <div class="logoOne">
     <div style="margin:60px; padding-top:80px">
     @using (Html.BeginForm("AddTempSkill", "Opportunity", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
-        <h2><b>Add a new need:</b></h2>
+        <h2 class="titleStyle"><b>Add a new need:</b></h2>
             @Html.AntiForgeryToken()
         <div class="greyBox" style="width:800px; margin-left:10%; padding-top:20px">
 
@@ -61,7 +61,7 @@
             <br />
 
 
-            <h2><b>Summary of my current needs:</b></h2>
+            <h2 class="titleStyle"><b>Summary of my current needs:</b></h2>
             <br />
 
 

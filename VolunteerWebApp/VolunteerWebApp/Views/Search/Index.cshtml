@@ -1,6 +1,6 @@
 ﻿@model VolunteerWebApp.Models.SearchViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Hub.Search";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" type="text/css" href="../css/capstone.css">
@@ -21,7 +21,7 @@
 </style>
 <div class="Row">
     <div class="Column" style="width:250px">
-        <h1><b>Hub Opportunity Search</b></h1>
+        <h1 style="color:#001a66;font-family:Georgia;"><b>Hub Opportunity Search</b></h1>
     </div>
 
     @using (Html.BeginForm("FilterSearch", "Search", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))

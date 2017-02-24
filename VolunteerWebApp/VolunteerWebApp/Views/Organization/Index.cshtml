@@ -1,6 +1,6 @@
 ﻿@model VolunteerWebApp.Models.OrganizationProfileViewModel
 @{
-    ViewBag.Title = "OrganizationIndex";
+    ViewBag.Title = "My.Org";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" type="text/css" href="../css/capstone.css">
@@ -24,7 +24,7 @@
 </style>
 
 
-<h1 style="font-family:Georgia"><b>Welcome, @Model.ApplicationUser.OrganizationName</b></h1>
+<h1 style="color:#001a66;font-family:Georgia;"><b>Welcome, @Model.ApplicationUser.OrganizationName</b></h1>
 
 
 
@@ -46,10 +46,10 @@
             </form>
         </div>
         <div class="col-md-6" style="padding-top:40px">
-
+            <h3 style="text-align:center;color:#001a66;font-family:Georgia;"><b> About @Model.ApplicationUser.OrganizationName </b></h3>
             <table>
                 <thead>
-                    <tr><th style="text-align:center"><h3><b> About @Model.ApplicationUser.OrganizationName </b></h3></th></tr>
+                    <tr><th style="text-align:center;background-color:#222222 ;color:#222222;"> _</th></tr>
                 </thead>
                 <tbody class="greyBox" style="min-height:300px">
                     @try
@@ -65,7 +65,7 @@
         </div>
         <div class="col-md-3" style="margin-top:20px;">
 
-            <h3><b>My Contact Info</b></h3>
+            <h3 style="color:#001a66;font-family:Georgia;"><b>My Contact Info</b></h3>
             <div class="greyBox" style="padding:10px">
                 <p><b> E-mail: </b> @Model.ApplicationUser.Email</p>
                 <p><b> Phone: </b> @Model.ApplicationUser.PhoneNumber</p>
@@ -85,10 +85,10 @@
 
 
 
-<h3 style="text-align:center"><b>My opportunities</b></h3>
+<h3 style="text-align:center;color:#001a66;font-family:Georgia;"><b>My opportunities</b></h3>
 
 <table style="width:100%">
-    <thead style="background-color:#b3c6ff;">
+    <thead style="background-color:#222222 ;color:#ffffe6;">
         <tr><th style="border-top-left-radius:2px"></th>
         <th>Organization</th>
         <th>Category</th>

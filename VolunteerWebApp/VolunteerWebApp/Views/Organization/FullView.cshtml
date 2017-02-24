@@ -1,6 +1,6 @@
 ﻿@model VolunteerWebApp.Models.OpportunityIndexViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "My.Opportunity";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" type="text/css" href="../../css/capstone.css">
@@ -29,7 +29,7 @@
 
 <div class="Row" style>
     <div class="Column" style="width:25%">
-        <h1><b>@Model.Opportunity.Title</b></h1>
+        <h1 style="color:#001a66;font-family:Georgia;"><b>@Model.Opportunity.Title</b></h1>
         <br />
         <br />
         <div class="greyBox" style="margin-right:20px">
@@ -86,7 +86,7 @@
                         <tr>
                             <td> @user.VolunteerUserName</td>
                             <td><img src="../@user.InterestLevelImgSrc" style="height:30px"/></td>
-                            <td>Message volunteer</td>
+                            <td></td>
                             <td>@Html.ActionLink("View Volunteer", "PartialProfile", "Volunteer", new { id = user.ID }, null)</td>
                         </tr>
                     }
@@ -94,7 +94,7 @@
             </table>
             <br />
             <br />
-            @if (Request.IsAuthenticated && User.IsInRole("organization") && (Model.InterestedUsers.Count() > 0))
+            @if (Request.IsAuthenticated && User.IsInRole("organization") && (Model.InterestedUsers.Count() > 0) && (Model.Organization.Email == Model.Opportunity.OrganizationHostId))
             {
                 using (Html.BeginForm("Index", "Message", FormMethod.Get))
                 {

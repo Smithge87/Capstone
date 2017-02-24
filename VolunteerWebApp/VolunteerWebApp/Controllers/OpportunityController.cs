@@ -292,10 +292,18 @@ namespace VolunteerWebApp.Controllers
         {
             try
             {
+                List<string> sending = new List<string>();
+                string line;
+                System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\Jack\Desktop\Twilio.txt");
+                while ((line = file.ReadLine()) != null)
+                {
+                    sending.Add(line);
+                }
+                file.Close();
                 string message = "Hey" + user.FirstName + "! " + skill.OrganizationId + " just added a new opportunity that needs your skills! Head to Help.Hub to check it out!";
                 string toNumber = phoneFormat(user.PhoneNumber);
-                string AccountSid = "ACc5d6494d08cce50ae974ddf8ae5a483d";
-                string AuthToken = "b21410c6fedd88a518c66afc61ac5e1e";
+                string AccountSid = sending[0];
+                string AuthToken = sending[1];
                 var client = new TwilioRestClient(AccountSid, AuthToken);
                 client.SendMessage("262-278-0866", toNumber, message);
             }

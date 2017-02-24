@@ -1,12 +1,12 @@
 ﻿@model VolunteerWebApp.Models.OrganizationInfoViewModel
 @{
-    ViewBag.Title = "Info";
+    ViewBag.Title = "My.Info";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" type="text/css" href="../css/capstone.css">
 
 
-<h1 class=""><b>My  Contact Information</b></h1>
+<h1 class="" style="color:#001a66;font-family:Georgia;"><b>My  Contact Information</b></h1>
 <div class="logoOne">
     <div style="margin:60px; padding-top:80px">
         @using (Html.BeginForm("Info", "Organization", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -17,55 +17,55 @@
                 <div class="form-group">
                     @Html.LabelFor(m => m.OrganizationName, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.OrganizationName, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.OrganizationName, new { @class = "form-control blackBorder" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control blackBorder" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control blackBorder" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control blackBorder" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.StreetAddress, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.StreetAddress, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.StreetAddress, new { @class = "form-control blackBorder" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.City, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.City, new { @class = "form-control blackBorder" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.Address.StateId, "State", new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.DropDownListFor(m => m.Address.StateId, new SelectList(Model.StateList, "ID", "States"), "", new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.Address.StateId, new SelectList(Model.StateList, "ID", "States"), "", new { @class = "form-control blackBorder" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.Zipcode, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Zipcode, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.Zipcode, new { @class = "form-control blackBorder" })
                     </div>
                 </div>
                 <br />
                 <p style="margin-left:40px"><b>Add a bio for your Organization</b></p>
                 <div class="form-group" style="margin-left:140px">
-                    @Html.TextAreaFor(m => m.AboutInfo, new { @class = "form-control" })
+                    @Html.TextAreaFor(m => m.AboutInfo, new { @class = "form-control blackBorder" })
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">

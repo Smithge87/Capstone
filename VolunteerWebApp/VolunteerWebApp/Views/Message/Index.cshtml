@@ -1,6 +1,6 @@
 ﻿@model VolunteerWebApp.Models.MessageViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Hub.Mesage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" type="text/css" href="../css/capstone.css">
@@ -8,27 +8,47 @@
 
 
 
-<h1><b> Send A Message </b></h1>
+<h1 class="titleStyle"><b> Send A Message </b></h1>
 <div class="logoOne">
     <div style="margin:60px; padding-top:80px">
         @using (Html.BeginForm("Index", "Message", FormMethod.Post, new { @class = "form-horizontal", role = "form", sender = Model.SendFrom }))
         {
             <form>
-                <h2><b>Message to:</b></h2>
+                <h2 class="titleStyle"><b>Message to:</b></h2>
                 <div style="margin-left:60px; padding-top:10px;padding-bottom:200px">
                     <div class="greyBox" style="width:340px">
                         @if (User.IsInRole("organization"))
                         {
-                            foreach (var user in Model.SendList)
+                            try
                             {
-                                <h4><b>@user.UserName </b></h4>
+                                foreach (var user in Model.SendList)
+                                {
+                                <h4><b>@user.UserTitle </b></h4>
+                                }
+                            }
+                            catch
+                            {
+                                foreach (var user in Model.SendList)
+                                {
+                                    <h4><b>@user.OrganizationName </b></h4>
+                                }
                             }
                         }
                         else if (User.IsInRole("volunteer"))
                         {
-                            foreach (var user in Model.SendList)
+                            try
                             {
+                                foreach (var user in Model.SendList)
+                                {
                                 <h4><b>@user.OrganizationName </b></h4>
+                                }
+                            }
+                            catch
+                            {
+                                foreach (var user in Model.SendList)
+                                {
+                                    <h4><b>@user.UserName </b></h4>
+                                }
                             }
                         }
                         <br />

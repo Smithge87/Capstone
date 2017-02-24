@@ -91,11 +91,18 @@ namespace VolunteerWebApp.Controllers
                 var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
                 var userInDatabase = _context.Users.SingleOrDefault(m => m.UserName == currentUserName);
                 var userAddress = _context.Address.SingleOrDefault(m => m.UserId == currentUser.Email);
-
+                foreach (var opp in _context.Opportunity)
+                {
+                    if (opp.OrganizationHostName == userInDatabase.OrganizationName)
+                    {
+                        opp.OrganizationHostName = model.OrganizationName;
+                    }
+                }
                 userInDatabase.FirstName = model.FirstName;
                 userInDatabase.LastName = model.LastName;
                 userInDatabase.PhoneNumber = model.PhoneNumber;
                 userInDatabase.OrganizationName = model.OrganizationName;
+
 
                 if (userAddress != null)
                 {
