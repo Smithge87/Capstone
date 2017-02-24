@@ -4,84 +4,102 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" type="text/css" href="../css/capstone.css">
+<style>
+    body {
+        background-image: url("../../images/logo.jpeg");
+        background-repeat: no-repeat;
+        background-size: 800px;
+        background-position: center;
+        background-position-y: 100px;
+        background-attachment: fixed;
+    }
+
+    td {
+        padding: 10px;
+    }
+
+    th {
+        padding: 5px;
+    }
+</style>
 
 
-<h2>Welcome @Model.ApplicationUser.OrganizationName</h2>
+<h1 style="font-family:Georgia"><b>Welcome, @Model.ApplicationUser.OrganizationName</b></h1>
 
 
-<li>@Html.ActionLink("Update my Info", "Info", "Organization")</li>
-<form action="Organization/AddPhoto" method="post" enctype="multipart/form-data">
-    <label class="custom-file-upload">
-        <input type="file" onchange="this.form.submit()" name="myFile" />
-        Change Photo
-    </label>
-</form>
 
-@try
-{
-    <div style="height:200px;width:200px; background-color:grey">
-        <img src="@Model.ApplicationUser.ProfilePhoto" style="height:200px;width:200px" />
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3" style="padding-top:40px">
+
+
+            <div style="height:200px;width:200px;">
+                <img src="@Model.ApplicationUser.ProfilePhoto" style="height:200px;width:200px;border-radius:4px" class="blackBorder" />
+            </div>
+            <form action="Organization/AddPhoto" method="post" enctype="multipart/form-data">
+                <label class="custom-file-upload">
+                    <input type="file" onchange="this.form.submit()" name="myFile" />
+                    Change Photo
+                </label>
+            </form>
+        </div>
+        <div class="col-md-6" style="padding-top:40px">
+
+            <table>
+                <thead>
+                    <tr><th style="text-align:center"><h3><b> About @Model.ApplicationUser.OrganizationName </b></h3></th></tr>
+                </thead>
+                <tbody class="greyBox" style="min-height:300px">
+                    @try
+                    {
+                        <tr><td>@Model.Information.AboutInfo </td></tr>
+                    }
+                    catch
+                    { }
+                </tbody>
+            </table>
+
+
+        </div>
+        <div class="col-md-3" style="margin-top:20px;">
+
+            <h3><b>My Contact Info</b></h3>
+            <div class="greyBox" style="padding:10px">
+                <p><b> E-mail: </b> @Model.ApplicationUser.Email</p>
+                <p><b> Phone: </b> @Model.ApplicationUser.PhoneNumber</p>
+                <p><b>Address:</b></p>
+                <div style="margin-left:20px">
+                    <p> @Model.Information.StreetAddress</p>
+                    <p>@Model.Information.City</p>
+                    <p> Wisconsin <br />
+                    <p> @Model.Information.Zipcode</p>
+                </div>
+            </div>
+            <br />
+            <input type="button" class="yellowButton" style="margin-top:10px; float:right" value="Settings" onclick="location.href='@Url.Action("Info", "Organization")'" />
+        </div>
     </div>
-}
-catch
-{
-    <div style="height:200px;width:200px; background-color:grey">
-    </div>
-}
-<table>
-    <thead>
-        <tr><th> Basic Info </th></tr>
-    </thead>
-    <tbody>
-        <tr><td></td></tr>
-        <tr><td>Organization Name: @Model.ApplicationUser.OrganizationName </td></tr>
-        <tr><td>Name: @Model.ApplicationUser.FirstName  @Model.ApplicationUser.LastName </td></tr>
-        <tr><td>E-mail: @Model.ApplicationUser.Email </td></tr>
-        <tr><td>Phone: @Model.ApplicationUser.PhoneNumber </td></tr>
-        <tr>
-            @try{
-            <td>
-                Address: @Model.Information.StreetAddress <br /> @Model.Information.City <br />
-                @*@Model.Information.State.States*@ <br /> @Model.Information.Zipcode
-            </td>
-            }
-            catch { }
-        </tr>
+</div>
 
 
 
-    </tbody>
-</table>
+<h3 style="text-align:center"><b>My opportunities</b></h3>
 
-
-<table>
-    <thead>
-        <tr><th> About me </th></tr>
-    </thead>
-    <tbody>
-        @try
-        {
-        <tr><td>@Model.Information.AboutInfo </td></tr>
-        }
-        catch
-        { }
-    </tbody>
-</table>
-
-<p>My opportunities</p>
-
-<table>
-    <thead>
-        <tr><th>Title</th>
+<table style="width:100%">
+    <thead style="background-color:#b3c6ff;">
+        <tr><th style="border-top-left-radius:2px"></th>
         <th>Organization</th>
         <th>Category</th>
         <th>Start Date</th>
-        <th>Description</th></tr>
+        <th>Description</th>
+        <th sstyle="border-top-left-radius:2px"></th></tr>
     </thead>
-    <tbody>
+    <tbody class="greyBox">
         @foreach (var opp in Model.OpportunityList)
         {
-            <tr><td>@opp.Title </td>
+            <tr><td><b>@opp.Title </b></td>
             <td> @opp.OrganizationHostName</td>
             <td> @opp.Category</td>
             <td> @opp.StartMonth/ @opp.StartDay/ @opp.StartYear</td>
@@ -90,5 +108,9 @@ catch
         }
     </tbody>
 </table>
+<br />
+<input type="button" class="yellowButton" style="margin-top:10px; " value="Add New Opportunity" onclick="location.href='@Url.Action("Create", "Opportunity")'" />
+<br />
+<div style="min-height:100px">
 
-<li> @Html.ActionLink("Add a new opportunity", "Create", "Opportunity")</li>
+</div>

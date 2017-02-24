@@ -73,7 +73,7 @@ namespace VolunteerWebApp.Models
         public string Title { get; set; }
 
         [Required]
-        [Display(Name = "A detailed description of you Opportunity")]
+        [Display(Name = "A detailed description of your Opportunity")]
         public string AboutOpportunity { get; set; }
 
         [Required]

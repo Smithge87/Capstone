@@ -70,8 +70,14 @@ namespace VolunteerWebApp.Controllers
 
             foreach (var person in sendTo)
             {
-                var actualPerson = _context.Users.FirstOrDefault(m => m.Id == person);
-                client.Send("helphubmessageservice@gmail.com", actualPerson.Email, subject, message);
+                try
+                {
+                    var actualPerson = _context.Users.FirstOrDefault(m => m.Id == person);
+                    client.Send("helphubmessageservice@gmail.com", actualPerson.Email, subject, message);
+                }
+                catch
+                {
+                }
             }
 
             if (User.IsInRole("volunteer"))

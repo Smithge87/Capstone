@@ -4,8 +4,10 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Twilio;
 using VolunteerWebApp.Models;
 
 namespace VolunteerWebApp.Controllers
@@ -20,6 +22,7 @@ namespace VolunteerWebApp.Controllers
         // GET: Opportunity
         public ActionResult Create()
         {
+
             var currentUserName = User.Identity.Name;
             var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
             var statesList = _context.State.ToList();
@@ -119,6 +122,58 @@ namespace VolunteerWebApp.Controllers
                 };
                 _context.SkillsNeeded.Add(temper);
             }
+            List<ApplicationUser> allUsers = new List<ApplicationUser>();
+            foreach (var user in _context.Users)
+            {
+                allUsers.Add(user);
+            }
+            List<Skill> allSkills = new List<Skill>();
+                foreach (Skill skills in _context.Skill)
+                {
+                    allSkills.Add(skills);
+                }
+            foreach (var skill in _context.TempSkills)
+            {
+                foreach (var skills in allSkills)
+                {
+                    if (skill.Category == "Animal Services" && skill.SkillLevel == skills.AnimalSkill)
+                    {
+                        var wantedUser = allUsers.FirstOrDefault(m => m.Email == skills.UserId);
+                        sendText(skill, wantedUser);
+                    }
+                    if (skill.Category == "Disaster Preperation" && skill.SkillLevel == skills.DisasterSkill)
+                    {
+                        var wantedUser = allUsers.FirstOrDefault(m => m.Email == skills.UserId);
+
+                        sendText(skill, wantedUser);
+                    }
+                    if (skill.Category == "Education" && skill.SkillLevel == skills.EducationSkill)
+                    {
+                        var wantedUser = allUsers.FirstOrDefault(m => m.Email == skills.UserId);
+
+                        sendText(skill, wantedUser);
+                    }
+                    if (skill.Category == "Enviornmental" && skill.SkillLevel == skills.EnviornmentSkill)
+                    {
+                        var wantedUser = allUsers.FirstOrDefault(m => m.Email == skills.UserId);
+
+                        sendText(skill, wantedUser);
+                    }
+                    if (skill.Category == "Health" && skill.SkillLevel == skills.HealthSkill)
+                    {
+                        var wantedUser = allUsers.FirstOrDefault(m => m.Email == skills.UserId);
+
+                        sendText(skill, wantedUser);
+                    }
+                    if (skill.Category == "Human Services" && skill.SkillLevel == skills.HumanServicesSkill)
+                    {
+                        var wantedUser = allUsers.FirstOrDefault(m => m.Email == skills.UserId);
+
+                        sendText(skill, wantedUser);
+                    }
+                }
+            }
+                   
             _context.TempSkills.RemoveRange(_context.TempSkills);
             _context.SaveChanges();
             return RedirectToAction("Index", "Organization");
@@ -232,6 +287,25 @@ namespace VolunteerWebApp.Controllers
                 return ("../images/noStar.png");
             }
 
+        }
+        public void sendText(TempSkills skill, ApplicationUser user)
+        {
+            try
+            {
+                string message = "Hey" + user.FirstName + "! " + skill.OrganizationId + " just added a new opportunity that needs your skills! Head to Help.Hub to check it out!";
+                string toNumber = phoneFormat(user.PhoneNumber);
+                string AccountSid = "ACc5d6494d08cce50ae974ddf8ae5a483d";
+                string AuthToken = "b21410c6fedd88a518c66afc61ac5e1e";
+                var client = new TwilioRestClient(AccountSid, AuthToken);
+                client.SendMessage("262-278-0866", toNumber, message);
+            }
+            catch { }
+        }
+        public string phoneFormat(string number)
+        {
+            string cleanNumber = number.Insert(3, "-");
+            string cleanerNumber = cleanNumber.Insert(7, "-");
+            return cleanNumber;
         }
         //public ActionResult Index(int id)
         //{

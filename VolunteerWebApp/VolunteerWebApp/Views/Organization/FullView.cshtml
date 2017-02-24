@@ -20,12 +20,19 @@
     }
 </style>
 
+
+
+
+
+
+
+
 <div class="Row" style>
     <div class="Column" style="width:25%">
         <h1><b>@Model.Opportunity.Title</b></h1>
         <br />
         <br />
-        <div>
+        <div class="greyBox" style="margin-right:20px">
             <h4><b>Hosted By:</b> @Model.Opportunity.OrganizationHostName</h4>
             <h4><b>Location:</b> @Model.Opportunity.Venue</h4>
             <h4><b>Category:</b>@Model.Opportunity.Category</h4>
@@ -65,15 +72,15 @@
             <h3><b>Interested Volunteers</b></h3>
 
             <table style="width:100%">
-                <thead style="background-color:#668cff">
+                <thead style="background-color:#99b3ff">
                     <tr>
-                        <th style="border-top-left-radius:6px">User Name</th>
+                        <th style="border-top-left-radius:2px">User Name</th>
                         <th>Interest Level</th>
                         <th></th>
-                         <th style="border-top-right-radius:6px"></th>
+                         <th style="border-top-right-radius:2px"></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="greyBox">
                     @foreach (var user in Model.InterestedUsers)
             {
                         <tr>

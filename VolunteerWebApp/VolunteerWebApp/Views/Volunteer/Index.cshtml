@@ -25,18 +25,18 @@
 
 
 
-<h1 style="font-family:Georgia"><b>Welcome, @Model.ApplicationUser.UserTitle </b></h1>
+<h1 style="font-family:Georgia;color:#001a66"><b>Welcome, @Model.ApplicationUser.UserTitle </b></h1>
 <div style="margin-bottom:100px">
     <div class="container">
         <div class="row">
             <div class="col-sm-3" style="padding-top:40px">
-                <div class="blackBorder"style="height:250px;width:250px; background-color:grey; float:left;border-radius:4px">
+                <div class="blackBorder"style="height:250px;width:250px; float:left;border-radius:4px">
                     <img src="@Model.ApplicationUser.ProfilePhoto" style="height:100%;width:100%;border-radius:4px" />
                 </div>
                 <form action="Volunteer/AddPhoto" method="post" enctype="multipart/form-data">
                     <label class="custom-file-upload">
                         <input type="file" onchange="this.form.submit()" name="myFile" />
-                        Change Photo
+                           Change Photo
                     </label>
                 </form>
                 <input type="button" class="yellowButton" style="margin-top:10px" value="Settings" onclick="location.href='@Url.Action("Settings", "Volunteer")'" />
@@ -45,10 +45,10 @@
 
 
             <div class="col-sm-6" style="padding-top:40px">
-                <h3 style="text-align:center"><b>My Skills</b></h3>
+                <h3 style="text-align:center;color:#001a66"><b>My Skills</b></h3>
                 <table style="margin-top:20px; width:100%; border-radius:5px;-moz-border-radius:10px;-webkit-border-radius:10px">
-                    <thead style="background-color:#668cff;" >
-                        <tr><th class="tablePadding" style="text-align:center; border-top-left-radius:6px"><h5><b>Category</b></h5></th><th style="border-top-right-radius:6px"><h5><b>Skill Level</b></h5></th> </tr>
+                    <thead style="background-color:#222222;color:#ffffe6" >
+                        <tr><th class="tablePadding" style="text-align:center; border-top-left-radius:2px"><h5><b>Category</b></h5></th><th style="border-top-right-radius:2px"><h5><b>Skill Level</b></h5></th> </tr>
                     </thead>
                     <tbody class="greyBox">
                         <tr></tr>
@@ -65,7 +65,7 @@
                         }
                         catch
                         {
-                        <tr><td class="tablePadding" colspan="2">Skills haven't been set yet! Click on 'Update skills' to add some information about your skills </td></tr>
+                        <tr><td class="tablePadding" colspan="2">Skills haven't been set yet! Click on 'Update skills' to add some information about your volunteer history </td></tr>
                         }
                     </tbody>
                 </table>
@@ -78,7 +78,7 @@
 
             <div class="col-sm-3" style="margin-top:20px;">
 
-                         <h3><b>My Contact Info</b></h3>
+                         <h3 style="color:#001a66"><b>My Contact Info</b></h3>
                 <div class="greyBox" style="padding:10px">
                     <p><b>UserName:</b> @Model.ApplicationUser.UserTitle</p>
                     <p><b>Name:</b> @Model.ApplicationUser.FirstName  @Model.ApplicationUser.LastName</p>
@@ -105,16 +105,16 @@
 
 
     <div>
-        <h3 style="text-align:center"><b>My Opportunities</b></h3>
+        <h3 style="text-align:center;color:#001a66"><b>My Opportunities</b></h3>
         <table id="opps" style="width:100%">
-            <thead style="background-color:#668cff">
+            <thead style="background-color:#222222;color:#ffffe6">
 
-                <tr><th style="border-top-left-radius:6px"></thstyle="border-top-right-radius:6px">
+                <tr><th style="border-top-left-radius:2px"></th>
                 <th>Organization</th>
                 <th>Category</th>
                 <th>Date</th>
                 <th></th>
-                <th style="border-top-right-radius:6px"></th>
+                <th style="border-top-right-radius:2px"></th>
                 </tr>
             </thead>
             <tbody class="greyBox" style="width:100%">
@@ -132,28 +132,28 @@
 
                 for (int j = 5; j < Model.MyOpportunities.Count; j++)
                 {
-                <tr class="child greyBox" id="allOpps"><td>@Model.MyOpportunities[j].OrganizationHostName</td><td>@Model.MyOpportunities[j].Category</td><td>@Model.MyOpportunities[j].AboutShort</td><td>@Html.ActionLink("More Info", "FullView", "Organization", new { id = @Model.MyOpportunities[j].ID }, null)</td></tr>
+                <tr class="child" id="allOpps" colspan="6"><td><b>@Model.MyOpportunities[j].Title </b></td><td>@Model.MyOpportunities[j].OrganizationHostName</td><td>@Model.MyOpportunities[j].Category</td><td>@Model.MyOpportunities[j].StartMonth/@Model.MyOpportunities[j].StartDay/@Model.MyOpportunities[j].StartYear</td><td>@Model.MyOpportunities[j].AboutShort</td><td>@Html.ActionLink("More Info", "FullView", "Organization", new { id = @Model.MyOpportunities[j].ID }, null)</td></tr>
                 }
                 }
                 catch
                 {
-                <tr><td>No opportunities have been picked yet! Head over to 'Search Opportunities' to find some! </td></tr>
+                <tr><td colspan="6">No opportunities have been picked yet! Head over to 'Search Opportunities' to find some! </td></tr>
                 }
             </tbody>
         </table>
 
 
-        <h3 style="text-align:center"><b>My Referals</b></h3>
+        <h3 style="text-align:center;color:#001a66"><b>My Referals</b></h3>
         <table id="opps" style="width:100%">
-            <thead style="background-color:#668cff">
+            <thead style="background-color:#222222;color:#ffffe6">
 
                 <tr>
-                    <th style="border-top-left-radius:6px"></th>
+                    <th style="border-top-left-radius:2px"></th>
                     <th>Organization</th>
                     <th>Category</th>
                     <th>Date</th>
                     <th></th>
-                    <th style="border-top-right-radius:6px"></th>
+                    <th style="border-top-right-radius:2px"></th>
                 </tr>
             </thead>
             <tbody class="greyBox">
@@ -175,17 +175,17 @@
                         }
                         catch
                         {
-                            <tr><td>No opportunities match your skill level, but we'll let you know if one comes up! </td></tr>
+                            <tr><td colspan="6">No opportunities match your skill level, but we'll let you know if one comes up! </td></tr>
                         }
                     }
                     else
                     {
-                        <tr><td>Preferences are set to 'Do not refer'. Visit 'My settings' if you'd like to get referals.</td></tr>
+                        <tr><td colspan="6">Preferences are set to 'Do not refer'. Visit 'My settings' if you'd like to get referals.</td></tr>
                     }
                 }
                 catch
                 {
-                    <tr><td>Visit 'My Settings' to be able to enable referals</td></tr>
+                    <tr><td colspan="6">Visit 'My Settings' to be able to enable referals</td></tr>
                 }
 
             </tbody>
@@ -208,8 +208,7 @@
     $(function () {
         // Hide rows and add clickable div
         $table.find('tr:gt(' + (numShown - 1) + ')').hide().end()
-            .after('<tbody id="more"><tr><td colspan="' +
-                   $table.find('tr:first td').length + '"><div> Show All </div</tbody></td></tr>');
+            .after('<tbody id="more"><tr><td colspan="6"><div> Show All </div</tbody></td></tr>');
 
         $('#more').click(function () {
             numShown = numShown + numMore;

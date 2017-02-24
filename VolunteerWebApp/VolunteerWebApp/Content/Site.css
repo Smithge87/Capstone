@@ -68,11 +68,12 @@ a:hover
   -webkit-touch-callout: none;
 }
 #whiteHover{
-    background-color: #ff8c1a;
+    background-color: #b3c6ff;
     padding-left: 50px;
 }
 #whiteHover:hover{
-    background-color: rgba( 255, 255, 255 , 0.5);
+    background-color: black;
+    color: #ffffe6;
 }
 #menuToggle span
 {
@@ -131,7 +132,7 @@ a:hover
   border-radius: 10px;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
-  background-color: #ff8c1a;
+  background-color: #b3c6ff;
   transform-origin: 0% 0%;
   transform: translate(-100%, 0);
   border-style:solid;

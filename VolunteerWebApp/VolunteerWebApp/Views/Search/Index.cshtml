@@ -87,7 +87,7 @@
 
         @foreach (var org in Model.Organizations)
         {
-           @:var contentString = '@Html.ActionLink("MoreInfo","PartialProfile","Organization", new {id=org.Id},  null)'
+           @:var contentString = "<h3><b>"+'@org.OrganizationName'+"</b></h3>"+'@Html.ActionLink("MoreInfo","PartialProfile","Organization", new {id=org.Id},  null)';
                            @:addOrg(@org.GeoLocation[0], @org.GeoLocation[1], '@org.OrganizationName', contentString, '@org.LogoImgSrc' )
                         }
 
