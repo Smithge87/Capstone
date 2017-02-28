@@ -376,6 +376,10 @@
     <Compile Include="Migrations\201702221501515_FixedDistances.Designer.cs">
       <DependentUpon>201702221501515_FixedDistances.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702282043036_addedLatAndLongToModels.cs" />
+    <Compile Include="Migrations\201702282043036_addedLatAndLongToModels.Designer.cs">
+      <DependentUpon>201702282043036_addedLatAndLongToModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categories.cs" />
@@ -605,6 +609,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702221501515_FixedDistances.resx">
       <DependentUpon>201702221501515_FixedDistances.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702282043036_addedLatAndLongToModels.resx">
+      <DependentUpon>201702282043036_addedLatAndLongToModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

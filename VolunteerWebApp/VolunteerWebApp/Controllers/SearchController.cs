@@ -38,22 +38,32 @@ namespace VolunteerWebApp.Controllers
             {
                 if (user.OrganizationName != null)
                 {
-                    string exitLocation = user.ProfilePhoto.Substring(10);
-                    Resize((@"C:\Users\Jack\Desktop\Projects\Capstone\VolunteerWebApp\VolunteerWebApp" + user.ProfilePhoto), @"C:\Users\Jack\Desktop\Projects\Capstone\VolunteerWebApp\VolunteerWebApp/mapImages/" + exitLocation, .5);
-                    string pinImage = "../mapImages/" + exitLocation;
-                    user.LogoImgSrc = pinImage;
-                    try
+                    if (user.LogoImgSrc == null)
                     {
-                        var currentAddress = addresses.FirstOrDefault(m => m.UserId == user.Email);
-                        string address = currentAddress.StreetAddress + " " + currentAddress.City + " " + currentAddress.State + " " + currentAddress.Zipcode;
-                        List<float> geoBit = getGeocode(address);
-                        if (geoBit.Count > 1)
+                        string exitLocation = user.ProfilePhoto.Substring(10);
+                        Resize((@"C:\Users\Jack\Desktop\Projects\Capstone\VolunteerWebApp\VolunteerWebApp" + user.ProfilePhoto), @"C:\Users\Jack\Desktop\Projects\Capstone\VolunteerWebApp\VolunteerWebApp/mapImages/" + exitLocation, .5);
+                        string pinImage = "../mapImages/" + exitLocation;
+                        user.LogoImgSrc = pinImage;
+                    }
+                    if (user.GeoLat == null && user.GeoLong == null)
+                    {
+                        try
                         {
-                            user.GeoLocation = geoBit;
+                            var currentAddress = addresses.FirstOrDefault(m => m.UserId == user.Email);
+                            string address = currentAddress.StreetAddress + " " + currentAddress.City + " " + currentAddress.State + " " + currentAddress.Zipcode;
+                            List<float> geoBit = getGeocode(address);
+                            if (geoBit.Count > 1)
+                            {
+                                user.GeoLat = geoBit[0].ToString();
+                                user.GeoLong = geoBit[1].ToString();
+                            }
                         }
+                        catch { };
+                    }
+                    if(user.GeoLat != null && user.GeoLong != null)
+                    {
                         orgs.Add(user);
                     }
-                    catch { };
                 }
             }
             var categoryList = _context.Categories.ToList();
@@ -66,27 +76,36 @@ namespace VolunteerWebApp.Controllers
                     orgNames.Add(user.OrganizationName);
                 }
             }
-            var currentUserName = User.Identity.Name;
-            var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
-            var userInfo = _context.Address.FirstOrDefault(m => m.UserId == currentUser.Email);
-            List<float> userGeo = getGeocode(userInfo.StreetAddress + " " + userInfo.City + " " + userInfo.State + " " + userInfo.Zipcode);
+            //USE FOR INTEGRATING USER LOCATION... Later
+            //var currentUserName = User.Identity.Name;
+            //var currentUser = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
+            //var userInfo = _context.Address.FirstOrDefault(m => m.UserId == currentUser.Email);
+            //List<float> userGeo = getGeocode(userInfo.StreetAddress + " " + userInfo.City + " " + userInfo.State + " " + userInfo.Zipcode);
             List<Opportunity> opps = new List<Opportunity>();
-            List<List<float>> geoCoded = new List<List<float>>();
             foreach (var opp in _context.Opportunity)
             {
-
-                string address = opp.StreetAddress + " " + opp.City + " " + opp.State + " " + opp.Zipcode;
-                List<float> geoBit = getGeocode(address);
-                if (geoBit.Count > 1)
+                if (opp.GeoLat == null && opp.GeoLong == null)
                 {
-                    opp.GeoLocation = geoBit;
+                    string address = opp.StreetAddress + " " + opp.City + " " + opp.State + " " + opp.Zipcode;
+                    List<float> geoBit = getGeocode(address);
+                    if (geoBit.Count > 1)
+                    {
+                        opp.GeoLat = geoBit[0].ToString();
+                        opp.GeoLong = geoBit[1].ToString();
+                        opps.Add(opp);
+                    }
+                }
+                else if (opp.GeoLat !=null && opp.GeoLong != null)
+                {
                     opps.Add(opp);
                 }
+
             }
+            _context.SaveChanges();
             var viewModel = new SearchViewModel()
             {
                 cleanOpps = opps,
-                userLocation = userGeo,
+                //userLocation = userGeo,
                 CategoryList = categoryList,
                 OrgNames = orgNames,
                 Distances = distanceList,
@@ -97,6 +116,10 @@ namespace VolunteerWebApp.Controllers
         [ActionName("FilterSearch")]
         public ActionResult Index(SearchViewModel model)
         {
+            if(model.CategoryFilter == null && model.DistanceFilter == null && model.KeywordFilter == null && model.OrganizationFilter == null)
+            {
+                return RedirectToAction("Index");
+            }
             List<ApplicationUser> orgs = new List<ApplicationUser>();
             List<Information> addresses = new List<Information>();
             foreach (var address in _context.Address)
@@ -105,24 +128,9 @@ namespace VolunteerWebApp.Controllers
             }
             foreach (var user in _context.Users)
             {
-                if (user.OrganizationName != null)
+                if (user.OrganizationName != null && user.GeoLat != null && user.GeoLong != null)
                 {
-                    string exitLocation = user.ProfilePhoto.Substring(10);
-                    Resize((@"C:\Users\Jack\Desktop\Projects\Capstone\VolunteerWebApp\VolunteerWebApp" + user.ProfilePhoto), @"C:\Users\Jack\Desktop\Projects\Capstone\VolunteerWebApp\VolunteerWebApp/mapImages/" + exitLocation, .5);
-                    string pinImage = "../mapImages/" + exitLocation;
-                    user.LogoImgSrc = pinImage;
-                    try
-                    {
-                        var currentAddress = addresses.FirstOrDefault(m => m.UserId == user.Email);
-                        string address = currentAddress.StreetAddress + " " + currentAddress.City + " " + currentAddress.State + " " + currentAddress.Zipcode;
-                        List<float> geoBit = getGeocode(address);
-                        if (geoBit.Count > 1)
-                        {
-                            user.GeoLocation = geoBit;
-                        }
                         orgs.Add(user);
-                    }
-                    catch { };
                 }
             }
             var currentUserName = User.Identity.Name;
@@ -197,15 +205,10 @@ namespace VolunteerWebApp.Controllers
             var userInfo = _context.Address.FirstOrDefault(m => m.UserId == currentUser.Email);
             List<float> userGeo = getGeocode(userInfo.StreetAddress + " " + userInfo.City + " " + userInfo.State + " " + userInfo.Zipcode);
             List<Opportunity> opps = new List<Opportunity>();
-            List<List<float>> geoCoded = new List<List<float>>();
             foreach (var opp in filteredOpps)
             {
-
-                string address = opp.StreetAddress + " " + opp.City + " " + opp.State + " " + opp.Zipcode;
-                List<float> geoBit = getGeocode(address);
-                if (geoBit.Count > 1)
+                if(opp.GeoLat!= null && opp.GeoLong != null)
                 {
-                    opp.GeoLocation = geoBit;
                     opps.Add(opp);
                 }
             }

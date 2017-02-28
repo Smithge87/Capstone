@@ -81,7 +81,7 @@
         @foreach (var org in Model.Organizations)
         {
            @:var contentString = "<h3><b>"+'@org.OrganizationName'+"</b></h3>"+'@Html.ActionLink("MoreInfo","PartialProfile","Organization", new {id=org.Id},  null)';
-                           @:addOrg(@org.GeoLocation[0], @org.GeoLocation[1], '@org.OrganizationName', contentString, '@org.LogoImgSrc' )
+                           @:addOrg(@float.Parse(org.GeoLat), @float.Parse(org.GeoLong), '@org.OrganizationName', contentString, '@org.LogoImgSrc' )
                         }
 
 
@@ -89,7 +89,7 @@
         @foreach (var item in Model.cleanOpps)
         {
            @:var contentString = "<h3 id='firstHeading' class='firstHeading'><b>" + '@item.Title' + "</b></h3><h4><b>"+'@item.OrganizationHostName'+"</b></h4>"+'@item.AboutShort'+"<br><br>"+'@Html.ActionLink("MoreInfo","FullView","Organization", new {id=item.ID},  null)';
-                                    @:addPin(@item.GeoLocation[0], @item.GeoLocation[1], '@item.Title', contentString, '@item.LogoSrc' )
+                                    @:addPin(@float.Parse(item.GeoLat), @float.Parse(item.GeoLong), '@item.Title', contentString, '@item.LogoSrc' )
                                                         }
         infowindow = new google.maps.InfoWindow({
             content: "loading..."

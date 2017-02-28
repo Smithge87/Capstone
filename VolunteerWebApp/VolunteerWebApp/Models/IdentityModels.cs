@@ -17,8 +17,8 @@ namespace VolunteerWebApp.Models
         public string UserTitle { get; set; }
         public string ProfilePhoto { get; set; }
         public string LogoImgSrc { get; set; }
-        public List<float> GeoLocation { get; set; }
-
+        public string GeoLat { get; set; }
+        public string GeoLong { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
