@@ -3,14 +3,17 @@
     ViewBag.Title = "Hub.Mesage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link rel="stylesheet" type="text/css" href="../css/capstone.css">
-
+<style>
+    #bodyStyle {
+        background-image: none;
+    }
+</style>
 
 
 
 <h1 class="titleStyle"><b> Send A Message </b></h1>
 <div class="logoOne">
-    <div style="margin:60px; padding-top:80px">
+    <div style="margin:90px;margin-left:110px; padding-top:80px">
         @using (Html.BeginForm("Index", "Message", FormMethod.Post, new { @class = "form-horizontal", role = "form", sender = Model.SendFrom }))
         {
             <form>

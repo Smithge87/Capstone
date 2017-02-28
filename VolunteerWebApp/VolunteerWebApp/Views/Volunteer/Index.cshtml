@@ -3,17 +3,7 @@
     ViewBag.Title = "My.Hub";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link rel="stylesheet" type="text/css" href="../../css/capstone.css">
 <style>
-    body {
-        background-image: url("../../images/logo.jpeg");
-        background-repeat: no-repeat;
-        background-size: 800px;
-        background-position: center;
-        background-position-y: 100px;
-        background-attachment:fixed;
-    }
-
     td {
         padding: 10px;
     }
@@ -25,8 +15,8 @@
 
 
 
-<h1 style="font-family:Georgia;color:#001a66"><b>Welcome, @Model.ApplicationUser.UserTitle </b></h1>
-<div style="margin-bottom:100px">
+@*<h1 class="titleStyle"><b>Welcome, @Model.ApplicationUser.UserTitle </b></h1>*@
+<div style="margin-bottom:100px;margin-top:50px">
     <div class="container">
         <div class="row">
             <div class="col-sm-3" style="padding-top:40px">
@@ -45,10 +35,11 @@
 
 
             <div class="col-sm-6" style="padding-top:40px">
-                <h3 style="text-align:center;font-family:Georgia;color:#001a66"><b>My Skills</b></h3>
                 <table style="margin-top:20px; width:100%; border-radius:5px;-moz-border-radius:10px;-webkit-border-radius:10px">
-                    <thead style="background-color:#222222;color:#ffffe6" >
-                        <tr><th class="tablePadding" style="text-align:center; border-top-left-radius:2px"><h5><b>Category</b></h5></th><th style="border-top-right-radius:2px"><h5><b>Skill Level</b></h5></th> </tr>
+                    <thead >
+                        <tr class="greyBox"><th colspan="2" style="text-align:center"><h2 class="titleStyle"><b>My Skills</b></h2></th></tr>
+                        <tr style="background-color:#222222;color:#ffffe6"><th class="tablePadding" style="text-align:center; border-top-left-radius:2px"><h5><b>Category</b></h5></th>
+                        <th><h5><b>Skill Level</b></h5></th> </tr>
                     </thead>
                     <tbody class="greyBox">
                         <tr></tr>
@@ -76,10 +67,10 @@
 
 
 
-            <div class="col-sm-3" style="margin-top:20px;">
+            <div class="col-sm-3 greyBox" style="margin-top:30px;">
 
-                         <h3 style="color:#001a66;font-family:Georgia;"><b>My Contact Info</b></h3>
-                <div class="greyBox" style="padding:10px">
+                         <h3 class="titleStyle"><b>My Contact Info</b></h3>
+                <div  style="padding:10px">
                     <p><b>UserName:</b> @Model.ApplicationUser.UserTitle</p>
                     <p><b>Name:</b> @Model.ApplicationUser.FirstName  @Model.ApplicationUser.LastName</p>
                     <p><b> E-mail: </b> @Model.ApplicationUser.Email</p>
@@ -104,17 +95,16 @@
 
 
 
-    <div>
-        <h3 style="text-align:center;font-family:Georgia;color:#001a66"><b>My Opportunities</b></h3>
+    <div style="margin-top:30px">
         <table id="opps" style="width:100%">
-            <thead style="background-color:#222222;color:#ffffe6">
-
-                <tr><th style="border-top-left-radius:2px"></th>
+            <thead >
+                <tr class="greyBox"><th colspan="6" style="text-align:center"><h2 class="titleStyle"><b>My Opportunities</b></h2></th></tr>
+                <tr style="background-color:#222222;color:#ffffe6"><th></th>
                 <th>Organization</th>
                 <th>Category</th>
                 <th>Date</th>
                 <th></th>
-                <th style="border-top-right-radius:2px"></th>
+                <th></th>
                 </tr>
             </thead>
             <tbody class="greyBox" style="width:100%">
@@ -143,11 +133,10 @@
         </table>
 
 
-        <h3 style="text-align:center;color:#001a66;font-family:Georgia;"><b>My Referals</b></h3>
         <table id="opps" style="width:100%">
-            <thead style="background-color:#222222;color:#ffffe6">
-
-                <tr>
+            <thead >
+                <tr class="greyBox"><th colspan="6" style="text-align:center"><h2 class="titleStyle"><b>My Referals</b></h2></th></tr>
+                <tr style="background-color:#222222;color:#ffffe6">
                     <th style="border-top-left-radius:2px"></th>
                     <th>Organization</th>
                     <th>Category</th>

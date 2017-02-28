@@ -3,19 +3,23 @@
     ViewBag.Title = "Volunteer Profile";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link rel="stylesheet" type="text/css" href="../../css/capstone.css">
+<link rel="stylesheet" type="text/css" href="../../css/capstoneTwo.css" id="themeSwitch">
 
 
-<h1 style="color:#001a66;font-family:Georgia;"><b>@Model.Volunteer.UserName</b></h1>
+<h1  class="titleStyle"><b>@Model.Volunteer.UserTitle</b></h1>
 <br />
-<div class="logoTwo">
-    <div style="margin:60px; padding-top:80px ; padding-bottom:300px">
-        <div class="Row" style="margin-left: 80px">
-            <div class="Column" style="width: 400px">
+<div style="position:center;margin-left:80px">
+    <br /><br /><br />
+    <div style="margin-left:30px;padding-bottom:300px">
+        <div class="Row" style="padding-left: 100px">
+            <div class="Column">
                 <div class="" style="width:300px">
-                    <h3 class="titleStyle"><b>About Volunteer</b></h3>
-
+                    <br />
                     <table class="greyBox">
+                        <thead>
+                            <tr class="titleStyle greyBox"><th><h2 style="text-align:center;"><b>About @Model.Volunteer.UserTitle</b></h2></th></tr>
+                            <tr><th style="text-align:center;background-color:#222222 ;color:#222222;"> _</th></tr>
+                        </thead>
                         <tbody>
                             @try
             {
@@ -43,30 +47,34 @@
                     < p > This user does not wish to be contacted </ p >
                 }
             </div>
-            <div class="Column">
-                @try
+            <div class="Column" >
+                <br />
+                <div style="margin-left:20px; margin-top:55px" class="greyBox">
+                    @try
 
             {
-                    <h3 class="titleStyle"><b>Volunteer Skills</b></h3>
-                    <div class="greyBox" style="margin:40px">
-                        <b>Animal Services Skill Level:</b> <img src='../@Model.AnimalImageSrc' style="height:25px"><br />
-                        <p style="margin-left:20px">@Model.VolunteerSkills.AboutAnimal</p><br />
-                        <b>Disaster Prevention Skill Level:</b> <img src='../@Model.DisasterImageSrc' style="height:25px" class="starFit"><br />
-                        <p style="margin-left:20px">@Model.VolunteerSkills.AboutDisaster</p><br />
-                        <b>Educational Services Skill Level:</b> <img src='../@Model.EducationImageSrc' style="height:25px" class="starFit"><br />
-                        <p style="margin-left:20px">@Model.VolunteerSkills.AboutEducation</p><br />
-                        <b>Enviornmental Services Skill Level:</b> <img src='../@Model.EnviornmentImageSrc' style="height:25px" class="starFit"><br />
-                        <p style="margin-left:20px">@Model.VolunteerSkills.AboutEnviornment</p><br />
-                        <b>Health Services Skill Level:</b> <img src='../@Model.HealthImageSrc' style="height:25px" class="starFit"><br />
-                        <p style="margin-left:20px">@Model.VolunteerSkills.AboutHealth</p><br />
-                        <b>Human Services Skill Level:</b> <img src='../@Model.HumanServicesImageSrc' style="height:25px" class="starFit">
-                        <p style="margin-left:20px">@Model.VolunteerSkills.AboutHumanServices</p><br />
-                    </div>
-                }
-                catch
-                {
-                    <p>Volunteer's Skills haven't been set yet</p>
-                }
+                        <div class="titleStyle "><h2 style="text-align:center;"><b>Volunteer Skills</b></h2></div>
+                        <p style="text-align:center;background-color:#222222 ;color:#222222;"> _</p>
+                        <div class="" style="margin-left:40px">
+                            <b>Animal Services Skill Level:</b> <img src='../@Model.AnimalImageSrc' style="height:25px"><br />
+                            <p style="margin-left:20px">@Model.VolunteerSkills.AboutAnimal</p><br />
+                            <b>Disaster Prevention Skill Level:</b> <img src='../@Model.DisasterImageSrc' style="height:25px" class="starFit"><br />
+                            <p style="margin-left:20px">@Model.VolunteerSkills.AboutDisaster</p><br />
+                            <b>Educational Services Skill Level:</b> <img src='../@Model.EducationImageSrc' style="height:25px" class="starFit"><br />
+                            <p style="margin-left:20px">@Model.VolunteerSkills.AboutEducation</p><br />
+                            <b>Enviornmental Services Skill Level:</b> <img src='../@Model.EnviornmentImageSrc' style="height:25px" class="starFit"><br />
+                            <p style="margin-left:20px">@Model.VolunteerSkills.AboutEnviornment</p><br />
+                            <b>Health Services Skill Level:</b> <img src='../@Model.HealthImageSrc' style="height:25px" class="starFit"><br />
+                            <p style="margin-left:20px">@Model.VolunteerSkills.AboutHealth</p><br />
+                            <b>Human Services Skill Level:</b> <img src='../@Model.HumanServicesImageSrc' style="height:25px" class="starFit">
+                            <p style="margin-left:20px">@Model.VolunteerSkills.AboutHumanServices</p><br />
+                        </div>
+                    }
+                    catch
+                    {
+                        <p>Volunteer's Skills haven't been set yet</p>
+                    }
+                </div>
             </div>
         </div>
 

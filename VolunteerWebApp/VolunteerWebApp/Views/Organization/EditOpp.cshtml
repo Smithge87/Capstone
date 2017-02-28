@@ -3,10 +3,13 @@
     ViewBag.Title = "EditOpp";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link rel="stylesheet" type="text/css" href="../../css/capstone.css">
+<style>
+    #bodyStyle {
+        background-image: none;
+    }
+</style>
 
-
-<h1><b>Edit Opportunity: @Model.Title</b></h1>
+<h1 class="titleStyle"><b>Edit Opportunity: @Model.Title</b></h1>
 
 <div class="logoOne">
     <div style="margin:60px; padding-top:80px">
@@ -15,7 +18,7 @@
             @Html.AntiForgeryToken()
             <div class="greyBox" style="width:800px; margin-left:10%; padding-top:20px">
 
-                <h3><b>Basic Info about your opportunity:</b></h3>
+                <h3 class="titleStyle"><b>Basic Info about your opportunity:</b></h3>
                 <br />
                 @Html.ValidationSummary("", new { @class = "text-danger" })
                 <div class="form-group">
@@ -36,7 +39,7 @@
                         @Html.DropDownListFor(m => m.Category, new SelectList(Model.CategoryList, "ID", "Category"), new { @class = "form-control  blackBorder" })
                     </div>
                 </div>
-                <h3><b>Start Date:</b></h3>
+                <h3 class="titleStyle"><b>Start Date:</b></h3>
                 <div class="form-group">
                     @Html.LabelFor(m => m.StartDay, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
@@ -73,7 +76,7 @@
                         @Html.TextBoxFor(m => m.EndTime, new { @class = "form-control blackBorder" })
                     </div>
                 </div>
-                <h3><b>Location:</b></h3>
+                <h3 class="titleStyle"><b>Location:</b></h3>
                 <div class="form-group">
                     @Html.LabelFor(m => m.StreetAddress, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
@@ -99,7 +102,7 @@
                     </div>
                 </div>
                 <br />
-                <h3><b>Description:</b></h3>
+                <h3 class="titleStyle"><b>Description:</b></h3>
 
                 <div class="form-group">
                     @Html.LabelFor(m => m.ShortDescription, new { @class = "col-md-2 control-label" })

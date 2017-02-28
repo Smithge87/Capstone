@@ -3,17 +3,20 @@
     ViewBag.Title = "My.Settings";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link rel="stylesheet" type="text/css" href="../css/capstone.css">
+<style>
+    #bodyStyle{
+        background-image: none;
+    }
+</style>
 
 
-
-<h1 class="" style="color:#001a66;font-family:Georgia;"><b>Contact Settings</b></h1>
+<h1  class="titleStyle"><b>Contact Settings</b></h1>
 <div class="logoOne">
     <div style="margin:60px; padding-top:70px">
         @using (Html.BeginForm("Settings", "Volunteer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
 
-            <div class="greyBox" style="width:400px; margin-left:10%">
+            <div class="greyBox" style="width:400px; margin-left:10%; padding:10px">
                 <div style="margin:15px">
                     <form>
                         <h3><b>Allow Help.Hub to contact me</b></h3>

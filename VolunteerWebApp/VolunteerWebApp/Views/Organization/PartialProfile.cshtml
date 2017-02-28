@@ -1,19 +1,13 @@
 ﻿@model VolunteerWebApp.Models.PartialProfileOrganizationViewModel
 @{
-    ViewBag.Title = "PartialProfile";
+    ViewBag.Title = "Organization rofile";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" type="text/css" href="../../css/capstoneTwo.css" id="themeSwitch">
 
-<link rel="stylesheet" type="text/css" href="../../css/capstone.css">
+
 <style>
-        body {
-        background-image: url("../../images/logo.jpeg");
-        background-repeat: no-repeat;
-        background-size: 800px;
-        background-position: center;
-        background-position-y: 100px;
-        background-attachment:fixed;
-    }
+
         td {
         padding: 10px;
     }
@@ -26,7 +20,7 @@
 
 
 
-<h1 style="font-family:Georgia;color:#001a66;"><b>@Model.Organization.OrganizationName</b></h1>
+<h1 class="titleStyle" style=""><b>@Model.Organization.OrganizationName</b></h1>
 
 
 
@@ -37,16 +31,31 @@
         <br />
         <img src="../@Model.Organization.ProfilePhoto" style="height:200px;width:200px ;border-radius: 4px" class="blackBorder" />
     </div>
-    <div class="Column greyBox" style="padding-left:40px;width:60%">
-        <br /><br /><br /><br />
-        <h3 style="text-align:center;font-family:Georgia;color:#001a66;""><b>About @Model.Organization.OrganizationName</b></h3>
-        <p class="greyBox" style="margin:20px;min-height:150px">@Model.OrganizationInfo.AboutInfo</p>
+    <div class="Column " style="padding-left:40px;width:60%">
+        <br />
+        <br />
+        <br />
+        <br />
+        <table>
+            <thead>
+                <tr class="titleStyle greyBox"><th><h2 style="text-align:center;"><b>About @Model.Organization.OrganizationName</b></h2></th></tr>
+                <tr><th style="text-align:center;background-color:#222222 ;color:#222222;"> _</th></tr>
+            </thead>
+            <tbody class="greyBox" style="min-height:300px">
+                @try
+                {
+                    <tr><td>@Model.OrganizationInfo.AboutInfo </td></tr>
+                }
+                catch
+                { }
+            </tbody>
+        </table>
     </div>
     <div class="Column" style="width:20%">
-        <div class="greyBox" style="width:200px;">
+        <div class="greyBox" style="width:200px; margin-left:20px">
             <br />
             <br />
-            <h3 style="font-family:Georgia;color:#001a66;"><b>Contact Information</b></h3>
+            <h3 class="titleStyle"><b>Contact Information</b></h3>
             <br />
             <div style="margin-left:25px">
                 <p><b>Phone:</b>@Model.Organization.PhoneNumber</p>
@@ -68,10 +77,10 @@
     </div>
 </div>
 <div style="margin-top:40px">
-    <h3 style="text-align:center;font-family:Georgia;color:#001a66;""><b>Organization Opportunities</b></h3>
     <table style="width:100%">
-        <thead style="background-color:#b3c6ff">
-            <tr>
+        <thead>
+            <tr class="titleStyle greyBox"><th colspan="6"><h2 style="text-align:center;"><b>Organization Opportunities</b></h2></th></tr>
+            <tr class="" style="background-color:#222222;color:#ffffe6; text-align:center">
                 <th style="border-top-left-radius:2px">Title</th>
                 <th>Organization</th>
                 <th>Category</th>

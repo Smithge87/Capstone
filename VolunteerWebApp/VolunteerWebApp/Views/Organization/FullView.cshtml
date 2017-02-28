@@ -3,15 +3,12 @@
     ViewBag.Title = "My.Opportunity";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link rel="stylesheet" type="text/css" href="../../css/capstone.css">
+<link rel="stylesheet" type="text/css" href="../../css/capstoneTwo.css" id="themeSwitch">
+
+
+
 <style>
-    body{
-        background-image:url("../../images/logo.jpeg");
-        background-repeat:no-repeat;
-        background-size: 800px;
-        background-position:center;
-        background-position-y: 80px;
-    }
+
     td{
         padding:5px;
     }
@@ -22,37 +19,34 @@
 
 
 
-
-
-
-
-
-<div class="Row" style>
+<div class="Row" style="padding-bottom:200px;margin-top:100px">
     <div class="Column" style="width:25%">
-        <h1 style="color:#001a66;font-family:Georgia;"><b>@Model.Opportunity.Title</b></h1>
+        <h1 class="titleStyle"><b>@Model.Opportunity.Title</b></h1>
         <br />
         <br />
-        <div class="greyBox" style="margin-right:20px">
-            <h4><b>Hosted By:</b> @Model.Opportunity.OrganizationHostName</h4>
-            <h4><b>Location:</b> @Model.Opportunity.Venue</h4>
-            <h4><b>Category:</b>@Model.Opportunity.Category</h4>
-            <h4><b>Date:</b>@Model.Opportunity.StartMonth/@Model.Opportunity.StartDay/@Model.Opportunity.StartYear</h4>
-            <input type="button" class="yellowButton" value="View Organization Profile" onclick="location.href='@Url.Action( "PartialProfile", "Organization", new { id = Model.Organization.Id },null)'" /><br />
+        <div style="margin-right:20px"">
+            <div class="greyBox">
+                <h4><b>Hosted By:</b> @Model.Opportunity.OrganizationHostName</h4>
+                <h4><b>Location:</b> @Model.Opportunity.Venue</h4>
+                <h4><b>Category:</b>@Model.Opportunity.Category</h4>
+                <h4><b>Date:</b>@Model.Opportunity.StartMonth/@Model.Opportunity.StartDay/@Model.Opportunity.StartYear</h4>
+                <input type="button" class="yellowButton" value="View Organization Profile" onclick="location.href='@Url.Action( "PartialProfile", "Organization", new { id = Model.Organization.Id },null)'" /><br />
 
-        </div>
-        <div class="greyBox" style="width:200px">
-            <br />
-            <h5><b>Location Details</b></h5>
-            <div style="margin-left:20px">
-                <p><b>Start Time:</b>@Model.Opportunity.StartTime</p>
-                <p><b>End Time:</b>@Model.Opportunity.EndTime</p>
-                <p><b>Duration:</b>@Model.Opportunity.Duration</p>
-                <p><b>Address:</b></p>
+            </div>
+            <div class="greyBox">
+                <br />
+                <h5><b>Location Details</b></h5>
                 <div style="margin-left:20px">
-                    <p>@Model.Opportunity.StreetAddress</p>
-                    <p>@Model.Opportunity.City</p>
-                    <p>@Model.Opportunity.State</p>
-                    <p>@Model.Opportunity.Zipcode</p>
+                    <p><b>Start Time:</b>@Model.Opportunity.StartTime</p>
+                    <p><b>End Time:</b>@Model.Opportunity.EndTime</p>
+                    <p><b>Duration:</b>@Model.Opportunity.Duration</p>
+                    <p><b>Address:</b></p>
+                    <div style="margin-left:20px">
+                        <p>@Model.Opportunity.StreetAddress</p>
+                        <p>@Model.Opportunity.City</p>
+                        <p>@Model.Opportunity.State</p>
+                        <p>@Model.Opportunity.Zipcode</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -61,19 +55,30 @@
         <div style="">
             <br />
             <br />
-            <div class="greyBox" style="min-height:200px;padding:10px">
-                <h2><b>Opportunity Details</b></h2>
-                <p>@Model.Opportunity.AboutOpportunity</p>
-            </div>
+            <br />
+            <table>
+                <thead>
+                    <tr class="titleStyle greyBox"><th><h2 style="text-align:center;"><b>Opportunity Details</b></h2></th></tr>
+                    <tr><th style="text-align:center;background-color:#222222 ;color:#222222;"> _</th></tr>
+                </thead>
+                <tbody class="greyBox" style="min-height:300px">
+                    @try
+                    {
+                        <tr><td>@Model.Opportunity.AboutOpportunity </td></tr>
+                    }
+                    catch
+                    { }
+                </tbody>
+            </table>
 
 
 
 
-            <h3><b>Interested Volunteers</b></h3>
 
             <table style="width:100%">
-                <thead style="background-color:#99b3ff">
-                    <tr>
+                <thead >
+                    <tr class="titleStyle greyBox"><th colspan="4"><h2 style="text-align:center;"><b>Interested Volunteers</b></h2></th></tr>
+                    <tr class="" style="background-color:#222222;color:#ffffe6; text-align:center">
                         <th style="border-top-left-radius:2px">User Name</th>
                         <th>Interest Level</th>
                         <th></th>
@@ -111,7 +116,7 @@
         <br />
         <br />
         <div class="greyBox" style="padding:10px">
-            <h3><b>Opportunity Needs:</b></h3>
+            <h3 class="titleStyle"><b>Opportunity Needs:</b></h3>
 
             @foreach (var need in Model.SkillsNeededList)
             {

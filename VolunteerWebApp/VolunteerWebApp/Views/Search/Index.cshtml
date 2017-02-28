@@ -3,16 +3,9 @@
     ViewBag.Title = "Hub.Search";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link rel="stylesheet" type="text/css" href="../css/capstone.css">
 
 <style>
-    body{
-        background-image: url("../images/logo.jpeg");
-        background-repeat:no-repeat;
-        background-size:700px 700px;
-        background-position-x:200px;
-        background-position-y:160px
-    }
+
     /* Always set the map height explicitly to define the size of the div
     * element that contains the map. */
     #map {
@@ -21,7 +14,7 @@
 </style>
 <div class="Row">
     <div class="Column" style="width:250px">
-        <h1 style="color:#001a66;font-family:Georgia;"><b>Hub Opportunity Search</b></h1>
+        <h1 class="titleStyle"><b>Hub Opportunity Search</b></h1>
     </div>
 
     @using (Html.BeginForm("FilterSearch", "Search", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))

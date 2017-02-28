@@ -7,9 +7,12 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    <link rel="stylesheet" type="text/css" href="../css/capstoneTwo.css" id="themeSwitch">
+
+
 </head>
 <body>
-    <nav role="navigation">
+    <nav role="navigation" style="">
         <div id="menuToggle">
             <input type="checkbox" />
             <span></span>
@@ -51,20 +54,30 @@ else
 
 
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="min-height:75px">
+        @if (Request.IsAuthenticated)
+        {
+            <h2 style="color:white; margin-left:40px">Welcome, @User.Identity.Name</h2>
+        }
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
+
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
             </div>
+            <div>
 
+                @*<input type="button" id="themeBlue" value="changeTheme" style="color:white" />
+                <input type="button" id="themeOrange" value="changeTheme" style="color:white" />*@
+
+            </div>
         </div>
     </div>
     
-    <div class="container body-content">
+    <div class="container body-content" id="bodyStyle">
         @RenderBody()
 
         <div class="navbar navbar-inverse navbar-fixed-bottom">
@@ -84,5 +97,17 @@ else
             @Scripts.Render("~/bundles/jquery")
             @Scripts.Render("~/bundles/bootstrap")
             @RenderSection("scripts", required: false)
+
+    <script>
+        
+        document.getElementById('themeBlue').onclick = function () {
+            document.getElementById('themeSwitch').href = "../../css/capstoneTwo.css";
+
+        };
+        document.getElementById('themeOrange').onclick = function () {
+            document.getElementById('themeSwitch').href = "../../css/capstone.css";
+        };
+
+    </script>
 </body>
 </html>

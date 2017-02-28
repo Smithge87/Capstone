@@ -1,5 +1,7 @@
+
+
 #bodyStyle {
-  background-image: url("../../images/logo.jpeg");
+  background-image: url("../../images/logoTwoSmall.png");
 background-repeat: no-repeat;
 background-size: 800px;
 background-position: center;
@@ -8,62 +10,35 @@ background-attachment:fixed;
 }
 
 
-
-#more {
-    cursor: pointer;
-    background: #eee;
-}
-
 .logoOne{
-  background-image: url("../images/logo.jpeg");
+  background-image: url("../images/logoTwoSmall.png");
   background-repeat: no-repeat;
   background-size: 500px 500px;
 }
 .logoTwo{
-  background-image: url("../../images/logo.jpeg");
+  background-image: url("../../images/logoTwoSmall.png");
   background-repeat: no-repeat;
   background-size: 500px 500px;
 }
-.roundTable{
- border: 2px solid;
-  border-radius: 10px;
-  border-color: rgba(0 , 0 , 0, 1);
-}
+
+
 .blackBorder{
   border-width: 1px;
   border-color: black;
   border-style: solid;
 }
 .yellowButton{
-  background-color: #b3c6ff;
+  background-color: #ccccff;
   border-radius: 2px;
   border-color: black;
   border-style: solid;
   border-width: 1px;
 }
 .greyBox{
-  background-color: rgba(255, 255, 230,.6);
-}
-
-.blueBox{
-  background-color: #668cff;
-}
-.blueBorder{
-  border-style: solid;
-  border-color:#000066;
-  border-width: 5px;
+  background-color: rgba(255, 255, 255,.8);
 }
 .tablePadding{
   padding:5px;
-}
-.yellowText{
-  color: #ffe066;
-}
-.blueText{
-  color: #3366cc;
-}
-.tableHeadText{
-  font-size: 20px;
 }
 .containered{width:100%;}
 .left{float:left;}
@@ -87,13 +62,38 @@ background-attachment:fixed;
     display: inline-block;
     padding: 2px 6px;
     cursor: pointer;
-    background-color: #b3c6ff;
+    background-color: #ccccff;
     border-radius: 2px;
     margin-top:10px;
 }
 input[type="file"] {
     display: none;
 }
+.headStyle{
+  
+}
 .titleStyle{
-  color:#001a66;font-family:Georgia;
+  color: black ;font-family:Tahoma;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+/*BURGER  BUTTON*/
+
+
+#menuToggle span
+{
+  display: block;
+  width: 55px;
+  height: 12px;
+  margin-bottom: 5px;
+  position: relative;
+  background: #000066;
+  border-radius: 3px;
+
+  z-index: 1;
+
+  transform-origin: 4px 0px;
+
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
 }
