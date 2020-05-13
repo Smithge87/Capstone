@@ -332,8 +332,8 @@ namespace VolunteerWebApp.Controllers
                 string toNumber = phoneFormat(user.PhoneNumber);
                 string AccountSid = sending[0];
                 string AuthToken = sending[1];
-                var client = new TwilioRestClient(AccountSid, AuthToken);
-                client.SendMessage("262-278-0866", toNumber, message);
+                //var client = new TwilioRestClient(AccountSid, AuthToken);
+                //client.SendMessage("262-278-0866", toNumber, message);
             }
             catch { }
         }
