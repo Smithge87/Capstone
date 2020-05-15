@@ -23,6 +23,14 @@ namespace VolunteerWebApp.Controllers
             _context = new ApplicationDbContext();
         }
 
+        //-- Test Get Method
+        /*
+        [HttpGet]
+        public ActionResult<IEnumerable<string>> Get()
+        {
+            return "Hello";
+        }
+        */
 
         // GET: Volunteer
         public ActionResult Index()

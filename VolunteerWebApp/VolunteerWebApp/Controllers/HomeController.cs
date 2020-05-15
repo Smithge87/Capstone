@@ -13,6 +13,7 @@ namespace VolunteerWebApp.Controllers
             return View();
         }
 
+        //-- I don't believe the next two functions are still used. boilerplate. does beg the question - why didn't i use them?
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
